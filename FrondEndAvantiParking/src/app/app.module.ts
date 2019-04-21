@@ -21,7 +21,8 @@ import { RegisterComponent } from './components/user/register/register.component
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
-import { NotificationsComponent } from './components/notifications/notifications.component'; 
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { CarouselComponent } from './components/carousel/carousel.component'; 
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { NotificationsComponent } from './components/notifications/notifications
     ProfileComponent,
     ReserveComponent,
     VehicleComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
