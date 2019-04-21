@@ -1,3 +1,135 @@
-<p>
-  reserve works!
-</p>
+<div class="container">
+
+  <div class="row text-center">
+    <div class="col-md-4">
+      <div class="btn-group">
+        <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()">
+          Previous
+        </div>
+        <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+          Today
+        </div>
+        <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()">
+          Next
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    </div>
+  </div>
+
+  <div [ngSwitch]="view">
+    <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+      [refresh]="refresh" (click)="onEvent($event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-week-view>
+  </div>
+
+  <h3>
+    Reserve
+  </h3>
+
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-responsive">
+      <thead>
+        <tr>
+          <th>Starts at</th>
+          <th>Ends at</th>
+          <th>Repit</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>
+            <input type="text" ngbDatepicker #d="ngbDatepicker">
+            <button class="btn btn-outline-primary btn-sm _btn" (click)="d.toggle()"><i
+                class="material-icons">calendar_today</i></button>
+
+          </td>
+          <td>
+            <input type="text" ngbDatepicker #d="ngbDatepicker">
+            <button class="btn btn-outline-primary btn-sm _btn" (click)="d.toggle()"><i
+                class="material-icons">calendar_today</i></button>
+
+          </td>
+          <td>
+            <select class="custom-select d-block w-100" id="" required="">
+              <option value="">Just once</option>
+              <option>Weekly</option>
+              <option>Monthly</option>
+            </select>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteEvent(event)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="btn btn-primary pull-right" (click)="addEvent()">
+      Confirm
+    </button>
+
+    <br><br>
+
+  </div>
+
+  <ng-template #modalContent let-close="close">
+    <div class="modal-header">
+      <h5 class="modal-title">Parking</h5>
+      <button type="button" class="close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <table class="table table-bordered table-responsive">
+        <thead>
+          <tr>
+            <th>Parking</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <label>1</label>
+              <button class="btn btn-primary" (click)="deleteEvent(event)">
+                Select
+              </button>
+            </td>
+            <td>
+              <label>2</label>
+              <button class="btn btn-primary" (click)="deleteEvent(event)">
+                Select
+              </button>
+            </td>
+            <td>
+              <label>3</label>
+              <button class="btn btn-primary" (click)="deleteEvent(event)">
+                Select
+              </button>
+            </td>
+            <td>
+              <label>4</label>
+              <button class="btn btn-primary" (click)="deleteEvent(event)">
+                Select
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" (click)="close()">
+        Ok
+      </button>
+    </div>
+  </ng-template>
+</div>
