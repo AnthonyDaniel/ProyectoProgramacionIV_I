@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { SlideshowModule} from 'ng-simple-slideshow';
+import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { Errorpage404Component } from './components/errorpage404/errorpage404.component';
@@ -22,7 +23,8 @@ import { ProfileComponent } from './components/user/profile/profile.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { CarouselComponent } from './components/carousel/carousel.component'; 
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { ParkingLotsComponent } from './components/parking-lots/parking-lots.component'; 
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     ReserveComponent,
     VehicleComponent,
     NotificationsComponent,
-    CarouselComponent
+    CarouselComponent,
+    ParkingLotsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,9 +56,13 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
-    })
+    }),
+    DlDateTimeDateModule, 
+    DlDateTimePickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

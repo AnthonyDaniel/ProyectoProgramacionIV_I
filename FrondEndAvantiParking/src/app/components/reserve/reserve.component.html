@@ -1,135 +1,77 @@
 <div class="container">
+  <h1 class="title text-center">Reserve</h1>
 
-  <div class="row text-center">
+  <div class="row">
+    <div class="col-auto mr-md-auto">
+      <select class="form-control">
+        <option value="">Select your vehicle</option>
+        <option value="">Toyota</option>
+        <option value="">Nissan</option>
+        <option value="">BMW</option>
+      </select>
+    </div>
+    <div class="col-auto ml-md-auto">
+      <select class="form-control">
+        <option value="">Select your parking</option>
+        <option value="">A1</option>
+        <option value="">N2</option>
+        <option value="">G3</option>
+      </select>
+    </div>
+  </div>
+  <br>
+  <div class="row">
     <div class="col-md-4">
-      <div class="btn-group">
-        <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
-          (viewDateChange)="closeOpenMonthViewDay()">
-          Previous
-        </div>
-        <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
-          Today
-        </div>
-        <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
-          (viewDateChange)="closeOpenMonthViewDay()">
-          Next
-        </div>
-      </div>
+      <h6 class="text-center">Starts at</h6>
+      <input type="text" class="form-control" placeholder="Tue Apr 09 2019 10:00:00 GMT-0600 (hora estándar central)"
+        value="{{selectedDateStar}}">
+      <dl-date-time-picker maxView="month" minView="minute" startView="day" minuteStep="30"
+        [(ngModel)]="selectedDateStar">
+      </dl-date-time-picker>
     </div>
     <div class="col-md-4">
-      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+      <h6 class="text-center">Ends at</h6>
+      <input type="text" class="form-control" placeholder="Tue Apr 09 2019 10:00:00 GMT-0600 (hora estándar central)"
+        value="{{selectedDateEnd}}">
+      <dl-date-time-picker maxView="month" minView="minute" startView="day" minuteStep="30"
+        [(ngModel)]="selectedDateEnd">
+      </dl-date-time-picker>
     </div>
-  </div>
-
-  <div [ngSwitch]="view">
-    <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
-      [refresh]="refresh" (click)="onEvent($event.event)" (eventTimesChanged)="eventTimesChanged($event)">
-    </mwl-calendar-week-view>
-  </div>
-
-  <h3>
-    Reserve
-  </h3>
-
-
-  <div class="table-responsive">
-    <table class="table table-bordered table-responsive">
-      <thead>
-        <tr>
-          <th>Starts at</th>
-          <th>Ends at</th>
-          <th>Repit</th>
-          <th>Remove</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>
-            <input type="text" ngbDatepicker #d="ngbDatepicker">
-            <button class="btn btn-outline-primary btn-sm _btn" (click)="d.toggle()"><i
-                class="material-icons">calendar_today</i></button>
-
-          </td>
-          <td>
-            <input type="text" ngbDatepicker #d="ngbDatepicker">
-            <button class="btn btn-outline-primary btn-sm _btn" (click)="d.toggle()"><i
-                class="material-icons">calendar_today</i></button>
-
-          </td>
-          <td>
-            <select class="custom-select d-block w-100" id="" required="">
-              <option value="">Just once</option>
-              <option>Weekly</option>
-              <option>Monthly</option>
-            </select>
-          </td>
-          <td>
-            <button class="btn btn-danger" (click)="deleteEvent(event)">
-              Delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <button class="btn btn-primary pull-right" (click)="addEvent()">
-      Confirm
-    </button>
-
-    <br><br>
-
-  </div>
-
-  <ng-template #modalContent let-close="close">
-    <div class="modal-header">
-      <h5 class="modal-title">Parking</h5>
-      <button type="button" class="close" (click)="close()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+    <div class="col-md-4">
+      <app-parking-lots></app-parking-lots>
     </div>
-    <div class="modal-body">
-      <table class="table table-bordered table-responsive">
+    <div class="col-12">
+      <table class="table table-bordered table-striped mb-0">
         <thead>
           <tr>
-            <th>Parking</th>
+            <th scope="col">Reserve</th>
+            <th scope="col">Modify</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
-
         <tbody>
           <tr>
             <td>
-              <label>1</label>
-              <button class="btn btn-primary" (click)="deleteEvent(event)">
-                Select
-              </button>
+              <h6>Starts at</h6>
+              <input type="text" class="form-control"
+                placeholder="" value="{{selectedDateStar}}">
+              <h6>Ends at</h6>
+              <input type="text" class="form-control"
+                placeholder="" value="{{selectedDateEnd}}">
             </td>
-            <td>
-              <label>2</label>
-              <button class="btn btn-primary" (click)="deleteEvent(event)">
-                Select
-              </button>
+            <td class="text-center align-middle">
+              <button class="btn btn-primary">Modify</button>
             </td>
-            <td>
-              <label>3</label>
-              <button class="btn btn-primary" (click)="deleteEvent(event)">
-                Select
-              </button>
-            </td>
-            <td>
-              <label>4</label>
-              <button class="btn btn-primary" (click)="deleteEvent(event)">
-                Select
-              </button>
+            <td class="text-center align-middle">
+              <button class="btn btn-danger">Delete Reserve</button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-secondary" (click)="close()">
-        Ok
-      </button>
+    <div class="col-auto mx-auto">
+      <br>
+      <button class="btn btn-outline-primary btn-block">Confirm reservation</button>
     </div>
-  </ng-template>
+  </div>
 </div>
