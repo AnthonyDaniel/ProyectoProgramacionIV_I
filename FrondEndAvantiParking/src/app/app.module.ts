@@ -23,7 +23,6 @@ import { ProfileComponent } from './components/user/profile/profile.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
 import { ParkingLotsComponent } from './components/parking-lots/parking-lots.component'; 
 
 
@@ -41,7 +40,6 @@ import { ParkingLotsComponent } from './components/parking-lots/parking-lots.com
     ReserveComponent,
     VehicleComponent,
     NotificationsComponent,
-    CarouselComponent,
     ParkingLotsComponent
   ],
   imports: [
