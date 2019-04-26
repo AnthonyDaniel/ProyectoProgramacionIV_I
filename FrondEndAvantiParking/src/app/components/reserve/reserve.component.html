@@ -58,6 +58,34 @@
       </div>
     </div>
   </div>
-<app-parking-lots></app-parking-lots>
+  <div>
+      <h6 class="text-center">Parking available</h6>
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-bordered table-striped mb-0">
+          <thead>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center align-middle border border-success rounded" *ngFor="let lot of lots">
+                <div class="border border-success rounded text-center align-middle " style="width: 80px;">
+                  <button class="btn btn-success">
+                    <label class="form-control text-center"> {{lot}} </label>
+                    Reserve
+                  </button>
+                  <select class="form-control">
+                    <option value="">Just once</option>
+                    <option value="">Weekly</option>
+                    <option value="">Monthly</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  
+
+
   <!--<pre>Model: {{ model | json }}</pre> -->
 </div>
