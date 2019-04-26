@@ -1,11 +1,11 @@
 .btn{
     background:#302D54;
     border-width: 3px;
-    border-color:  #302D54;
+    border-color:  #fff;
     color: #fff;
   
 }
 .text-center button:hover{
-   background: rgb(224, 126, 61);
+   background: #302D54;
     color: #fff;
 }
