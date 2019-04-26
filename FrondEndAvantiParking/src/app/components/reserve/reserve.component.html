@@ -1,77 +1,29 @@
 <div class="container">
   <h1 class="title text-center">Reserve</h1>
-
   <div class="row">
-    <div class="col-auto mr-md-auto">
-      <select class="form-control">
-        <option value="">Select your vehicle</option>
-        <option value="">Toyota</option>
-        <option value="">Nissan</option>
-        <option value="">BMW</option>
-      </select>
+    <div class="col-md-3 ml-auto">
+      <div class="input-group mb-3">
+        <select class="custom-select {{colorSelectParking}}" [(ngModel)]="optionSelectParking"
+          (change)="captureParking()">
+          <option value="0" selected>Select your parking</option>
+          <option *ngFor="let park of parking">{{park}}</option>
+        </select>
+        <div class="input-group-append">
+          <label class="input-group-text" (click)="selectParking()">OK</label>
+        </div>
+      </div>
     </div>
-    <div class="col-auto ml-md-auto">
-      <select class="form-control">
-        <option value="">Select your parking</option>
-        <option value="">A1</option>
-        <option value="">N2</option>
-        <option value="">G3</option>
-      </select>
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-md-4">
-      <h6 class="text-center">Starts at</h6>
-      <input type="text" class="form-control" placeholder="Tue Apr 09 2019 10:00:00 GMT-0600 (hora estándar central)"
-        value="{{selectedDateStar}}">
-      <dl-date-time-picker maxView="month" minView="minute" startView="day" minuteStep="30"
-        [(ngModel)]="selectedDateStar">
-      </dl-date-time-picker>
-    </div>
-    <div class="col-md-4">
-      <h6 class="text-center">Ends at</h6>
-      <input type="text" class="form-control" placeholder="Tue Apr 09 2019 10:00:00 GMT-0600 (hora estándar central)"
-        value="{{selectedDateEnd}}">
-      <dl-date-time-picker maxView="month" minView="minute" startView="day" minuteStep="30"
-        [(ngModel)]="selectedDateEnd">
-      </dl-date-time-picker>
-    </div>
-    <div class="col-md-4">
-      <app-parking-lots></app-parking-lots>
-    </div>
-    <div class="col-12">
-      <table class="table table-bordered table-striped mb-0">
-        <thead>
-          <tr>
-            <th scope="col">Reserve</th>
-            <th scope="col">Modify</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <h6>Starts at</h6>
-              <input type="text" class="form-control"
-                placeholder="" value="{{selectedDateStar}}">
-              <h6>Ends at</h6>
-              <input type="text" class="form-control"
-                placeholder="" value="{{selectedDateEnd}}">
-            </td>
-            <td class="text-center align-middle">
-              <button class="btn btn-primary">Modify</button>
-            </td>
-            <td class="text-center align-middle">
-              <button class="btn btn-danger">Delete Reserve</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-auto mx-auto">
-      <br>
-      <button class="btn btn-outline-primary btn-block">Confirm reservation</button>
+    <div class="col-md-3 mr-auto">
+      <div class="input-group mb-3">
+        <select class="custom-select {{colorSelectVehicle}}" [(ngModel)]="optionSelectVehicle"
+          (change)="captureVehicle()">
+          <option value="0" selected>Select your vehicle</option>
+          <option *ngFor="let vehicle of vehicles ">{{vehicle}}</option>
+        </select>
+        <div class="input-group-append">
+          <label class="input-group-text" (click)="selectVehicle()">OK</label>
+        </div>
+      </div>
     </div>
   </div>
 </div>

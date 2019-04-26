@@ -5,7 +5,7 @@ import {
   TemplateRef,
   OnInit
 } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-reserve',
   templateUrl: './reserve.component.html',
@@ -13,12 +13,43 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ReserveComponent implements OnInit {
 
-  public dateTime: Date;
+  private colorSelectParking:any;
+  private colorSelectVehicle:any ;
 
-  constructor(private modal: NgbModal) {}
+  private vehicles:any = ["Toyota CL6342","Nissan CL4341","Honda MOT31231"];
+  private parking:any = ["Down 7J","AvantiUp J6","Down K9"];
+  
+  optionSelectParking: string = '0';
+  optionSelectVehicle: string = '0';
+  viewSelectV: string    = '';
+  viewSelectP: string    = '';
 
-  ngOnInit() {}
+  constructor() {}
 
+  ngOnInit() {
 
+  }
+
+  selectVehicle():void{
+    if(this.viewSelectV=="Select your vehicle"){
+      this.colorSelectVehicle = "";
+    }else{
+      this.colorSelectVehicle = "border border-success rounded";
+    }
+  }
+
+  selectParking():void{
+    if(this.viewSelectP=="Select your parking"){
+      this.colorSelectParking = "";
+    }else{
+      this.colorSelectParking = "border border-success rounded";
+    }
+  }
+  captureVehicle() {
+    this.viewSelectV = this.optionSelectVehicle;
+  }
+  captureParking(){
+    this.viewSelectP = this.optionSelectParking;
+  }
 }
 
