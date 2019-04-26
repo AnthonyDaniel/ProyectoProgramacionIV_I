@@ -23,7 +23,6 @@ import { ProfileComponent } from './components/user/profile/profile.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { ParkingLotsComponent } from './components/parking-lots/parking-lots.component';
 import { AdminHomeComponent } from './components/administration/admin-home/admin-home.component';
 import { AdminHeadQuartersComponent } from './components/administration/admin-head-quarters/admin-head-quarters.component';
 import { AdminParkingsComponent } from './components/administration/admin-parkings/admin-parkings.component';
@@ -45,7 +44,6 @@ import { AdminAdministratorsComponent } from './components/administration/admin-
     ReserveComponent,
     VehicleComponent,
     NotificationsComponent,
-    ParkingLotsComponent,
     AdminHomeComponent,
     AdminHeadQuartersComponent,
     AdminParkingsComponent,

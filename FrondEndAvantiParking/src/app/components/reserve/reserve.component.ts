@@ -23,7 +23,7 @@ export class ReserveComponent implements OnInit {
 
   private colorSelectParking:any;
   private colorSelectVehicle:any ;
-
+  private lots:any = ["G1","G2","G3","G4","G5","G6","G7","G8","G9"];
   private vehicles:any = ["Toyota CL6342","Nissan CL4341","Honda MOT31231"];
   private parking:any = ["Down 7J","AvantiUp J6","Down K9"];
   
