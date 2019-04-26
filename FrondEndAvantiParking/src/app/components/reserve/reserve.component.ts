@@ -6,12 +6,20 @@ import {
   OnInit
 } from '@angular/core';
 
+import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
+import { isNumber } from '@ng-bootstrap/ng-bootstrap/util/util';
+import { timeout } from 'q';
+
 @Component({
   selector: 'app-reserve',
   templateUrl: './reserve.component.html',
   styleUrls: ['./reserve.component.css']
 })
 export class ReserveComponent implements OnInit {
+
+  
+  timeStart = {hour: 13, minute: 0 };
+  timeEnd = {hour: 23, minute: 59 };
 
   private colorSelectParking:any;
   private colorSelectVehicle:any ;
@@ -24,12 +32,17 @@ export class ReserveComponent implements OnInit {
   viewSelectV: string    = '';
   viewSelectP: string    = '';
 
-  constructor() {}
+  model: NgbDateStruct;
+  date: {year: number, month: number};
+
+  constructor(private calendar: NgbCalendar) {}
 
   ngOnInit() {
 
   }
-
+  selectToday() {
+    this.model = this.calendar.getToday();
+  }
   selectVehicle():void{
     if(this.viewSelectV=="Select your vehicle"){
       this.colorSelectVehicle = "";

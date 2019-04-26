@@ -23,6 +23,7 @@
     "angular-bootstrap-calendar": "^1.0.0",
     "angular-bootstrap-datetimepicker": "^3.0.0",
     "angular-calendar": "^0.27.4",
+    "angular-mat-datepicker": "0.0.2",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "date-fns": "^1.30.1",
