@@ -23,6 +23,7 @@ export class ReserveComponent implements OnInit {
 
   private colorSelectParking:any;
   private colorSelectVehicle:any ;
+  private colorSelectSpace:any;
   private lots:any = ["G1","G2","G3","G4","G5","G6","G7","G8","G9"];
   private vehicles:any = ["Toyota CL6342","Nissan CL4341","Honda MOT31231"];
   private parking:any = ["Down 7J","AvantiUp J6","Down K9"];
@@ -35,7 +36,9 @@ export class ReserveComponent implements OnInit {
   model: NgbDateStruct;
   date: {year: number, month: number};
 
-  constructor(private calendar: NgbCalendar) {}
+  constructor(private calendar: NgbCalendar) {
+    this.colorSelectSpace = "border-secondary btn-secondary";
+  }
 
   ngOnInit() {
 
@@ -50,19 +53,17 @@ export class ReserveComponent implements OnInit {
       this.colorSelectVehicle = "border border-success rounded";
     }
   }
-
   selectParking():void{
-    if(this.viewSelectP=="Select your parking"){
-      this.colorSelectParking = "";
-    }else{
-      this.colorSelectParking = "border border-success rounded";
-    }
+    this.colorSelectParking = "border border-success rounded";
   }
-  captureVehicle() {
+  captureVehicle():void{
     this.viewSelectV = this.optionSelectVehicle;
   }
-  captureParking(){
+  captureParking():void{
     this.viewSelectP = this.optionSelectParking;
+  }
+  selectSpace():void{
+    this.colorSelectSpace = "border-success btn-success";
   }
 }
 
