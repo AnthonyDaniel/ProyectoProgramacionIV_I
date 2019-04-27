@@ -1,3 +1,7 @@
 .jumbotron{
     background-color: white;
 }
+.decore:hover{ 
+    color: rgb(0, 3, 173);
+     text-decoration: underline;
+}
