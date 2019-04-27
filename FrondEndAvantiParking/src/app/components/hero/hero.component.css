@@ -1,36 +1,20 @@
-.container-coverPage{
-    position: relative;
-    width: 100%;
-    height: 355px;
-    background-image: url(../../../assets/i.jpg);
-    background-size: 100%;
-    animation: movement 20s infinite linear alternate;
 
-}
-@keyframes movement{
-    from{
-background-position: bottom left;
-    }to{
-background-position: top right;
-    }
-}
-.cap-gradient{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: -webkit-linear-gradient(left, black,rgb(32, 54, 87));
-    opacity: 0.5;
-}
-.container-details{
-    width: 50%;
-    height: 100px;
-    position: relative;
-    margin-left: 20px;
-}
 .details{
-    width: 100%;
-    max-width: 500px;
-    position: relative;
-    top: 100px;
     color: white;
+    text-decoration: black;
+}
+.jumbotron {
+ 
+    background-image: url(../../../assets/hero.jpg);
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+    background-size: cover;
+
+    background-color: white;
+
 }
