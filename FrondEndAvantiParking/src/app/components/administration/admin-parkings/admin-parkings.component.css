@@ -1,6 +1,15 @@
 
 .btn{
-    margin: 10px;
-    width: 100px;
     
+    width: 300px;
+    
+}
+
+.btn1{
+    
+    width: 200px;
+    
+}
+.container{
+    padding-top: 100px;
 }

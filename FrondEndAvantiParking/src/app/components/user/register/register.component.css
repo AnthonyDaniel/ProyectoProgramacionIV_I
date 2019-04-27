@@ -1,8 +1,8 @@
 .btn{
-    background:#302D54;
+    background:white;
     border-width: 3px;
-    border-color:  #fff;
-    color: #fff;
+    border-color:  #302D54;
+    color: #302D54;
   
 }
 .text-center button:hover{
