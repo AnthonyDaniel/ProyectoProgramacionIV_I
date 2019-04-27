@@ -598,8 +598,8 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Thony\Desktop\ProyectoProgramacionIV_I\FrondEndAvantiParking\node_modules\bootstrap\dist\css\bootstrap.css */"./node_modules/bootstrap/dist/css/bootstrap.css");
-module.exports = __webpack_require__(/*! C:\Users\Thony\Desktop\ProyectoProgramacionIV_I\FrondEndAvantiParking\src\styles.css */"./src/styles.css");
+__webpack_require__(/*! C:\Users\kasvi\OneDrive\Documents\Project0\ProyectoProgramacionIV_I\FrondEndAvantiParking\node_modules\bootstrap\dist\css\bootstrap.css */"./node_modules/bootstrap/dist/css/bootstrap.css");
+module.exports = __webpack_require__(/*! C:\Users\kasvi\OneDrive\Documents\Project0\ProyectoProgramacionIV_I\FrondEndAvantiParking\src\styles.css */"./src/styles.css");
 
 
 /***/ })
