@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'user/profile' , component: ProfileComponent },
   { path: 'vehicle' , component: VehicleComponent },
   { path: 'administration/admin-home' , component: AdminHomeComponent},
-  { path: 'administration/admin-parkings', component: AdminParkingsComponent}, // Intentalo así, sin el -
+  { path: 'administration/admin-parkings', component: AdminParkingsComponent}, 
   { path: 'administration/admin-administrators', component: AdminAdministratorsComponent},
   { path: 'administration/admin-head-quarters', component: AdminHeadQuartersComponent},
   { path: 'administration/admin-users', component:AdminUsersComponent},
