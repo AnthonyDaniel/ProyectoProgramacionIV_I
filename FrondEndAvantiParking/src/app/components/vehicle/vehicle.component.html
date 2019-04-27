@@ -2,7 +2,7 @@
   <div class="jumbotron border">
     <h1 class="title text-center">Vehicle</h1>
     <img src="/assets/vehicle.jpg" class="border rounded mx-auto d-block rounded-circle" data-toggle="modal"
-      data-target="#FullImage"  width="200px" height="200px">
+      data-target="#FullImage" width="200px" height="200px">
     <div class="row">
       <div class="col-3 ml-auto">
         <button class="btn btn-outline-secondary material-icons mr-auto" data-toggle="modal"
@@ -48,7 +48,10 @@
         <thead>
           <tr>
             <th>
-              Photo
+              View photo
+            </th>
+            <th>
+              Change photo
             </th>
             <th>
               License plate
@@ -71,16 +74,29 @@
           <tr>
             <td class="text-center align-middle">
               <img src="/assets/vehicle.jpg" class="border rounded mx-auto d-block rounded-circle" data-toggle="modal"
-                height="60px">
+                data-target="#FullImage" height="60px">
             </td>
             <td class="text-center align-middle">
-              <label>Honda MOT31231</label>
+              <button class="btn btn-outline-secondary material-icons mr-auto" data-toggle="modal"
+                data-target="#UpImg">photo_camera</button>
             </td>
             <td class="text-center align-middle">
-              <label>Just once</label>
+              <input type="text" class="form-control" placeholder="CL3423" value="" required="">
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
             </td>
             <td class="text-center align-middle">
-              <label>2019-04-26</label>
+              <input type="text" class="form-control" placeholder="Nissan" value="" required="">
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </td>
+            <td class="text-center align-middle">
+              <input type="text" class="form-control" placeholder="B15" value="" required="">
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
             </td>
             <td class="text-center align-middle">
               <button class="btn btn-success" data-toggle="modal" data-target="#deleteReserve">Modify</button>

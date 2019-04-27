@@ -1,38 +1,49 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark colornavbar">
-  <a class="navbar-brand" routerLink="/"><img src="https://www.avantica.net/hubfs/Redesign-2018-assets/avantica-copy@3x.png" 
-    id="logo"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand" routerLink="/"><img
+      src="https://www.avantica.net/hubfs/Redesign-2018-assets/avantica-copy@3x.png" id="logo"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
-          <a class="nav-link" routerLink="/reserve">Reserve</a>
+        <a class="nav-link" routerLink="/reserve" data-toggle="tooltip" data-placement="left" title="Make parking reservations">
+          Reserve
+        </a>
       </li>
       <li class="nav-item">
-         <a class="nav-link" routerLink="/user/profile">Profile</a>
+        <a class="nav-link" routerLink="/user/profile" data-toggle="tooltip" data-placement="left" title="See profile, change all aspects.">
+          <i class="material-icons"> account_circle</i>
+        </a>
       </li>
       <li class="nav-item">
-          <a class="nav-link"  routerLink="/vehicle">Vehicle</a>
+        <a class="nav-link" routerLink="/vehicle"  data-toggle="tooltip" data-placement="left" title="Manage all your vehicles">
+          <i class="material-icons">drive_eta</i>
+        </a>
       </li>
       <li class="nav-item">
-          <a class="nav-link"  routerLink="/notifications">Notifications</a>
+        <a class="nav-link" routerLink="/notifications" data-toggle="tooltip" data-placement="left" title="Check all your notifications">
+          <i class="material-icons"> notifications</i>
+        </a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-o">
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/administration/admin-home">Administration</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/user/register">Register</a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/administration/admin-home" data-toggle="tooltip" data-placement="left" title="Manage AvantiParking" >
+          <p>Administration</p>
+        </a>
       </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/user/login">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link">Logout</a>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/user/register" data-toggle="tooltip" data-placement="left" title="Register and enjoy AvantiParking" >Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/user/login"  data-toggle="tooltip" data-placement="left" title="Log in to enjoy AvantiParling to the fullest" >Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  data-toggle="tooltip" data-placement="left" title="Sign off" >Logout</a>
+      </li>
     </ul>
-</div>
-</nav><div class="margin"></div>
+  </div>
+</nav>
+<div class="margin"></div>

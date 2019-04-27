@@ -1,4 +1,4 @@
-.btn{
+._btn{
     background:white;
     border-width: 3px;
     border-color:#302D54;
@@ -9,3 +9,9 @@
    background: #302D54;
     color: #fff;
 }
+ 
+.decore:hover{ 
+    color: rgb(0, 3, 173);
+     text-decoration: underline;
+  }
+  

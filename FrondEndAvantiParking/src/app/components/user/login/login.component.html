@@ -1,28 +1,31 @@
-
-<section id="login" >
-  <div class="bg">
-   
-      <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
-        <form class="form-container ">
-            <h1 class="h3 mb-3 font-weight-normal" *ngIf="!isError">Sign in</h1>
-          <div class="form-group">
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your Password">
-          </div>
-          <div class="checkbox mb-3 check">
-            <label>
-              <input type="checkbox" value="remember-me"> Remember me
-            </label>
-          </div>
-          <div class="btn1">
-              <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-          </div>
-        </form>
-
-        
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mx-auto my-auto">
+  <form class="form-container ">
+    <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+    <div class="form-group">
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your Password">
+    </div>
+    <div class="checkbox mb-3 check">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <div class="btn1">
+      <button type="submit" class="_btn btn btn-primary btn-block">Sign in</button>
+    </div>
+    <hr><br>
+    <div class="row justify-content-center">
+      <div class="mx-auto">
+        <p class="text-center decore btn ">Did you forget your password?</p>
       </div>
-    
-  </div>
-</section>
+    </div>
+    <div class="row justify-content-center">
+      <div class="mx-auto">
+        <p class="text-center decore btn " routerLink="/user/register">You do not have an account?</p>
+      </div>
+    </div>
+  </form>
+</div>
