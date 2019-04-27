@@ -12,13 +12,16 @@ import { AdminHeadQuartersComponent } from './components/administration/admin-he
 import { AdminAdministratorsComponent } from './components/administration/admin-administrators/admin-administrators.component';
 import { AdminUsersComponent } from './components/administration/admin-users/admin-users.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
+import { VehicleComponent } from './components/vehicle/vehicle.component';
 const routes: Routes = [
   //All router here 
   { path: '' , component:HomeComponent },
   { path: 'reserve' , component: ReserveComponent },
   { path: 'user/register' , component: RegisterComponent},
   { path: 'user/login' , component: LoginComponent },
-  { path: 'hero' , component: HeroComponent },
+  { path: 'user/profile' , component: ProfileComponent },
+  { path: 'vehicle' , component: VehicleComponent },
   { path: 'administration/admin-home' , component: AdminHomeComponent},
   { path: 'administration/admin-parkings', component: AdminParkingsComponent},
   { path: 'administration/admin-administrators', component: AdminAdministratorsComponent},
