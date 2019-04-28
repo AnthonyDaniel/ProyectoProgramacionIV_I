@@ -12,3 +12,64 @@
 .table-wrapper-scroll-y {
     display: block;
 }
+
+
+
+.container{
+    padding-top: 100px;
+}
+.form-control{
+    border-color:#302D54;
+}
+
+.btn{
+    background: white !important;
+    color:#302D54 !important;
+    border-color:#302D54 !important;
+}
+.btn:hover{
+    background:#302D54;
+    color: #fff;
+}
+.btn-block{
+    margin-top: 38px !important ;
+    margin-bottom: 19px !important;
+    margin-right: 10px !important;
+    background: white !important;
+    color:#302D54 !important;
+    border-color:#302D54 !important;
+}
+
+.btn-block:hover{
+    background:#302D54;
+    color: #fff;
+}
+select{ 
+    color:#302D54 !important;
+    border-color:#302D54 !important;
+}
+.jumbotron{
+    padding: 20px;
+    background:rgb(248, 248, 250);
+}
+.thead{
+    background:#302D54;
+    color: #fff;
+}
+.text{
+    color:#302D54;
+}
+
+
+table{
+    table-layout: fixed;
+}
+
+th, td {
+    width: 100px;
+    word-wrap: break-word;
+}
+tbody {
+    overflow:scroll;
+    height:160px;
+}

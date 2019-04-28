@@ -1,30 +1,30 @@
 <br>
 <div class="container">
-  <h1 class="title text-center">Reserve</h1>
+  <h1 class="title text text-center"><strong>RESERVE</strong></h1>
   <div class="row">
     <div class="col-md-3 ml-auto">
-      <label>Parking</label>
+      <label class="text">Parking</label>
       <div class="input-group mb-3">
         <select class="custom-select {{colorSelectParking}}" [(ngModel)]="optionSelectParking"
           (change)="captureParking()">
-          <option value="0" selected>Select your parking</option>
+          <option value="0" selected>SELECT YOUR PARKING</option>
           <option *ngFor="let park of parking">{{park}}</option>
         </select>
         <div class="input-group-append">
-          <label class="input-group-text" (click)="selectParking()">OK</label>
+          <label class="text input-group-text" (click)="selectParking()">OK</label>
         </div>
       </div>
     </div>
     <div class="col-md-3 mr-auto">
-      <label>Vehicle</label>
+      <label class="text">Vehicle</label>
       <div class="input-group mb-3">
         <select class="custom-select {{colorSelectVehicle}}" [(ngModel)]="optionSelectVehicle"
           (change)="captureVehicle()">
-          <option value="0" selected>Select your vehicle</option>
+          <option value="0" selected>SELECT YOUR VEHICLE</option>
           <option *ngFor="let vehicle of vehicles ">{{vehicle}}</option>
         </select>
         <div class="input-group-append">
-          <label class="input-group-text" (click)="selectVehicle()">OK</label>
+          <label class="text input-group-text" (click)="selectVehicle()">OK</label>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
   <br><br>
   <div class="row">
     <div class="col-xl-3 ml-auto">
-      <label>Reservation day</label>
+      <label class="text">RESERVATION DAY</label>
       <form class="form-inline">
         <div class="form-group">
           <div class="input-group my-xl-4 my-sm-1">
@@ -49,11 +49,11 @@
     <div class="col-xl-3 mr-auto">
       <div class=row>
         <div class="col-md-6 ml-auto">
-          <label>Starts at</label>
+          <label class="text">STARTS AT</label>
           <ngb-timepicker [(ngModel)]="timeStart"></ngb-timepicker>
         </div>
         <div class="col-md-6 mr-auto">
-          <label>Ends at</label>
+          <label class="text">ENDS AT</label>
           <ngb-timepicker [(ngModel)]="timeEnd"></ngb-timepicker>
         </div>
       </div>
@@ -61,7 +61,7 @@
   </div>
   <div class="row">
     <div class="col-lg-12">
-      <h6 class="text-center">Parking available</h6>
+      <h6 class="text-center text">PARKING AVAILABLE</h6>
       <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <table class="table table-bordered table-hover table-striped mb-0">
           <thead>
@@ -72,11 +72,11 @@
                 <div class="border rounded text-center align-middle bg-white" style="width: 100px;">
                   <label>{{lot}}</label>
                   <select class="form-control">
-                    <option value="">Just once</option>
-                    <option value="">Weekly</option>
-                    <option value="">Monthly</option>
+                    <option value="">JUST ONCE</option>
+                    <option value="">WEEKLY</option>
+                    <option value="">MOTHLY</option>
                   </select>
-                  <button class="btn btn-success form-control">Select</button>
+                  <button class="btn btn-success form-control">SELECT</button>
                 </div>
               </td>
             </tr>
@@ -88,38 +88,38 @@
   <br>
   <div class="row justify-content-center">
     <div class="mx-auto">
-      <button type="button" class="btn btn-primary btn-md text-center">Add reservation</button>
+      <button type="button" class="btn btn-primary btn-md text-center">ADD RESERVATION</button>
     </div>
   </div>
   <br>
   <hr><br>
   <div class="row">
     <div class="col-lg-12">
-      <h6 class="text-center">Active reservations</h6>
+      <h6 class="text-center text">ACTIVE RESERVATIONS</h6>
       <div class="table-wrapper-scroll-y my-custom-scrollbar">
         <table class="table table-bordered table-hover table-striped mb-0">
-          <thead>
+          <thead class="thead">
             <tr>
               <th>
-                N° aparcamiento
+                N° PARKING
               </th>
               <th>
-                Vehicular plate
+                VEHICLE PLATE
               </th>
               <th>
-                Repeat
+                REPEAT
               </th>
               <th>
-                Date
+                DATE
               </th>
               <th>
-                Start at
+                STARTS AT
               </th>
               <th>
-                Ends at
+                ENDS at
               </th>
               <th>
-                Remove
+                REMOVE
               </th>
             </tr>
           </thead>
@@ -157,23 +157,23 @@
       <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Delete reservation</h5>
+            <h5 class="modal-title">DELETE RESERVATION</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <p class="lead">If you delete the reservation, you will not be able to recover it.</p>
+            <p class="lead">IF YOU DELETE THE RESERVATION, YOU WILL NOT BE ABLE TO RECOVER IT.</p>
             <div class="row">
               <div class="col-md-6">
-                <label for="Password">Password</label>
+                <label for="Password">PASSWORD</label>
                 <input type="password" class="form-control" id="password" placeholder="****">
                 <div class="invalid-feedback">
                   Please enter a valid password.
                 </div>
               </div>
               <div class="col-md-6">
-                <label for="Password">Confirm Password</label>
+                <label for="Password">CONFIRM PASSWORD</label>
                 <input type="password" class="form-control" id="password2" placeholder="****">
                 <div class="invalid-feedback">
                   Please enter a valid password.
@@ -182,8 +182,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-danger">Confirm</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+            <button type="button" class="btn btn-danger">CONFIRM</button>
           </div>
         </div>
       </div>
