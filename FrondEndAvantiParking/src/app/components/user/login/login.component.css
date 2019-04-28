@@ -23,3 +23,10 @@
   color: rgb(0, 3, 173);
    text-decoration: underline;
 }
+.text{
+  color:#302D54;
+}
+.form-control{
+  border-color:#302D54;
+  border-width: 1px;
+}
