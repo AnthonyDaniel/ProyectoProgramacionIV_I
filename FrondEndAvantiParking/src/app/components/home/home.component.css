@@ -3,3 +3,14 @@
     background-image: url(/assets/car.jpg);
     background-size: 100% 100%;
 }
+.text{
+    color:#302D54;
+  }
+.btn{
+      background: white;
+      color:#302D54;
+}
+.btn:hover{
+      background: #302D54;
+      color: white;
+}
