@@ -12,24 +12,20 @@
 .table-wrapper-scroll-y {
     display: block;
 }
-
-
-
 .container{
     padding-top: 100px;
 }
 .form-control{
     border-color:#302D54;
 }
-
 .btn{
     background: white !important;
     color:#302D54 !important;
     border-color:#302D54 !important;
 }
 .btn:hover{
-    background:#302D54;
-    color: #fff;
+    background:#302D54 !important;
+    color: #fff !important;
 }
 .btn-block{
     margin-top: 38px !important ;
