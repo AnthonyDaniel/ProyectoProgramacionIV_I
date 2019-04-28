@@ -3,18 +3,10 @@
     color: white;
     text-decoration: black;
 }
-.jumbotron {
- 
-    background-image: url(../../../assets/hero.jpg);
 
-    background-position: center center;
-
-    background-repeat: no-repeat;
-
-    background-attachment: fixed;
-
+.cover{
+    height: 380px;
     background-size: cover;
-
     background-color: white;
 
 }

@@ -1,14 +1,16 @@
-<main role="main">
-    <div class="jumbotron">
-        <div class="jumbotron">
-            <div class="details">
-                <h1 class="title">Welcome to AvantiParking!</h1>
-                <p class="lead">
-                    A tool created to help you find the best
-                    parking place for <br> your vehicle, in a
-                    comfortable and easy way from your office.
-                </p>
-            </div>
+<ngb-carousel>
+    <ng-template ngbSlide>
+        <img src="/assets/phone.jpg" class="cover" width="100%" alt="Random first slide">
+        <div class="carousel-caption">
+            <h3>AvantiParking</h3>
+            <p>Manage the park from your smart phone</p>
         </div>
-    </div>
-</main>
+    </ng-template>
+    <ng-template ngbSlide>
+        <img src="/assets/street.jpg" class="cover" width="100%" alt="Random third slide">
+        <div class="carousel-caption">
+            <h3>Do not hurry</h3>
+            <p>Reserve your parking from your mobile</p>
+        </div>
+    </ng-template>
+</ngb-carousel>

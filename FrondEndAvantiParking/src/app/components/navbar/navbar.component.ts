@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { $ } from 'Jquery';
 
 @Component({
   selector: 'app-navbar',
