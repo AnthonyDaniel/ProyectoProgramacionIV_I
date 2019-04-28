@@ -1,95 +1,175 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 order-md-1">
-      <form class="needs-validation" novalidate="">
-        <div class="row">
-          <div class="col-md-3 mb-3">
-            <label for="Headquarter">Headquarters</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+  <div class="jumbotron border">
+    <h1 class="text title text-center">Parking Administration</h1>
+    <div class="row">
+      <div class="col-md-3 ml-1 my-auto">
+        <label class="text" for="Headquarter"><strong>Headquarters</strong></label>
+        <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+        <div class="invalid-feedback">
+          Valid first name is required.
+        </div>
+      </div>
+      <div class="col-md-3 mx-auto my-auto ">
+        <label class="text" for="Name"><strong>Name</strong></label>
+        <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+        <div class="invalid-feedback">
+          Valid last name is required.
+        </div>
+      </div>
+      <div class="col-md-3 mx-auto my-auto ">
+        <label class="text" for="Number"><strong>Number</strong></label>
+        <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+        <div class="invalid-feedback">
+          Valid last name is required.
+        </div>
+      </div>
+      <div class="col-md-2 mr-1">
+        <button type="button" class="btn btn-secondary btn-block btn-lg"><strong>ADD</strong></button>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class=" thead">
+        <tr>
+          <th scope="col">Headquarter</th>
+          <th scope="col">Name</th>
+          <th scope="col">Number</th>
+          <th scope="col">Modify</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input type="text" class="form-control" id="firstName" placeholder="Estados Unidos" value="" required="">
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="Name">Name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+          </td>
+          <td>
+            <input type="text" class="form-control" id="firstName" placeholder="Jumaji" value="" required="">
             <div class="invalid-feedback">
-              Valid last name is required.
+              Valid first name is required.
             </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="Number">Number</label>
-            <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+          </td>
+          <td>
+            <input type="text" class="form-control" id="firstName" placeholder="Jumaji" value="" required="">
             <div class="invalid-feedback">
-              Valid last name is required.
+              Valid first name is required.
             </div>
-          </div>
-          <div>
-              <button type="button" class="btn btn-primary col-md-3 ">Large button</button>
-          </div>
-        </div>
-      </form>
-    </div>
+          </td>
+          <td>
+            <button type="button" data-toggle="modal" data-target="#modify"
+              class="btn btn-outline-success btn-lg"><strong>MODIFY</strong></button>
+          </td>
+          <td>
+            <button type="button" data-toggle="modal" data-target="#delete"
+              class="btn btn-outline-danger btn-lg"><strong>DELETE</strong></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" class="form-control" id="firstName" placeholder="Estados Unidos" value="" required="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </td>
+          <td>
+            <input type="text" class="form-control" id="firstName" placeholder="Jumaji" value="" required="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </td>
+          <td>
+            <input type="text" class="form-control" id="firstName" placeholder="Jumaji" value="" required="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </td>
+          <td>
+            <button type="button" data-toggle="modal" data-target="#modify"
+              class="btn btn-outline-success btn-lg"><strong>MODIFY</strong></button>
+          </td>
+          <td>
+            <button type="button" data-toggle="modal" data-target="#delete"
+              class="btn btn-outline-danger btn-lg"><strong>DELETE</strong></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" class="form-control" id="firstName" placeholder="Estados Unidos" value="" required="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </td>
+          <td>
+            <input type="text" class="form-control" id="firstName" placeholder="Jumaji" value="" required="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </td>
+          <td>
+            <input type="text" class="form-control" id="firstName" placeholder="Jumaji" value="" required="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </td>
+          <td>
+            <button type="button" data-toggle="modal" data-target="#modify"
+              class="btn btn-outline-success btn-lg"><strong>MODIFY</strong></button>
+          </td>
+          <td>
+            <button type="button" data-toggle="modal" data-target="#delete"
+              class="btn btn-outline-danger btn-lg"><strong>DELETE</strong></button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" class="form-control" id="firstName" placeholder="Estados Unidos" value="" required="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </td>
+          <td>
+            <input type="text" class="form-control" id="firstName" placeholder="Jumaji" value="" required="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </td>
+          <td>
+            <input type="text" class="form-control" id="firstName" placeholder="Jumaji" value="" required="">
+            <div class="invalid-feedback">
+              Valid first name is required.
+            </div>
+          </td>
+          <td>
+            <button type="button" data-toggle="modal" data-target="#modify"
+              class="btn btn-outline-success btn-lg"><strong>MODIFY</strong></button>
+          </td>
+          <td>
+            <button type="button" data-toggle="modal" data-target="#delete"
+              class="btn btn-outline-danger btn-lg"><strong>DELETE</strong></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
   </div>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Headquarters</th>
-        <th scope="col">Name</th>
-        <th scope="col">Numbers</th>
-        <th scope="col">Modify</th>
-        <th scope="col">Delete</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>New York</td>
-        <td>AvantiUp j6</td>
-        <td>124</td>
-
-        <td><button type="button" data-toggle="modal" data-target="#modify"
-            class="btn btn-outline-success col-md-8">Modify</button></td>
-        <td> <button type="button" data-toggle="modal" data-target="#delete"
-            class="btn btn-outline-danger col-md-8">Delete</button></td>
-      </tr>
-      <tr>
-        <td>Silicon Valley</td>
-        <td>Down k9</td>
-        <td>234</td>
-
-        <td><button type="button" data-toggle="modal" data-target="#modify"
-            class="btn btn-outline-success col-md-8">Modify</button></td>
-        <td> <button type="button" data-toggle="modal" data-target="#delete"
-            class="btn btn-outline-danger col-md-8">Delete</button></td>
-      </tr>
-      <tr>
-        <td>Costa Rica</td>
-        <td>Down j7</td>
-        <td>234</td>
-        <td><button type="button" data-toggle="modal" data-target="#modify"
-            class="btn btn-outline-success col-md-8">Modify</button></td>
-        <td> <button type="button" data-toggle="modal" data-target="#delete"
-            class="btn btn-outline-danger col-md-8">Delete</button></td>
-
-
-      </tr>
-    </tbody>
-  </table>
 
   <!-- Modal Delete-->
   <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Delete Parking</h5>
+          <h5 class="modal-title">Delete Headquarter</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p class="lead">If you delete this parking, you will not be able to recover it.</p>
+          <p class="lead">If you delete this headquarter, you will not be able to recover it.</p>
           <div class="row">
             <div class="col-md-6">
               <label for="Password">Password</label>
@@ -117,10 +197,10 @@
 
   <!-- Modal Modify-->
   <div class="modal fade" id="modify" tabindex="-1" role="dialog" aria-labelledby="Modify" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modify Parking</h5>
+          <h5 class="modal-title">Modify Headquarter</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
