@@ -25,3 +25,16 @@
     padding: 40px;
     background:rgb(248, 248, 250);
 }
+
+table{
+    table-layout: fixed;
+}
+
+th, td {
+    width: 115px;
+    word-wrap: break-word;
+}
+tbody {
+    overflow:scroll;
+    height:190px;
+}

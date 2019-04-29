@@ -23,46 +23,51 @@
     overflow: hidden;
     position:relative;     
     background-size:100% 100%;
-     overflow:hidden;
-     display: flex;
-     align-items: center;
+    overflow:hidden;
+    display: flex;
+    align-items: center;
   } 
     
     
-    .contenedor h1{
-     margin: 100px 0px 0px 40px;
+    .contenedor h2{
      position:absolute; 
+     margin: auto;
      left:0px;
-     top:30px; 
-     transform:translateX(-120%);
+     top:30%; 
+     margin-left: 5%;
+     color:rgb(255, 255, 255);
+     transform:translateX(0%);
      transition:all .5s ease;
-     color: rgb(255, 255, 255);
-    } 
-    .contenedor p{
-     margin: 90px 0px 0px 40px;
-     position:absolute; 
-     left:0px;
-     top:100px; 
-     transform:translateX(300%); 
-     transition:all .4s ease;  
-     color: #fff;
+     
     } 
     
     .contenedor::before{ 
         position: absolute;
-        bottom: 30% ;
+        margin: auto;
+        margin-left: 15px;
         left: 10px;
-        content:""; 
+        top:30%; 
+        content:"";
         width:0%; 
         height:180px; 
+        transition:all .5s ease;
         background:rgba(0, 0, 0, 0.151);
-        transition:all .3s ease;
     } 
     .contenedor:hover::before{
         width: 95%;
     }
-     .contenedor:hover h1,.contenedor:hover p{
-     transform:translateX(0%); 
-     transition:all .3s ease;
+     .contenedor:hover img{
+     /*transform:translateX(0%); */
+     transition:all .5s ease; 
+     filter: blur(2px);
+     transition: width 2s, height 2s, transform 2s;
+     -moz-transition: width 2s, height 2s, -moz-transform 2s;
+     -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+     -o-transition: width 2s, height 2s,-o-transform 2s;
+     transform : scale(2);
+     -moz-transform : scale(2);      
+     -webkit-transform : scale(2);  
+     -o-transform : scale(2);  
     }
     
+  
