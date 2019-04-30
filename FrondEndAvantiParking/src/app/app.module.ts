@@ -9,7 +9,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SlideshowModule} from 'ng-simple-slideshow';
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -58,6 +58,7 @@ import { AdminAdministratorsComponent } from './components/administration/admin-
     NgbModalModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     SlideshowModule,
     CalendarModule.forRoot({
       provide: DateAdapter,

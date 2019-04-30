@@ -10,6 +10,8 @@ import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import { isNumber } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { timeout } from 'q';
 
+import { FormGroup, FormBuilder, Validator, Validators} from '@angular/forms'
+
 @Component({
   selector: 'app-reserve',
   templateUrl: './reserve.component.html',
@@ -17,7 +19,6 @@ import { timeout } from 'q';
 })
 export class ReserveComponent implements OnInit {
 
-  
   timeStart = {hour: 13, minute: 0 };
   timeEnd = {hour: 23, minute: 59 };
 
@@ -38,6 +39,7 @@ export class ReserveComponent implements OnInit {
 
   constructor(private calendar: NgbCalendar) {
     this.colorSelectSpace = "border-secondary btn-secondary";
+
   }
 
   ngOnInit() {
