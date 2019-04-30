@@ -8,9 +8,14 @@ import { $ } from 'Jquery';
 })
 export class NavbarComponent implements OnInit {
 
+  navbarOpen = false;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
 }

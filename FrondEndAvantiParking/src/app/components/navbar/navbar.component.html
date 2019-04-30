@@ -1,47 +1,47 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark colornavbar">
   <a class="navbar-brand" routerLink="/"><img
       src="https://www.avantica.net/hubfs/Redesign-2018-assets/avantica-copy@3x.png" id="logo"></a>
-  <button class="navbar-toggler" id="togglee" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" id="togglee" type="button" (click) = "toggleNavbar()">
+    
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02" [ngClass] = "{'show': navbarOpen}">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/reserve" data-toggle="tooltip" data-placement="left" title="Make parking reservations">
+        <a class="nav-link" routerLink="/reserve" data-toggle="tooltip" data-placement="left" title="Make parking reservations"  (click) = "toggleNavbar()">
           Reserve
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/user/profile" data-toggle="tooltip" data-placement="left" title="See profile, change all aspects.">
+        <a class="nav-link" routerLink="/user/profile" data-toggle="tooltip" data-placement="left" title="See profile, change all aspects."  (click) = "toggleNavbar()">
           <i class="material-icons"> account_circle</i>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/vehicle"  data-toggle="tooltip" data-placement="left" title="Manage all your vehicles">
+        <a class="nav-link" routerLink="/vehicle"  data-toggle="tooltip" data-placement="left" title="Manage all your vehicles" (click) = "toggleNavbar()">
           <i class="material-icons">drive_eta</i>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/notifications" data-toggle="tooltip" data-placement="left" title="Check all your notifications">
+        <a class="nav-link" routerLink="/notifications" data-toggle="tooltip" data-placement="left" title="Check all your notifications" (click) = "toggleNavbar()">
           <i class="material-icons"> notifications</i>
         </a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-o">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/administration/admin-home" data-toggle="tooltip" data-placement="left" title="Manage AvantiParking" >
+        <a class="nav-link" routerLink="/administration/admin-home" data-toggle="tooltip" data-placement="left" title="Manage AvantiParking"  (click) = "toggleNavbar()" >
           <p>Administration</p>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/user/register" data-toggle="tooltip" data-placement="left" title="Register and enjoy AvantiParking" >Register</a>
+        <a class="nav-link" routerLink="/user/register" data-toggle="tooltip" data-placement="left" title="Register and enjoy AvantiParking"  (click) = "toggleNavbar()">Register</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " routerLink="/user/login"  data-toggle="tooltip" data-placement="left" title="Log in to enjoy AvantiParling to the fullest" >Login</a>
+        <a class="nav-link " routerLink="/user/login"  data-toggle="tooltip" data-placement="left" title="Log in to enjoy AvantiParling to the fullest"  (click) = "toggleNavbar()">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  data-toggle="tooltip" data-placement="left" title="Sign off" >Logout</a>
+        <a class="nav-link"  data-toggle="tooltip" data-placement="left" title="Sign off"  (click) = "toggleNavbar()">Logout</a>
       </li>
     </ul>
   </div>
