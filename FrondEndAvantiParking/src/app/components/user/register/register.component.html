@@ -61,16 +61,14 @@
           </div>
           <div class="col-md-6">
             <label class="text" for="Password"><strong>PASSWORD</strong></label>
-            <input type="password" class="form-control" formControlName="password" placeholder="****">
+            <input type="password" class="form-control" formControlName="password" placeholder="****" value="{{password}}">
             <div class="errorcode" *ngIf="register.controls.password.errors">Password invalid, also the min length is 8</div>
           </div>
-          <!--<div class="col-md-6">
+          <div class="col-md-6">
             <label class="text" for="Password"><strong>CONFIRM PASSWORD</strong></label>
-            <input type="password" class="form-control"formControlName="passwordConfirm" placeholder="****">
-            <div class="invalid-feedback">
-              Please enter a valid password.
-            </div> 
-          </div>-->
+            <input type="password" class="form-control" formControlName="passwordConfirm" placeholder="****" value="{{passwordC}}">
+            <div class="errorcode" *ngIf="register.controls.passwordConfirm.errors">Password invalid, also the min length is 8</div>
+          </div>
         </div>
         <br>
         <div class="text-center">

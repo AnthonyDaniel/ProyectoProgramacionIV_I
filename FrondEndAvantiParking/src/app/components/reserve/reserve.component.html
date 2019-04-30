@@ -1,27 +1,5 @@
 <br>
 
-<div class="jumbotron container">
-
-  <form [formGroup]="formulario" (submit)="onSubmit(formulario)">
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Nombre</label>
-        <input type="text" formControlName="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" >
-        <div class="errorcodigo" *ngIf="formulario.controls.nombre.errors">Error nombre</div>
-      </div>
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp">
-       <div class="errorcodigo" *ngIf="formulario.controls.email.errors">Error nombre</div>
-
-
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" formControlName="contrasena" class="form-control">
-      <div class="errorcodigo" *ngIf="formulario.controls.contrasena.errors">Error nombre</div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
-
 <div class="container">
   <h1 class="title text text-center"><strong>RESERVE</strong></h1>
   <div class="row">
