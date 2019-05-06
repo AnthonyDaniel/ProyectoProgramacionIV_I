@@ -98,8 +98,8 @@ class Kernel implements KernelContract
      */
     protected function defineConsoleSchedule()
     {
-        $this->app->singleton(Schedule::class, function ($app) {
-            return new Schedule($this->scheduleTimezone());
+        $this->app->singleton(Schedule::class, function () {
+            return new Schedule;
         });
 
         $schedule = $this->app->make(Schedule::class);
@@ -161,18 +161,6 @@ class Kernel implements KernelContract
     }
 
     /**
-     * Get the timezone that should be used by default for scheduled events.
-     *
-     * @return \DateTimeZone|string|null
-     */
-    protected function scheduleTimezone()
-    {
-        $config = $this->app['config'];
-
-        return $config->get('app.schedule_timezone', $config->get('app.timezone'));
-    }
-
-    /**
      * Register the Closure based commands for the application.
      *
      * @return void
@@ -224,7 +212,7 @@ class Kernel implements KernelContract
             $command = $namespace.str_replace(
                 ['/', '.php'],
                 ['\\', ''],
-                Str::after($command->getPathname(), realpath(app_path()).DIRECTORY_SEPARATOR)
+                Str::after($command->getPathname(), app_path().DIRECTORY_SEPARATOR)
             );
 
             if (is_subclass_of($command, Command::class) &&
@@ -254,8 +242,6 @@ class Kernel implements KernelContract
      * @param  array  $parameters
      * @param  \Symfony\Component\Console\Output\OutputInterface  $outputBuffer
      * @return int
-     *
-     * @throws \Symfony\Component\Console\Exception\CommandNotFoundException
      */
     public function call($command, array $parameters = [], $outputBuffer = null)
     {

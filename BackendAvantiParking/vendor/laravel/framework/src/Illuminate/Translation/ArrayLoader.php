@@ -25,7 +25,11 @@ class ArrayLoader implements Loader
     {
         $namespace = $namespace ?: '*';
 
-        return $this->messages[$namespace][$locale][$group] ?? [];
+        if (isset($this->messages[$namespace][$locale][$group])) {
+            return $this->messages[$namespace][$locale][$group];
+        }
+
+        return [];
     }
 
     /**
