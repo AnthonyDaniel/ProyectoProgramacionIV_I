@@ -1,0 +1,92 @@
+<br>
+<div class="container">
+  <div class="py-3 text-center">
+    <h2 class="text"><strong>REGISTER</strong></h2>
+    <p class="lead">Forward you are shown a registration form, to be able
+      to use the AvantiParking application, we must be registered.</p>
+  </div>
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <form #signupForm=ngForm (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="text"><strong>FIRST NAME</strong></label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="form.name" required>
+            <div class="alert alert-danger" [hidden]="!error.name">
+              {{error.name}}
+            </div>
+          </div>
+          <!--<div class="col-md-6 mb-3">
+            <label class="text" for="lastName"><strong>LAST NAME</strong></label>
+            <input type="text" class="form-control"  placeholder="" value="" required="">
+          </div>-->
+        </div>
+
+        <div class="mb-3">
+          <label class="text"><strong>EMAIL</strong></label>
+          <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required
+            placeholder="you@example.com">
+          <div class="alert alert-danger" [hidden]="!error.email">
+            {{error.email}}
+          </div>
+        </div>
+        <div class="row">
+          <!--<div class="col-md-4">
+            <label class="text" for="country"><strong>COUNTRY</strong></label>
+            <select class="custom-select d-block w-100" id="country" required="">
+              <option value="">Choose...</option>
+              <option>United States</option>
+              <option>Costa Rica</option>
+              <option>Perú</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a valid country.
+            </div>
+          </div>-->
+          <div class="col-md-4">
+            <!--<label class="text" for="state"><strong>HEADQUARTERS</strong></label>
+            <select class="custom-select d-block w-100" id="state" required="">
+              <option value="">Choose...</option>
+              <option>New York</option>
+              <option>San José</option>
+              <option>San Carlos</option>
+              <option>Liberia</option>
+              <option>Lima</option>
+            </select>
+            <div class="invalid-feedback">
+              Please provide a valid Headquarters.
+            </div>-->
+          </div>
+          <!--<div class="col-md-4">
+            <label class="text" for="Phone"><strong>PHONE</strong></label>
+            <input type="phone" class="form-control"  placeholder="8888-8888">
+          </div>-->
+          <div class="col-md-6">
+            <label class="text" for="Password"><strong>PASSWORD</strong></label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required>
+            <div class="alert alert-danger" [hidden]="!error.password">
+              {{error.password}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="text" for="Password"><strong>CONFIRM PASSWORD</strong></label>
+            <input type="password" class="form-control" name="confirmation" [(ngModel)]="form.password_confirmation"
+              required>
+          </div>
+        </div>
+        <br>
+
+        <button type="submit" class="_btn btn-outline-primary btn-block rounded border border-secondary"
+          data-toggle="tooltip" data-placement="left" [disabled]="!signupForm.valid"
+          title="Register to enjoy AvantiParking"><strong>REGISTER</strong></button>
+
+        <br><br>
+        <div class="row justify-content-center">
+          <div class="mx-auto">
+            <p class="text-center decore btn " routerLink="/user/login">Do you already have an account?</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

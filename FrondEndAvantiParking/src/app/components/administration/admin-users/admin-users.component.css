@@ -1,0 +1,50 @@
+
+
+.container{
+    padding-top: 100px;
+}
+.form-control{
+    border-color:#302D54;
+}
+
+.btn-block{
+    margin-top: 38px !important ;
+    margin-bottom: 19px !important;
+    margin-right: 10px !important;
+    background: white;
+    color:#302D54;
+    border-color:#302D54;
+}
+.btn-block:hover{
+    background:#302D54;
+    color: #fff;
+}
+select{ 
+    color:#302D54 !important;
+    border-color:#302D54 !important;
+}
+.jumbotron{
+    padding: 20px;
+    background:rgb(248, 248, 250);
+}
+.thead{
+    background:#302D54;
+    color: #fff;
+}
+.text{ 
+    color:#302D54;
+}
+
+
+table{
+    table-layout: fixed;
+}
+
+th, td {
+    width: 200px;
+    word-wrap: break-word;
+}
+tbody {
+    overflow:scroll;
+    height:200px;
+}
