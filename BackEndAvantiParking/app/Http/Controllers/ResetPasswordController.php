@@ -30,7 +30,7 @@ class ResetPasswordController extends Controller
 
     public function createToken($email)
     {
-        //$oldToken = DB::table('password_resets')->where('email', $email)->first();
+        $oldToken = DB::table('password_resets')->where('email', $email)->first();
 
         if ($oldToken) {
             return $oldToken->token;
@@ -43,11 +43,11 @@ class ResetPasswordController extends Controller
 
     public function saveToken($token, $email)
     {
-        //DB::table('password_resets')->insert([
-        //    'email' => $email,
-        //    'token' => $token,
-        //    'created_at' => Carbon::now()
-        //]);
+        DB::table('password_resets')->insert([
+            'email' => $email,
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
     }
 
     public function validateEmail($email)

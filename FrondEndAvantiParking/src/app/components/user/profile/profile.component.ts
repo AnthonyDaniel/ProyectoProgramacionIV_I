@@ -12,7 +12,15 @@ import { MOUSE_MOVE_THROTTLE_MS } from 'angular-resizable-element/resizable.dire
 })
 export class ProfileComponent implements OnInit {
 
-  public dataUser = null;
+  public dataUser = {
+    nombre: null,
+    email: null,
+    id: null,
+    imagen: null,
+    direccion: null,
+    telefono: null,
+    tipo: null
+  };
 
   constructor(
     private Jarwis: JarwisService,
@@ -24,9 +32,19 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
  
     this.Jarwis.me(this.token.get()).subscribe(
-      data => this.dataUser = data,
+      data => this.data(data),
       error => console.log(error)
     );
+  }
+
+  data(data){
+    this.dataUser.nombre = data.nombre;
+    this.dataUser.email = data.email;
+    this.dataUser.id = data.id;
+    this.dataUser.imagen = data.imagen;
+    this.dataUser.direccion = data.direccion;
+    this.dataUser.telefono = data.telefono;
+    this.dataUser.tipo = data.tipo;
   }
 
 }
