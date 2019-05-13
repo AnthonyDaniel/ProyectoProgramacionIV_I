@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignUpRequest;
 use App\User;
+use SebastianBergmann\Environment\Console;
 
 class AuthController extends Controller
 {
@@ -35,13 +36,14 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Email o Contraseña incorrecta'], 401);
+            return response()->json(['error' => 'Email or passsword incorrect'], 401);
         }
 
         return $this->respondWithToken($token);
     }
 
     public function signup(SignUpRequest $request){
+    
         User::create($request->all());
         return $this->login($request);
     }
@@ -90,7 +92,7 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user()->name
+            'user' => auth()->user()->email
         ]);
     }
 }

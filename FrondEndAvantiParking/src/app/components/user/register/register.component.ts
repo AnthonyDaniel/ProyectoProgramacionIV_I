@@ -13,7 +13,10 @@ export class RegisterComponent implements OnInit {
  
   public form = {
     email: null,
-    name: null,
+    nombre: null,
+    id:null,
+    direccion:null,
+    telefono:null,
     password: null,
     password_confirmation: null
   };
