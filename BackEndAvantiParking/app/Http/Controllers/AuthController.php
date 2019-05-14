@@ -43,7 +43,7 @@ class AuthController extends Controller
 
     public function signup(SignUpRequest $request){
         User::create($request->all());
-        return $this->login($request);
+        return $this->login($request); //Te logueas despues de registrarte, automaticamente mm ya veo
     }
     /**
      * Get the authenticated User.
