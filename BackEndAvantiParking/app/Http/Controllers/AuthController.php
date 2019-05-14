@@ -58,6 +58,16 @@ class AuthController extends Controller
         return response()->json(auth()->user());
     }
 
+    public function updated($request)
+    {
+        $user = User::whereEmail($request->email)->first();
+        $user->update(['nombre'=>$request->nombre]);
+        $user->update(['imagen'=>$request->imagen]);
+        $user->update(['direccion'=>$request->direccion]);
+        $user->update(['telefono'=>$request->telefono]);
+        return response()->json(['data'=>'Data successfully Changed'],Response::HTTP_CREATED);
+    }
+
     public function checkPassword(){
        
         $credentials = request(['email', 'password']);

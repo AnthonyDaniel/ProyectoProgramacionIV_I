@@ -3,7 +3,7 @@ import { JarwisService } from 'src/app/services/jarwis.service';
 import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { MOUSE_MOVE_THROTTLE_MS } from 'angular-resizable-element/resizable.directive';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +11,8 @@ import { MOUSE_MOVE_THROTTLE_MS } from 'angular-resizable-element/resizable.dire
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
+  public cerrar = "";
 
   public form={
     email:null,
@@ -52,15 +54,19 @@ export class ProfileComponent implements OnInit {
     this.dataUser.tipo = data.tipo; 
   }
 
+  modifyName(){
+    alert("qweqw");
+  }
+
   deleteAccount() {
     this.form.email = this.dataUser.email;
     this.Jarwis.checkPassword(this.form).subscribe(
-      data => this.delete(data),
+      data => this.delete(),
       error => console.log(error)
     );
     }
     
-    delete(data){
+    delete(){
       this.Jarwis.deleteUser(this.token.get()).subscribe(
         data => this.responseDeleteSuccess(),
         error => this.responseDeleteError(error)
@@ -69,6 +75,7 @@ export class ProfileComponent implements OnInit {
 
     responseDeleteSuccess(){
       this.token.remove();
+      $('#closeModal').click();
       this.auth.changeAuthStatus(false);
       this.router.navigateByUrl('');
     }

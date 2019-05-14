@@ -68,7 +68,8 @@
   </div>
   <div class="row justify-content-center">
     <div class="mx-auto">
-      <p class="text-center decore btn text-color" data-toggle="modal" data-target="#DeleteAccount">Delete your account?</p>
+      <p class="text-center decore btn text-color" data-toggle="modal" data-target="#DeleteAccount">Delete your account?
+      </p>
     </div>
   </div>
   <div class="modal fade bd-example-modal-xl" id="FullImage" tabindex="-1" role="dialog" aria-labelledby="FullImage"
@@ -104,43 +105,6 @@
             <input type="password" class="form-control" id="password" placeholder="****">
             <div class="invalid-feedback">
               Please enter a valid password.
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade bd-example-modal-xl" id="ModifyName" tabindex="-1" role="dialog" aria-labelledby="ModifyName"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modify the name</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-12">
-              <label>First name</label>
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Anthony">
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <label for="Password">To update your name, type your password</label>
-              <input type="password" class="form-control" id="password" placeholder="****">
-              <div class="invalid-feedback">
-                Please enter a valid password.
-              </div>
             </div>
           </div>
         </div>
@@ -357,7 +321,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Delete your account</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" id="closeModal" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -370,7 +334,36 @@
                 <br>
                 <hr>
                 <br>
-                <button type="submit" class="btn btn-danger btn-block" data-dismiss="modal" [disabled]="!ConfirmForm.valid">Delete account</button>
+                <button type="submit" class="btn btn-danger btn-block" name="submit"
+                  [disabled]="!ConfirmForm.valid">Delete account</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade bd-example-modal-xl" id="ModifyName" tabindex="-1" role="dialog"
+    aria-labelledby="ModifyName" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modify your full name</h5>
+          <button type="button" id="closeModal" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <form #ConfirmForm=ngForm (ngSubmit)="modifyName()">
+                <label for="Password">Enter your current password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required>
+                <br>
+                <hr>
+                <br>
+                <button type="submit" class="btn btn-danger btn-block" name="submit"
+                  [disabled]="!ConfirmForm.valid">Confirm</button>
               </form>
             </div>
           </div>
