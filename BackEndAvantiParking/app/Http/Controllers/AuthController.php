@@ -23,7 +23,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','signup']]);
+        $this->middleware('auth:api', ['except' => ['login', 'signup','checkPassword']]);
     }
 
     /**
@@ -35,15 +35,16 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
 
-        if (! $token = auth()->attempt($credentials)) {
+        if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Email or passsword incorrect'], 401);
         }
 
         return $this->respondWithToken($token);
     }
 
-    public function signup(SignUpRequest $request){
-    
+    public function signup(SignUpRequest $request)
+    {
+
         User::create($request->all());
         return $this->login($request); //Te logueas despues de registrarte, automaticamente mm ya veo
     }
@@ -57,6 +58,32 @@ class AuthController extends Controller
         return response()->json(auth()->user());
     }
 
+    public function checkPassword(){
+       
+        $credentials = request(['email', 'password']);
+
+        if (!$token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'Passsword incorrect'], 401);
+        }
+        return $this->respondWithToken($token);
+        
+    }
+
+    public function delete()
+    {
+
+        //$user = User::where('email', $dato)->get(); // Prueba
+
+        $dato = auth()->user()->id;
+
+        $user = User::find($dato);
+        if (is_null($user)) {
+            return response()->json(['error' => 'Not found'], 401);
+        } else {
+            $user->delete();
+            return  response()->json(['data' => 'Removed'], 200);
+        }
+    }
     /**
      * Log the user out (Invalidate the token).
      *

@@ -12,6 +12,11 @@ import { MOUSE_MOVE_THROTTLE_MS } from 'angular-resizable-element/resizable.dire
 })
 export class ProfileComponent implements OnInit {
 
+  public form={
+    email:null,
+    password: null,
+  };
+
   public dataUser = {
     nombre: null,
     email: null,
@@ -30,7 +35,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
- 
+    //Recordar, cuando nos de error de sesión, que nos manda al login ->Implementar después
     this.Jarwis.me(this.token.get()).subscribe(
       data => this.data(data),
       error => console.log(error)
@@ -44,7 +49,31 @@ export class ProfileComponent implements OnInit {
     this.dataUser.imagen = data.imagen;
     this.dataUser.direccion = data.direccion;
     this.dataUser.telefono = data.telefono;
-    this.dataUser.tipo = data.tipo;
+    this.dataUser.tipo = data.tipo; 
   }
 
+  deleteAccount() {
+    this.form.email = this.dataUser.email;
+    this.Jarwis.checkPassword(this.form).subscribe(
+      data => this.delete(data),
+      error => console.log(error)
+    );
+    }
+    
+    delete(data){
+      this.Jarwis.deleteUser(this.token.get()).subscribe(
+        data => this.responseDeleteSuccess(),
+        error => this.responseDeleteError(error)
+      );
+    }
+
+    responseDeleteSuccess(){
+      this.token.remove();
+      this.auth.changeAuthStatus(false);
+      this.router.navigateByUrl('');
+    }
+
+    responseDeleteError(error){
+      console.log(error);
+    }
 }
