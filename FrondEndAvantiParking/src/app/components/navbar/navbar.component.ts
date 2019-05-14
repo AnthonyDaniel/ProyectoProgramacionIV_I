@@ -30,6 +30,6 @@ export class NavbarComponent implements OnInit {
     event.preventDefault();
     this.Token.remove();
     this.auth.changeAuthStatus(false);
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('');
   }
 }
