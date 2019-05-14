@@ -14,7 +14,7 @@
     <div class="col-md-6 mb-3">
       <label class="text" for="firstName"><strong>FIRST NAME</strong></label>
       <div class="input-group mb-3">
-        <input type="text" class="form-control" id="firstName" placeholder="Anthony" readonly>
+        <input type="text" class="form-control" name="name" [(ngModel)]="dataUser.nombre" placeholder="Anthony" readonly>
         <div class="invalid-feedback">
           Valid first name is required.
         </div>
@@ -41,7 +41,7 @@
   <div class="mb-3">
     <label class="text" for="email"><strong>EMAIL</strong></label>
     <div class="input-group mb-3">
-      <input type="email" class="form-control" id="email" placeholder="anthonymmarinbolivar@gmail.com" readonly>
+      <input type="email" class="form-control" name="email" [(ngModel)]="dataUser.email" readonly>
     </div>
   </div>
   <div class="row">

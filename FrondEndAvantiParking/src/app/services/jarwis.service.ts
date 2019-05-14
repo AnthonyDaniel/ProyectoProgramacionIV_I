@@ -15,6 +15,10 @@ export class JarwisService {
     return this.http.post(`${this.baseUrl}/login`, data)
   }
 
+  me(data) {
+    return this.http.post(`${this.baseUrl}/me?token=`+data, "")
+  }
+
   sendPasswordResetLink(data) {
     return this.http.post(`${this.baseUrl}/sendPasswordResetLink`, data)
   }
