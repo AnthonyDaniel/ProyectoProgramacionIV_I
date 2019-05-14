@@ -17,17 +17,14 @@ use SebastianBergmann\Environment\Console;
 class AuthController extends Controller
 {
     /**
-     * Create a new AuthController instance.
-     *
      * @return void
      */
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login', 'signup','checkPassword']]);
-    }
+    }//chequear contraseña, se le manda email y password, por lo tanto, no necesita el middleware
 
     /**
-     * Get a JWT via given credentials.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -49,8 +46,6 @@ class AuthController extends Controller
         return $this->login($request); //Te logueas despues de registrarte, automaticamente mm ya veo
     }
     /**
-     * Get the authenticated User.
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function me()
@@ -82,8 +77,7 @@ class AuthController extends Controller
     public function delete()
     {
 
-        //$user = User::where('email', $dato)->get(); // Prueba
-
+        //$user = User::where('email', $dato)->get(); // Prueb
         $dato = auth()->user()->id;
 
         $user = User::find($dato);
@@ -95,8 +89,6 @@ class AuthController extends Controller
         }
     }
     /**
-     * Log the user out (Invalidate the token).
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function logout()
@@ -106,9 +98,7 @@ class AuthController extends Controller
         return response()->json(['message' => 'Successfully logged out']);
     }
 
-    /**
-     * Refresh a token.
-     *
+    /*
      * @return \Illuminate\Http\JsonResponse
      */
     public function refresh()
@@ -117,8 +107,6 @@ class AuthController extends Controller
     }
 
     /**
-     * Get the token array structure.
-     *
      * @param  string $token
      *
      * @return \Illuminate\Http\JsonResponse
