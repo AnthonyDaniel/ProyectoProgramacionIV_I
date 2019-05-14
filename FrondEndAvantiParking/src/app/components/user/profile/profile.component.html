@@ -74,10 +74,8 @@
     <div class="col-md-4">
       <label class="text" for="Phone"><strong>PHONE</strong></label>
       <div class="input-group mb-3">
-        <input type="phone" class="form-control" id="phone" placeholder="+506-8431-4444" readonly>
-        <div class="invalid-feedback">
-          Please enter a valid phone.
-        </div>
+        <input type="phone" class="form-control" id="phone" name="phone" 
+        [(ngModel)]="dataUser.telefono" placeholder="+506-8431-4444" readonly>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary material-icons" type="button" data-toggle="modal"
             data-target="#ModifyPhone">create</button>
