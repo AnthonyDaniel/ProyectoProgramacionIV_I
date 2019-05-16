@@ -14,4 +14,6 @@ Route::group([
     Route::post('checkpassword', 'AuthController@checkPassword');
     Route::post('sendPasswordResetLink', 'ResetPasswordController@sendEmail');
     Route::post('resetPassword', 'ChangePasswordController@process');
+    Route::post('save', 'VehicleController@saveVehicle');
+    
 });

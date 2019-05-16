@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import{VehicleService } from 'src/app/services/vehicle.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 import { $ } from 'jquery'
 @Component({
   selector: 'app-vehicle',
@@ -6,10 +9,35 @@ import { $ } from 'jquery'
   styleUrls: ['./vehicle.component.css']
 })
 export class VehicleComponent implements OnInit {
-  constructor() { 
-   
+  public form = {
+    license: null,
+    mark: null,
+    model:null,
+  };
+  public error = [];
+
+  constructor(private vehicle: VehicleService,
+    private auth: AuthService,
+    private router: Router,) { }
+
+  onSubmit(){
+    this.vehicle.save(this.form).subscribe(
+      data => console.log('jhgfd'),
+      error => console.log('nbvgcfdsfgh')
+    );
   }
+  handleResponse(data) {
+    this.auth.changeAuthStatus(true);
+    this.router.navigateByUrl('/vehicle');
+  }
+
+  handleError(error) {
+    this.error = error.error.errors;
+  }
+
   ngOnInit() {
     
   }
+
+
 }

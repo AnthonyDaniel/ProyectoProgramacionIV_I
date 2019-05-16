@@ -10,37 +10,39 @@
       </div>
     </div>
   </div>
+  <form #signupForm=ngForm (ngSubmit)="onSubmit()">
   <div class="row">
+    
     <div class="col-md-3 ml-auto">
       <label class="text" for="lastName"><strong>LICENSE PLATE</strong></label>
-      <input type="text" class="form-control" placeholder="CL3423" value="" required="">
+      <input type="text" class="form-control" placeholder="CL3423" name="license" [(ngModel)]="form.license" value="" required="">
       <div class="invalid-feedback">
         Valid last name is required.
       </div>
     </div>
     <div class="col-md-3 mx-auto">
       <label class="text" for="lastName"><strong>MARK</strong></label>
-      <input type="text" class="form-control" placeholder="Nissan" value="" required="">
+      <input type="text" class="form-control" placeholder="Nissan"  name="mark" [(ngModel)]="form.mark" value="" required="">
       <div class="invalid-feedback">
         Valid last name is required.
       </div>
     </div>
     <div class="col-md-3 mr-auto">
       <label class="text" for="lastName"><strong>MODEL</strong></label>
-      <input type="text" class="form-control" placeholder="B15" value="" required="">
+      <input type="text" class="form-control" placeholder="B15"  name="model" [(ngModel)]="form.model" value="" required="">
       <div class="invalid-feedback">
         Valid last name is required.
       </div>
     </div>
+     
   </div>
+  <button type="submit" class="btn btn-outline-primary"><strong>ADD VEHICLE</strong></button>
+</form>
   <br>
-  <div class="row justify-content-center">
-    <div class="mx-auto">
-      <button class="btn btn-outline-primary"><strong>ADD VEHICLE</strong></button>
-    </div>
-  </div>
+  
   <br>
   <hr><br>
+
   <div>
     <h4 class="text" class="text text-center"><strong>VEHICLES</strong></h4>
     <div class="table-responsive">
