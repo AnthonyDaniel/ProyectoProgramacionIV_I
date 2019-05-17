@@ -16,16 +16,21 @@ export class VehicleComponent implements OnInit {
   };
   public error = [];
 
+ 
   constructor(private vehicle: VehicleService,
     private auth: AuthService,
     private router: Router,) { }
-
+    modifyName(){
+      alert("qweqw");
+    }
+  
   onSubmit(){
-    this.vehicle.save(this.form).subscribe(
+    this.vehicle.saveV(this.form).subscribe(
       data => console.log('jhgfd'),
       error => console.log('nbvgcfdsfgh')
     );
   }
+
   handleResponse(data) {
     this.auth.changeAuthStatus(true);
     this.router.navigateByUrl('/vehicle');

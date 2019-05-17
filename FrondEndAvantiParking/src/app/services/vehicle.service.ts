@@ -10,9 +10,16 @@ export class VehicleService {
   constructor(private http: HttpClient) { }
 
   
-  save(data) {
-    return this.http.post(`${this.baseUrl}/save`, data);
+  saveV(data) {
+    return this.http.post(`${this.baseUrl}/saveV`, data);
+  } 
+  updateV(data) {
+    return this.http.post(`${this.baseUrl}/updateV`, data);
   }
+  deleteV(data) {
+    return this.http.post(`${this.baseUrl}/deleteV`, data);
+  }
+
 
   
 
