@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+
 
 @Injectable()
 export class JarwisService {
   private baseUrl = 'http://localhost:8000/api';
 
-  constructor(private http: HttpClient) { }
+  httpHeaders = new HttpHeaders ({
+    'Content-Type': 'application/json',
+    "Authorization":localStorage.getItem("token")
+  });
+
+  constructor(private http: HttpClient) {
+  }
 
   signup(data) {
     return this.http.post(`${this.baseUrl}/signup`, data)
@@ -21,6 +28,10 @@ export class JarwisService {
 
   checkPassword(data) {
     return this.http.post(`${this.baseUrl}/checkpassword`, data);
+  }
+
+  updatedName(data){
+    return this.http.post(`${this.baseUrl}/updaten`, data, {headers: this.httpHeaders});
   }
 
   deleteUser(data) {
