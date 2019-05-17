@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class VehicleController extends Controller
 {
     public function saveVehicle(Request $request){
-        var_dump('aqui');
+      var_dump('aqui');
       $json = $request->input('json',null);
       $data= json_decode($json,true);// el true es para pasar ese json a array
       if(!empty($data)){
@@ -28,7 +28,7 @@ class VehicleController extends Controller
                   'errors'    => $validate->errors()
               );            
           }else{
-              
+
               $post=new Post();
               $post->users=$data['kasvillarrel@gmail.com'];
               $post->placa=$data['placa'];
@@ -42,7 +42,7 @@ class VehicleController extends Controller
                   'message'   =>'Datos almacenados satisfactoriamente'              
               );
           }
-      }else{
+        }else{
           $response=array(
               'status'    =>'error',
               'code'      =>400,

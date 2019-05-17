@@ -10,6 +10,7 @@ use Illuminate\Contracts\Auth\Authenticatable as UserContract;
 
 class EloquentUserProvider implements UserProvider
 {
+
     /**
      * The hasher implementation.
      *

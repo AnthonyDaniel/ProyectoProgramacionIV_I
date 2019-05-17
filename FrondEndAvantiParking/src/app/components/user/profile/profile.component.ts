@@ -19,6 +19,31 @@ export class ProfileComponent implements OnInit {
     password: null,
   };
 
+  public modifyNombre={
+    email:null,
+    nombre:null,
+    password:null,
+  };
+
+  public modifyID={
+    email:null,
+    id:null,
+    password:null,
+  };
+
+  public modifyAddress={
+    email:null,
+    direccion:null,
+    password:null,
+  }
+
+  public modifyPhone={
+    email:null,
+    telefono:null,
+    password:null,
+  }
+
+
   public dataUser = {
     nombre: null,
     email: null,
@@ -37,13 +62,12 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //Recordar, cuando nos de error de sesión, que nos manda al login ->Implementar después
     this.Jarwis.me(this.token.get()).subscribe(
       data => this.data(data),
       error => console.log(error)
     );
   }
-
+  
   data(data){
     this.dataUser.nombre = data.nombre;
     this.dataUser.email = data.email;
@@ -55,7 +79,51 @@ export class ProfileComponent implements OnInit {
   }
 
   modifyName(){
-    alert("qweqw");
+    $('#closeModalN').click();
+    this.modifyNombre.email = this.dataUser.email;
+    this.Jarwis.checkPassword(this.modifyNombre).subscribe(
+      data => {this.Jarwis.updatedName(this.modifyNombre).subscribe(
+        data => this.dataUser.nombre = this.modifyNombre.nombre,
+        error => console.log(error)
+      )},
+      error => console.log(error)
+    );
+  }
+
+  modifyId(){
+    $('#closeModalI').click();
+    this.modifyID.email = this.dataUser.email;
+    this.Jarwis.checkPassword(this.modifyID).subscribe(
+      data => {this.Jarwis.updatedName(this.modifyID).subscribe(
+        data => this.dataUser.id = this.modifyID.id,
+        error => console.log(error)
+      )},
+      error => console.log(error)
+    );
+  }
+
+  modifyADDRESS(){
+    $('#closeModalA').click();
+    this.modifyAddress.email = this.dataUser.email;
+    this.Jarwis.checkPassword(this.modifyAddress).subscribe(
+      data => {this.Jarwis.updatedName(this.modifyAddress).subscribe(
+        data => this.dataUser.direccion = this.modifyAddress.direccion,
+        error => console.log(error)
+      )},
+      error => console.log(error)
+    );
+  }
+
+  modifyPHONE(){
+    $('#closeModalP').click();
+    this.modifyPhone.email = this.dataUser.email;
+    this.Jarwis.checkPassword(this.modifyPhone).subscribe(
+      data => {this.Jarwis.updatedName(this.modifyPhone).subscribe(
+        data => this.dataUser.telefono = this.modifyPhone.telefono,
+        error => console.log(error)
+      )},
+      error => console.log(error)
+    );
   }
 
   deleteAccount() {
@@ -83,4 +151,5 @@ export class ProfileComponent implements OnInit {
     responseDeleteError(error){
       console.log(error);
     }
+
 }

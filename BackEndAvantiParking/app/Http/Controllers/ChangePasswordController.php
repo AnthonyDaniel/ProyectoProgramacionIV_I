@@ -24,12 +24,12 @@ class ChangePasswordController extends Controller
     {
         return response()->json(['error' => 'Token or Email is incorrect'],Response::HTTP_UNPROCESSABLE_ENTITY);
     }
-
+     
     private function changePassword($request)
     {
         $user = User::whereEmail($request->email)->first();
         $user->update(['password'=>$request->password]);
-        $this->getPasswordResetTableRow($request)->delete();
+        $this->getPasswordResetTableRow($request  )->delete();
         return response()->json(['data'=>'Password Successfully Changed'],Response::HTTP_CREATED);
     }
 }

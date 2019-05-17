@@ -27,7 +27,7 @@
         <input type="text" class="form-control" name="id" [(ngModel)]="dataUser.id" readonly>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary material-icons" type="button" data-toggle="modal"
-            data-target="#ModifyLastName">create</button>
+            data-target="#ModifyID">create</button>
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
         <input type="text" class="form-control" name="direccion" [(ngModel)]="dataUser.direccion" readonly>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary material-icons" type="button" data-toggle="modal"
-            data-target="#ModifyCountry">create</button>
+            data-target="#ModifyAddress">create</button>
         </div>
       </div>
     </div>
@@ -115,206 +115,6 @@
       </div>
     </div>
   </div>
-  <div class="modal fade bd-example-modal-xl" id="ModifyLastName" tabindex="-1" role="dialog" aria-labelledby="UpImg"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modify the last name</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-12">
-              <label>Last name</label>
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Marín">
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <label for="Password">To update your last name, type your password</label>
-              <input type="password" class="form-control" id="password" placeholder="****">
-              <div class="invalid-feedback">
-                Please enter a valid password.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade bd-example-modal-xl" id="ModifyCountry" tabindex="-1" role="dialog" aria-labelledby="UpImg"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Change the country where you work</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-12">
-              <label for="firstName">Country</label>
-              <div class="input-group mb-3">
-                <select class="custom-select d-block w-100" id="country" required="">
-                  <option value="">Choose...</option>
-                  <option>United States</option>
-                  <option>Costa Rica</option>
-                  <option>Perú</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please select a valid country.
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <label for="Password">To update the country where you work, type your password</label>
-              <input type="password" class="form-control" id="password" placeholder="****">
-              <div class="invalid-feedback">
-                Please enter a valid password.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade bd-example-modal-xl" id="ModifyHeadquearters" tabindex="-1" role="dialog"
-    aria-labelledby="UpImg" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Change the headquarters where you work</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-12">
-              <label for="firstName">Headquarters</label>
-              <div class="input-group mb-3">
-                <select class="custom-select d-block w-100" required="">
-                  <option value="">Choose...</option>
-                  <option>Liberia</option>
-                  <option>San Carlos</option>
-                  <option>Lima</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please select a valid headquarters.
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <label for="Password">To update the headquarters where you work, type your password</label>
-              <input type="password" class="form-control" id="password" placeholder="****">
-              <div class="invalid-feedback">
-                Please enter a valid password.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade bd-example-modal-xl" id="ModifyPhone" tabindex="-1" role="dialog" aria-labelledby="UpImg"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Change your phone number</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-12">
-              <label>Phone</label>
-              <div class="input-group mb-3">
-                <input type="phone" class="form-control" placeholder="+506 8431-4444">
-                <div class="invalid-feedback">
-                  Valid first phone is required.
-                </div>
-              </div>
-            </div>
-            <div class="col-12">
-              <label for="Password">To update your phone type your password</label>
-              <input type="password" class="form-control" id="password" placeholder="****">
-              <div class="invalid-feedback">
-                Please enter a valid password.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade bd-example-modal-xl" id="ChangePassword" tabindex="-1" role="dialog" aria-labelledby="UpImg"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Change password</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-12">
-              <label for="Password">Enter your current password</label>
-              <input type="password" class="form-control" placeholder="****">
-              <div class="invalid-feedback">
-                Please enter a valid password.
-              </div>
-            </div>
-            <div class="col-12">
-              <label for="Password">Enter your new password</label>
-              <input type="password" class="form-control" placeholder="****">
-              <div class="invalid-feedback">
-                Please enter a valid password.
-              </div>
-            </div>
-            <div class="col-12">
-              <label for="Password">Confirm your new password</label>
-              <input type="password" class="form-control" placeholder="****">
-              <div class="invalid-feedback">
-                Please enter a valid password.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="modal fade bd-example-modal-xl" id="DeleteAccount" tabindex="-1" role="dialog"
     aria-labelledby="DeleteAccount" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -343,13 +143,13 @@
       </div>
     </div>
   </div>
-  <div class="modal fade bd-example-modal-xl" id="ModifyName" tabindex="-1" role="dialog"
-    aria-labelledby="ModifyName" aria-hidden="true">
+  <div class="modal fade bd-example-modal-xl" id="ModifyName" tabindex="-1" role="dialog" aria-labelledby="ModifyName"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Modify your full name</h5>
-          <button type="button" id="closeModal" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" id="closeModalN" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -357,8 +157,103 @@
           <div class="row">
             <div class="col-12">
               <form #ConfirmForm=ngForm (ngSubmit)="modifyName()">
+                <label for="Nombre">Enter your new name</label>
+                <input type="text" class="form-control" name="nombre" [(ngModel)]="modifyNombre.nombre" required>
                 <label for="Password">Enter your current password</label>
-                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required>
+                <input type="password" class="form-control" name="password" [(ngModel)]="modifyNombre.password"
+                  required>
+                <br>
+                <hr>
+                <br>
+                <button type="submit" class="btn btn-danger btn-block" name="submit"
+                  [disabled]="!ConfirmForm.valid">Confirm</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade bd-example-modal-xl" id="ModifyID" tabindex="-1" role="dialog" aria-labelledby="ModifyName"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modify your ID</h5>
+          <button type="button" id="closeModalI" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <form #ConfirmForm=ngForm (ngSubmit)="modifyId()">
+                <label for="Nombre">Enter your new ID</label>
+                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyID.id" required>
+                <label for="Password">Enter your current password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="modifyID.password" required>
+                <br>
+                <hr>
+                <br>
+                <button type="submit" class="btn btn-danger btn-block" name="submit"
+                  [disabled]="!ConfirmForm.valid">Confirm</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade bd-example-modal-xl" id="ModifyAddress" tabindex="-1" role="dialog"
+    aria-labelledby="ModifyName" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modify your address</h5>
+          <button type="button" id="closeModalA" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <form #ConfirmForm=ngForm (ngSubmit)="modifyADDRESS()">
+                <label for="Nombre">Enter your new address</label>
+                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyAddress.direccion" required>
+                <label for="Password">Enter your current password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="modifyAddress.password"
+                  required>
+                <br>
+                <hr>
+                <br>
+                <button type="submit" class="btn btn-danger btn-block" name="submit"
+                  [disabled]="!ConfirmForm.valid">Confirm</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade bd-example-modal-xl" id="ModifyPhone" tabindex="-1" role="dialog"
+    aria-labelledby="ModifyName" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modify your phone</h5>
+          <button type="button" id="closeModalP" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <form #ConfirmForm=ngForm (ngSubmit)="modifyPHONE()">
+                <label for="Nombre">Enter your new phone</label>
+                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyPhone.telefono" required>
+                <label for="Password">Enter your current password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="modifyPhone.password"
+                  required>
                 <br>
                 <hr>
                 <br>
