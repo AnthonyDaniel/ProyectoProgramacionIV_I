@@ -22,7 +22,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'signup','checkPassword','updatedName']]);
+        $this->middleware('auth:api', ['except' => ['login', 'signup','checkPassword','updated']]);
     }//chequear contraseña, se le manda email y password, por lo tanto, no necesita el middleware
 
     /**
@@ -54,7 +54,7 @@ class AuthController extends Controller
         return response()->json(auth()->user());
     }
 
-    public function updatedName(Request $request)
+    public function updated(Request $request)
     {
         //$token=$request->header('Authorization',null);
         $user = User::whereEmail($request->email)->first();
