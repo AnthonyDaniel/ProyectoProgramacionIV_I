@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class VehicleController extends Controller
 {
     public function saveVehicle(Request $request){
+        var_dump('aqui');
       $json = $request->input('json',null);
       $data= json_decode($json,true);// el true es para pasar ese json a array
       if(!empty($data)){
@@ -27,10 +28,8 @@ class VehicleController extends Controller
                   'errors'    => $validate->errors()
               );            
           }else{
-             
-              $jwtAuth=new AuthController();
-              $token=$request->header('token');
-              $user=$jwtAuth->respondWithToken($token);
+             $jwtAuth= new AuthController();
+              $user=$jwtAuth->me();
           
               $post=new Post();
               $post->users=$user->sub;
@@ -75,16 +74,10 @@ class VehicleController extends Controller
                 'message'   =>'No se pudo eliminar, puede que el registro ya no exista'                
             );
         }
-    }else{
-        $response=array(
-            'status'    =>'error',
-            'code'      =>400,
-            'message'   =>'Faltan parametros'                
-        );
-    }
+      }
     return response()->json($response,$response['code']);
    
   }
      
-    
 }
+    
