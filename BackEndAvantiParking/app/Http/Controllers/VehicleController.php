@@ -18,12 +18,7 @@ class VehicleController extends Controller
         if (is_null($user)) {
             return response()->json(['error' => 'Not found'], 401);
         }else{
-            $vehicle = new Vehicle();
-            $vehicle->placa = $request->placa;
-            $vehicle->modelo = $request->modelo;
-            $vehicle->marca = $request->marca;
-            $vehicle->users = $request->users;
-            $vehicle->save();
+            Vehicle::create($request->all());
             return response()->json(['data' => 'Create vehicle success'], 200);
         }
     }
