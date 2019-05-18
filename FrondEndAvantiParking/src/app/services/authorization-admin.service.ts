@@ -7,8 +7,20 @@ import { TokenService } from './token.service';
   providedIn: 'root'
 })
 export class AuthorizationAdminService {
+
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-    return this.Token.loggedIn();
+    
+      return this.Token.rolV();
+    
   }
-  constructor(private Token: TokenService) {}
+  constructor(private Token: TokenService) {
+    setTimeout(() => {
+      this.Token.rolV();
+    },12000);
+  }
+  
+
+
+
 }

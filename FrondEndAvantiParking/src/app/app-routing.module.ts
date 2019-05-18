@@ -18,6 +18,7 @@ import { BeforeLoginService } from './services/before-login.service';
 import { AfterLoginService } from './services/after-login.service';
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
+import { AuthorizationAdminService } from './services/authorization-admin.service';
 const routes: Routes = [
   //All router here 
   { path: '' , component:HomeComponent },
@@ -26,11 +27,11 @@ const routes: Routes = [
   { path: 'user/login' , component: LoginComponent, canActivate: [BeforeLoginService] },
   { path: 'user/profile' , component: ProfileComponent,canActivate: [AfterLoginService] },
   { path: 'vehicle' , component: VehicleComponent, canActivate: [AfterLoginService] },
-  { path: 'administration/admin-home' , component: AdminHomeComponent, canActivate: [AfterLoginService]},
-  { path: 'administration/admin-parkings', component: AdminParkingsComponent , canActivate: [AfterLoginService]}, 
-  { path: 'administration/admin-administrators', component: AdminAdministratorsComponent , canActivate: [AfterLoginService]},
-  { path: 'administration/admin-head-quarters', component: AdminHeadQuartersComponent, canActivate: [AfterLoginService]},
-  { path: 'administration/admin-users', component:AdminUsersComponent , canActivate: [AfterLoginService]},
+  { path: 'administration/admin-home' , component: AdminHomeComponent, canActivate: [AuthorizationAdminService]},
+  { path: 'administration/admin-parkings', component: AdminParkingsComponent , canActivate: [AuthorizationAdminService]}, 
+  { path: 'administration/admin-administrators', component: AdminAdministratorsComponent , canActivate: [AuthorizationAdminService]},
+  { path: 'administration/admin-head-quarters', component: AdminHeadQuartersComponent, canActivate: [AuthorizationAdminService]},
+  { path: 'administration/admin-users', component:AdminUsersComponent , canActivate: [AuthorizationAdminService]},
   { path: 'notifications', component: NotificationsComponent , canActivate: [AfterLoginService]},
   { path: 'request-password-reset', component: RequestResetComponent, canActivate: [BeforeLoginService]},
   { path: 'response-password-reset', component: ResponseResetComponent, canActivate: [BeforeLoginService]},

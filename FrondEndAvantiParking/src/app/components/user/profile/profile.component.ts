@@ -4,6 +4,7 @@ import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import * as $ from 'jquery';
+import { AuthorizationAdminService } from 'src/app/services/authorization-admin.service';
 
 @Component({
   selector: 'app-profile',
@@ -58,14 +59,16 @@ export class ProfileComponent implements OnInit {
     private Jarwis: JarwisService,
     private token: TokenService,
     private router: Router,
-    private auth: AuthService
-  ) { }
+    private auth: AuthService,
+    private admin: AuthorizationAdminService,
+  ) { 
+  }
 
   ngOnInit() {
     this.Jarwis.me(this.token.get()).subscribe(
       data => this.data(data),
       error => console.log(error)
-    );
+    )   
   }
   
   data(data){
@@ -75,8 +78,9 @@ export class ProfileComponent implements OnInit {
     this.dataUser.imagen = data.imagen;
     this.dataUser.direccion = data.direccion;
     this.dataUser.telefono = data.telefono;
-    this.dataUser.tipo = data.tipo; 
+    this.dataUser.tipo = data.tipo;
   }
+
 
   modifyName(){
     $('#closeModalN').click();

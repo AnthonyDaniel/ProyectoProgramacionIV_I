@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { JarwisService } from 'src/app/services/jarwis.service';
+import { JarwisService } from './jarwis.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,12 @@ export class TokenService {
     signup: 'http://localhost:8000/api/signup'
   };
 
-  form = {
-    tipo:null,
-  };
+  public dataT = null;
+  public response = false;
 
-  constructor(
-    private Jarwis: JarwisService,
-  ) {}
+  constructor(private Jarwis: JarwisService) {
+    this.Jarwis.me(this.get()).subscribe(data => { this.dataT = data;});
+  }
 
   handle(token) {
     this.set(token);
@@ -57,14 +57,17 @@ export class TokenService {
     return this.isValid();
   }
 
-  rol(){
-    this.Jarwis.me(this.get()).subscribe(
-      data => this.data(data),
-      error => console.log(error)
-    );
-  }
 
-  data(data){
-    return data.tipo;
+  rolV(): boolean {
+    try{
+      if (this.dataT.tipo == null || this.dataT.tipo == 0) {
+        return false;
+      } else {
+        return true;
+      }
+    }catch(Exception){
+      return false;
+    }
+
   }
 }
