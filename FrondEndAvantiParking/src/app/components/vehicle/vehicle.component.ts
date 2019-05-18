@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import{VehicleService } from 'src/app/services/vehicle.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { JarwisService } from 'src/app/services/jarwis.service';
+import { TokenService } from 'src/app/services/token.service';
 import { $ } from 'jquery'
 @Component({
   selector: 'app-vehicle',
@@ -10,24 +12,25 @@ import { $ } from 'jquery'
 })
 export class VehicleComponent implements OnInit {
   public form = {
-    license: null,
-    mark: null,
-    model:null,
+    placa: null,
+    modelo: null,
+    marca:null,
+    users:null,
   };
   public error = [];
 
- 
-  constructor(private vehicle: VehicleService,
+  constructor(
+    private vehicle: VehicleService,
     private auth: AuthService,
-    private router: Router,) { }
-    modifyName(){
-      alert("qweqw");
-    }
-  
+    private router: Router,
+    private Jarwis: JarwisService,
+    private token: TokenService,
+    ) { }
+
   onSubmit(){
     this.vehicle.saveV(this.form).subscribe(
-      data => console.log('jhgfd'),
-      error => console.log('nbvgcfdsfgh')
+      data => console.log(data),
+      error => console.log(error)
     );
   }
 
@@ -41,8 +44,14 @@ export class VehicleComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.Jarwis.me(this.token.get()).subscribe(
+      data => this.data(data),
+      error => console.log(error)
+    );
   }
 
+  data(data){
+    this.form.users = data.email;
+  }
 
 }

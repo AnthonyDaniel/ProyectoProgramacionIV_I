@@ -3,55 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Vehicle;
+use App\User;
+use App\Http\Requests\RegisterVehicleRequest;
 
 class VehicleController extends Controller
 {
-    public function saveVehicle(Request $request){
-      var_dump('aqui');
-      $json = $request->input('json',null);
-      $data= json_decode($json,true);// el true es para pasar ese json a array
-      if(!empty($data)){
-          $data=array_map('trim',$data);
-          $rules=[
-              'placa'=>'required',
-              'marca'=>'required',
-              'modelo'=>'required'
-             
-          ];
-          //validamos
-          $validate = \validator($data, $rules);
-          if($validate->fails()){
-              $response=array(
-                  'status'    =>'error',
-                  'code'      =>406,
-                  'message'   =>'Los datos enviados son incorrectos',
-                  'errors'    => $validate->errors()
-              );            
-          }else{
-      
-              $post=new Post();
-              $post->users=$data['kasvillarrel@gmail.com'];
-              $post->placa=$data['placa'];
-              $post->marca=$data['marca'];
-              $post->modelo=$data['modelo'];
-              $post->save();
 
-              $response=array(
-                  'status'    =>'success',
-                  'code'      =>200,
-                  'message'   =>'Datos almacenados satisfactoriamente'              
-              );
-          }
+    public function saveVehicle(RegisterVehicleRequest $request){
+        //'placa','marca','modelo','imagenes','users',
+
+        $user = User::whereEmail($request->users)->first();
+    
+        if (is_null($user)) {
+            return response()->json(['error' => 'Not found'], 401);
         }else{
-          $response=array(
-              'status'    =>'error',
-              'code'      =>400,
-              'message'   =>'Faltan parametros'   
-                     
-          );
-      }
-      return response()->json($response,$response['code']);
-      
+            $vehicle = new Vehicle();
+            $vehicle->placa = $request->placa;
+            $vehicle->modelo = $request->modelo;
+            $vehicle->marca = $request->marca;
+            $vehicle->users = $request->users;
+            $vehicle->save();
+            return response()->json(['data' => 'Create vehicle success'], 200);
+        }
     }
     public function updateVehicle(Request $request){
        
