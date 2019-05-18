@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { JarwisService } from 'src/app/services/jarwis.service';
 import { TokenService } from 'src/app/services/token.service';
+
 import { $ } from 'jquery'
 @Component({
   selector: 'app-vehicle',
@@ -18,7 +19,7 @@ export class VehicleComponent implements OnInit {
     users:null,
   };
   public error = [];
-
+  
   constructor(
     private vehicle: VehicleService,
     private auth: AuthService,
@@ -33,6 +34,12 @@ export class VehicleComponent implements OnInit {
       error => console.log(error)
     );
   }
+  getAllVehicles(){
+    this.vehicle.getV().subscribe((all)=>{
+     
+      console.log(this.vehicle);
+    });
+  }
 
   handleResponse(data) {
     this.auth.changeAuthStatus(true);
@@ -44,6 +51,7 @@ export class VehicleComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getAllVehicles();
     this.Jarwis.me(this.token.get()).subscribe(
       data => this.data(data),
       error => console.log(error)

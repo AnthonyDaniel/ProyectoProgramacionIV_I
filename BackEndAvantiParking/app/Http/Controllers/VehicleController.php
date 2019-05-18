@@ -22,6 +22,10 @@ class VehicleController extends Controller
             return response()->json(['data' => 'Create vehicle success'], 200);
         }
     }
+    public function getVehicle(){
+        $records=Vehiculo::all();
+        return response()->json($records);
+    }
     public function updateVehicle(Request $request){
        
     }
