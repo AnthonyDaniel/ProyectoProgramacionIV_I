@@ -48,6 +48,7 @@ export class VehicleComponent implements OnInit {
       data => this.data(data),
       error => console.log(error)
     );
+
   }
 
   data(data){
