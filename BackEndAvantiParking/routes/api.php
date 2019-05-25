@@ -16,8 +16,8 @@ Route::group([
     Route::post('resetPassword', 'ChangePasswordController@process');
     Route::post('updaten', 'AuthController@updated');
     Route::post('savev', 'VehicleController@saveVehicle');
-    Route::post('getv', 'VehicleController@getVehicle');
-
-   
+    Route::get('getv', 'VehicleController@getVehicle');
+    Route::put('updatev/{lPlate}','VehicleController@updateVehicle');
+    Route::delete('deletev/{lPlate}','VehicleController@deleteVehicle');
 
 });
