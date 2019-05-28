@@ -38,8 +38,9 @@
     "rxjs": "~6.3.3",
     "toastr": "^2.1.4",
     "tslib": "^1.9.0",
-    "zone.js": "~0.8.26"
-  },
+    "zone.js": "~0.8.26",
+    "angular-file-uploader":"4.1.4" 
+    },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
     "@angular/cli": "~7.3.8",
