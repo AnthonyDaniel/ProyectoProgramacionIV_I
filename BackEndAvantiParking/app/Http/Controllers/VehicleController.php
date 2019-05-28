@@ -11,8 +11,6 @@ class VehicleController extends Controller
 {
 
     public function saveVehicle(RegisterVehicleRequest $request){
-        //'placa','marca','modelo','imagenes','users',
-
         $user = User::whereEmail($request->users)->first();
     
         if (is_null($user)) {
@@ -23,32 +21,21 @@ class VehicleController extends Controller
         }
     }
     public function getVehicle(){
-        $records=Vehiculo::all();
-        return response()->json($records);
+
+        return Vehicle::all();
+
     }
-    public function updateVehicle(Request $request){
+    public function updateVehicle(Request $request,$lPlate){
+        $vehicle = Vehicle::where('placa',$lPlate)->update($request->all());
+
+        return response()->json(['data' => 'Update vehicle success'], 200);
        
     }
-     public function deleteVehicle($licencePlate){
-      if(isset($licencePlate)){
-        $deleted=Post::where('placa',$licencePlate)->delete();
-        if($deleted){
-            $response=array(
-                'status'    =>'success',
-                'code'      =>200,
-                'message'   =>'Eliminado correctamente'                
-            );
-        }else{
-            $response=array(
-                'status'    =>'error',
-                'code'      =>400,
-                'message'   =>'No se pudo eliminar, puede que el registro ya no exista'                
-            );
-        }
-      }
-    return response()->json($response,$response['code']);
-   
-  }
+     public function deleteVehicle(Request $request,$lPlate){
+        $vehicle = Vehicle::where('placa',$lPlate)->delete($request->all());
+
+        return response()->json(['data' => 'Delete vehicle success'], 200);
+    }
      
 }
     

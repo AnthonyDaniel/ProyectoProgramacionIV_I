@@ -34,67 +34,28 @@
   <div>
     <h4 class="text" class="text text-center"><strong>VEHICLES</strong></h4>
     <div class="table-responsive">
-      <table class="table table-bordered table-hover  " *ngFor=''>
+      <table class="table table-bordered table-hover  " >
         <thead class="thead">
           <tr>
-            <th>
-              VIEW PHOTO
-            </th>
-            <th>
-              CHANGE PHOTO
-            </th>
-            <th>
-              LICENCE PLATE
-            </th>
-            <th>
-              MARK
-            </th>
-            <th>
-              MODEL
-            </th>
-            <th>
-              MODIFY
-            </th>
-            <th>
-              REMOVE
-            </th>
+            <th>VIEW PHOTO</th>
+            <th>CHANGE PHOTO</th>
+            <th>LICENCE PLATE</th>
+            <th>MARK</th>
+            <th>MODEL</th>
+            <th>MODIFY</th>
+            <th>REMOVE</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="text-center align-middle">
-              <img src="/assets/vehicle.jpg" class="border rounded mx-auto d-block rounded-circle" data-toggle="modal"
-                data-target="#FullImage" height="60px">
-            </td>
-            <td class="text-center align-middle">
-              <button class="btn btn-outline-secondary material-icons mr-auto" data-toggle="modal"
-                data-target="#UpImg">photo_camera</button>
-            </td>
-            <td class="text-center align-middle">
-              <input type="text" class="form-control" placeholder="CL3423" value="" required="">
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
-            </td>
-            <td class="text-center align-middle">
-              <input type="text" class="form-control" placeholder="Nissan" value="" required="">
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
-            </td>
-            <td class="text-center align-middle">
-              <input type="text" class="form-control" placeholder="B15" value="" required="">
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
-            </td>
-            <td class="text-center align-middle">
-              <button class="btn btn-outline-success"><strong>MODIFY</strong></button>
-            </td>
-            <td class="text-center align-middle">
-              <button class="btn btn-outline-danger" data-toggle="modal"
-                data-target="#deleteVehicle"><strong>DELETE</strong></button>
-            </td>
+          <tr *ngFor="let vehicle of vehicles">
+            <td></td>
+            <td><button class="btn btn-outline-secondary material-icons mr-auto text-center" data-toggle="modal"data-target="#UpImg">photo_camera</button></td>
+            <td><input type="text" class="form-control" placeholder="{{vehicle.placa}}"></td>
+            <td><input type="text" class="form-control" placeholder="{{vehicle.marca}}"></td>
+            <td><input type="text" class="form-control" placeholder="{{vehicle.modelo}}"></td>
+            <td><button class="btn btn-success" data-toggle="modal" data-target="#deleteReserve">MODIFY</button></td>
+            <td><button class="btn btn-danger" data-toggle="modal" data-target="#deleteReserve">DELETE</button></td>
+            
           </tr>
         </tbody>
       </table>
