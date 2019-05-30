@@ -19,7 +19,7 @@ export class VehicleService {
     return this.http.get<Vehicle[]>(`${this.baseUrl}/getv`);
   }
   updateV(data) {
-    return this.http.put(`${this.baseUrl}/updatev`, data);
+    return this.http.put(`${this.baseUrl}/updatev/${data.placa}`, data);
   }
   deleteV(id) {
     return this.http.delete(`${this.baseUrl}/deletev/${id}`);

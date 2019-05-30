@@ -50,11 +50,11 @@
           <tr *ngFor="let vehicle of vehicles">
             <td></td>
             <td><button class="btn btn-outline-secondary material-icons mr-auto text-center" data-toggle="modal"data-target="#UpImg">photo_camera</button></td>
-            <td><input type="text" class="form-control" placeholder="{{vehicle.placa}}"></td>
-            <td><input type="text" class="form-control" placeholder="{{vehicle.marca}}"></td>
-            <td><input type="text" class="form-control" placeholder="{{vehicle.modelo}}"></td>
-            <td><button class="btn btn-success" data-toggle="modal" data-target="#deleteReserve">MODIFY</button></td>
-            <td><button class="btn btn-danger" data-toggle="modal" data-target="#deleteReserve">DELETE</button></td>
+            <td><input type="text" class="form-control" [(ngModel)]="vehicle.placa"></td>
+            <td><input type="text" class="form-control" [(ngModel)]="vehicle.marca"></td>
+            <td><input type="text" class="form-control" [(ngModel)]="vehicle.modelo"></td>
+            <td><button (click)="edit(vehicle)" class="btn btn-success" data-toggle="modal" data-target="#deleteReserve">MODIFY</button></td>
+            <td><button (click)="delete(vehicle)" class="btn btn-danger"  data-toggle="modal" data-target="#delete">DELETE</button></td>
             
           </tr>
         </tbody>
@@ -104,30 +104,37 @@
       </div>
     </div>
   </div>
-  <div class="modal fade bd-example-modal-xl" id="ModifyName" tabindex="-1" role="dialog" aria-labelledby="ModifyName"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modify your full name</h5>
-          <button type="button" id="closeModal" class="close" data-dismiss="modal" aria-label="Close">
+          <h5 class="modal-title">Delete Headquarter</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
+          <p class="lead">If you delete this headquarter, you will not be able to recover it.</p>
           <div class="row">
-            <div class="col-12">
-              <form #ConfirmForm=ngForm (ngSubmit)="modifyName()">
-                <label for="Password">Enter your current password</label>
-                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required>
-                <br>
-                <hr>
-                <br>
-                <button type="submit" class="btn btn-danger btn-block" name="submit"
-                  [disabled]="!ConfirmForm.valid">Confirm</button>
-              </form>
+            <div class="col-md-6">
+              <label for="Password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="****">
+              <div class="invalid-feedback">
+                Please enter a valid password.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="Password">Confirm Password</label>
+              <input type="password" class="form-control" id="password2" placeholder="****">
+              <div class="invalid-feedback">
+                Please enter a valid password.
+              </div>
             </div>
           </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger">Confirm</button>
         </div>
       </div>
     </div>
