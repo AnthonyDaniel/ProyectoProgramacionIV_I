@@ -193,22 +193,24 @@ export class ProfileComponent implements OnInit {
     this.status = "";
     $('#alertSuccess').attr("data-dismiss", "alert");
   }
+
+  img:any = {
+    file:null
+  }
   onUpload(ev) {
     const id = Math.random().toString(36).substring(2);
     const file = ev.target.files[0];
 
     //this.Jarwis.uploadImg(ev).subscribe();
 
-    let img: any = ev.target.files[0];
-
-    console.log(img);
     let form = new FormData();
-    form.append('file0', img);
+    form.append('file', file);
     this.Jarwis.uploadImg(form).subscribe(
       data => {
-
+        console.log(data);
       },
       error => {
+        console.log(error);
       }
     );
 

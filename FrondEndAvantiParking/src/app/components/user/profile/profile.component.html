@@ -112,7 +112,7 @@
        
         <div class="modal-body">
           <div class="mb-3">
-              <input type="file" accept=".png, .jpg" (change)="onUpload($event)">
+              <input type="file" accept=".png, .jpg" [(ngModel)]="img.file"  (change)="onUpload($event)">
             <label for="Password">To upload the image, enter your password</label>
             <input type="password" class="form-control" id="password" placeholder="****">
           </div>

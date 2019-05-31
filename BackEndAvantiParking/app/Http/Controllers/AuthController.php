@@ -117,8 +117,7 @@ class AuthController extends Controller
     public function upload(Request $request){
         $image=$request->file('file0');
 
-        return $image;
-        
+        var_dump($image);
         $validate=\Validator::make($request->all(),[
             'file0'=>'required|image|mimes:jpg,png'
         ]);
