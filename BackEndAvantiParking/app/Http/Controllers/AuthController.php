@@ -8,11 +8,11 @@
 //use App\Http\Requests\SignUpRequest;
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SignUpRequest;
 use App\User;
-use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -42,8 +42,17 @@ class AuthController extends Controller
 
     public function signup(SignUpRequest $request)
     {
-
-        User::create($request->all());
+    
+       DB::insert('INSERT INTO users (email,id,nombre,direccion,telefono,password) VALUES (?,?,?,?,?,?)',[
+        $request->email,
+        $request->id,
+        $request->nombre,
+        $request->direccion,
+        $request->telefono,
+        bcrypt($request->password)
+        ]); 
+        //User::create($request->all());
+        //return $request->email;
         return $this->login($request); //Te logueas despues de registrarte, automaticamente mm ya veo
     }
     /**

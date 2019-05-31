@@ -21,7 +21,7 @@ export class VehicleService {
   updateV(data) {
     return this.http.put(`${this.baseUrl}/updatev/${data.placa}`, data);
   }
-  deleteV(id) {
-    return this.http.delete(`${this.baseUrl}/deletev/${id}`);
+  deleteV(data) {
+    return this.http.delete(`${this.baseUrl}/deletev`,data);
   }
 }

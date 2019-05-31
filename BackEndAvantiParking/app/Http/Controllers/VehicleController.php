@@ -25,16 +25,19 @@ class VehicleController extends Controller
         return Vehicle::all();
 
     }
-    public function updateVehicle(Request $request,$lPlate){
-        $vehicle = Vehicle::where('placa',$lPlate)->update($request->all());
+    public function updateVehicle(Request $request){
+        //vehicle = Vehicle::where('placa',$lPlate)->update($request->all());
 
-        return response()->json(['data' => 'Update vehicle success'], 200);
+        //return response()->json(['data' => 'Update vehicle success'], 200);
        
     }
-     public function deleteVehicle(Request $request,$lPlate){
-        $vehicle = Vehicle::where('placa',$lPlate)->delete($request->all());
+     public function deleteVehicle(RegisterVehicleRequest $request){
 
-        return response()->json(['data' => 'Delete vehicle success'], 200);
+        //return $request;
+        return $request;
+        //$vehicle = Vehicle::where('placa',$lPlate)->delete($request->all());
+
+        //return response()->json(['data' => 'Delete vehicle success'], 200);
     }
      
 }

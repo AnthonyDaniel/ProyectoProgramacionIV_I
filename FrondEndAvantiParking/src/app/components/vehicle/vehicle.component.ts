@@ -68,20 +68,22 @@ export class VehicleComponent implements OnInit {
   }
 
   delete(vehi: Vehicle) {
-    this.vehicles = this.vehicles.filter(h => h !== vehi)
-    this.vehicle.deleteV(vehi.placa).subscribe(
-      data => console.log(data),
+    vehi.users = this.form.users;
+    console.log(vehi);
+    this.vehicle.deleteV(vehi).subscribe(
+      data => {
+        this.vehicles = this.vehicles.filter(h => h !== vehi);
+      },
       error => console.log(error)
-    )
+    );
 
   }
 
   edit(vehic: Vehicle) {
+  
   this.vehicle.updateV(vehic).subscribe(data=>{
-    this.vehicl=data;
-  })
+    //this.vehicl=data;
+  });
   }
-
- 
 
 }
