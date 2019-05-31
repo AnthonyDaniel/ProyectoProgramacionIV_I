@@ -18,7 +18,7 @@
           </div>
           <div class="col-md-6 mb-3">
             <label class="text" for="id"><strong>ID</strong></label>
-            <input type="text" class="form-control" name="id" [(ngModel)]="form.id" required>
+            <input type="text" class="form-control" name="id" [(ngModel)]="form.id" required pattern="[0-9]+">
             <div class="alert alert-danger" [hidden]="!error.id">
               {{error.id}}
             </div>
@@ -42,7 +42,7 @@
           </div>
           <div class="col-md-4">
             <label class="text" for="Phone"><strong>PHONE</strong></label>
-            <input type="phone" class="form-control" name="phone" [(ngModel)]="form.telefono" placeholder="8888-8888">
+            <input type="phone" class="form-control" name="phone" [(ngModel)]="form.telefono" pattern="[0-9]+">
             <div class="alert alert-danger" [hidden]="!error.telefono">
               {{error.telefono}}
             </div>

@@ -28,6 +28,13 @@ class ChangePasswordController extends Controller
     private function changePassword($request)
     {
         $user = User::whereEmail($request->email)->first();
+        //$user = DB::selectOne('Select * FROM users WHERE email = ?', [$request->email]);
+        //try {
+        //    DB::update('UPDATE users set password = ? where email= ?', [$request->nombre, $request->password]);
+        //    return  response()->json(['data' => 'Updated'], 200);
+        //} catch (\Illuminate\Database\QueryException $e) {
+        //    return  response()->json(['error' => 'No updated '], 406);
+        //}
         $user->update(['password'=>$request->password]);
         $this->getPasswordResetTableRow($request  )->delete();
         return response()->json(['data'=>'Password Successfully Changed'],Response::HTTP_CREATED);

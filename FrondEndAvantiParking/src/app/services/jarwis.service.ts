@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable()
@@ -30,7 +31,7 @@ export class JarwisService {
     return this.http.post(`${this.baseUrl}/checkpassword`, data);
   }
 
-  updatedName(data){
+  updated(data){
     return this.http.post(`${this.baseUrl}/updaten`, data, {headers: this.httpHeaders});
   }
 
@@ -44,6 +45,10 @@ export class JarwisService {
   
   changePassword(data) {
     return this.http.post(`${this.baseUrl}/resetPassword`, data)
+  }
+
+  uploadImg(data:any):Observable<any>{
+    return this.http.post(`${this.baseUrl}/upload`, data)
   }
 
 }

@@ -20,14 +20,18 @@ class VehicleController extends Controller
           //  Vehicle::create($request->all());
             //return response()->json(['data' => 'Create vehicle success'], 200);
         //}
-        DB::insert('INSERT INTO vehiculo(placa, marca, modelo,imagen,users) VALUES(?,?,?,?,?)',[
-            $request->placa,
-            $request->marca,
-            $request->modelo,
-            $request->imagen,
-            $request->users,
-        ]);
-        return $request;
+        try {
+            DB::insert('INSERT INTO vehiculo(placa, marca, modelo,users) VALUES(?,?,?,?)',[
+                $request->placa,
+                $request->marca,
+                $request->modelo,
+                $request->users,
+            ]); 
+            return  response()->json(['data' => 'Inserted'], 200);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return  response()->json(['error' => 'Not added'], 409);
+        }
+       
     }
     public function getVehicle(){
 

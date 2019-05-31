@@ -10,6 +10,18 @@
       </div>
     </div>
   </div>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="status=='error'">
+    {{error}}
+    <button type="button" class="close" aria-label="Close" id="alertError" (click)="dismissError()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="status=='success'">
+    {{success}}
+    <button type="button" class="close" aria-label="Close" id="alertSuccess" (click)="dismissSuccess()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <div class="row">
     <div class="col-md-6 mb-3">
       <label class="text" for="firstName"><strong>FULL NAME</strong></label>
@@ -97,15 +109,12 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+       
         <div class="modal-body">
-          <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="customFile" name="filename">
-            <label class="custom-file-label" for="customFile">Choose file</label>
+          <div class="mb-3">
+              <input type="file" accept=".png, .jpg" (change)="onUpload($event)">
             <label for="Password">To upload the image, enter your password</label>
             <input type="password" class="form-control" id="password" placeholder="****">
-            <div class="invalid-feedback">
-              Please enter a valid password.
-            </div>
           </div>
         </div>
         <div class="modal-footer">
@@ -128,14 +137,14 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-12">
-              <form #ConfirmForm=ngForm (ngSubmit)="deleteAccount()">
+              <form #ConfirmForm1=ngForm (ngSubmit)="deleteAccount()">
                 <label for="Password">Enter your current password</label>
                 <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required>
                 <br>
                 <hr>
                 <br>
                 <button type="submit" class="btn btn-danger btn-block" name="submit"
-                  [disabled]="!ConfirmForm.valid">Delete account</button>
+                  [disabled]="!ConfirmForm1.valid">Delete account</button>
               </form>
             </div>
           </div>
@@ -156,7 +165,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-12">
-              <form #ConfirmForm=ngForm (ngSubmit)="modifyName()">
+              <form #ConfirmForm2=ngForm (ngSubmit)="modifyName()">
                 <label for="Nombre">Enter your new name</label>
                 <input type="text" class="form-control" name="nombre" [(ngModel)]="modifyNombre.nombre" required>
                 <label for="Password">Enter your current password</label>
@@ -166,7 +175,7 @@
                 <hr>
                 <br>
                 <button type="submit" class="btn btn-danger btn-block" name="submit"
-                  [disabled]="!ConfirmForm.valid">Confirm</button>
+                  [disabled]="!ConfirmForm2.valid">Confirm</button>
               </form>
             </div>
           </div>
@@ -187,16 +196,16 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-12">
-              <form #ConfirmForm=ngForm (ngSubmit)="modifyId()">
+              <form #ConfirmForm3=ngForm (ngSubmit)="modifyId()">
                 <label for="Nombre">Enter your new ID</label>
-                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyID.id" required>
+                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyID.id" required pattern="[0-9]+">
                 <label for="Password">Enter your current password</label>
                 <input type="password" class="form-control" name="password" [(ngModel)]="modifyID.password" required>
                 <br>
                 <hr>
                 <br>
                 <button type="submit" class="btn btn-danger btn-block" name="submit"
-                  [disabled]="!ConfirmForm.valid">Confirm</button>
+                  [disabled]="!ConfirmForm3.valid">Confirm</button>
               </form>
             </div>
           </div>
@@ -217,7 +226,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-12">
-              <form #ConfirmForm=ngForm (ngSubmit)="modifyADDRESS()">
+              <form #ConfirmForm4=ngForm (ngSubmit)="modifyADDRESS()">
                 <label for="Nombre">Enter your new address</label>
                 <input type="text" class="form-control" name="ID" [(ngModel)]="modifyAddress.direccion" required>
                 <label for="Password">Enter your current password</label>
@@ -227,7 +236,7 @@
                 <hr>
                 <br>
                 <button type="submit" class="btn btn-danger btn-block" name="submit"
-                  [disabled]="!ConfirmForm.valid">Confirm</button>
+                  [disabled]="!ConfirmForm4.valid">Confirm</button>
               </form>
             </div>
           </div>
@@ -235,8 +244,8 @@
       </div>
     </div>
   </div>
-  <div class="modal fade bd-example-modal-xl" id="ModifyPhone" tabindex="-1" role="dialog"
-    aria-labelledby="ModifyName" aria-hidden="true">
+  <div class="modal fade bd-example-modal-xl" id="ModifyPhone" tabindex="-1" role="dialog" aria-labelledby="ModifyName"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -248,17 +257,17 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-12">
-              <form #ConfirmForm=ngForm (ngSubmit)="modifyPHONE()">
+              <form #ConfirmForm5=ngForm (ngSubmit)="modifyPHONE()">
                 <label for="Nombre">Enter your new phone</label>
-                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyPhone.telefono" required>
+                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyPhone.telefono" required
+                  pattern="[0-9]+">
                 <label for="Password">Enter your current password</label>
-                <input type="password" class="form-control" name="password" [(ngModel)]="modifyPhone.password"
-                  required>
+                <input type="password" class="form-control" name="password" [(ngModel)]="modifyPhone.password" required>
                 <br>
                 <hr>
                 <br>
                 <button type="submit" class="btn btn-danger btn-block" name="submit"
-                  [disabled]="!ConfirmForm.valid">Confirm</button>
+                  [disabled]="!ConfirmForm5.valid">Confirm</button>
               </form>
             </div>
           </div>
