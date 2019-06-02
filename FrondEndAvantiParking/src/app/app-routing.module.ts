@@ -33,8 +33,8 @@ const routes: Routes = [
   { path: 'administration/admin-head-quarters', component: AdminHeadQuartersComponent, canActivate: [AuthorizationAdminService]},
   { path: 'administration/admin-users', component:AdminUsersComponent , canActivate: [AuthorizationAdminService]},
   { path: 'notifications', component: NotificationsComponent , canActivate: [AfterLoginService]},
-  { path: 'request-password-reset', component: RequestResetComponent, canActivate: [BeforeLoginService]},
-  { path: 'response-password-reset', component: ResponseResetComponent, canActivate: [BeforeLoginService]},
+  { path: 'request-password-reset', component: RequestResetComponent},
+  { path: 'response-password-reset', component: ResponseResetComponent},
   { path: '**' , component: Errorpage404Component }
 ];
 

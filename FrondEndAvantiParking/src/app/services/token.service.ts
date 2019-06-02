@@ -58,16 +58,22 @@ export class TokenService {
   }
 
 
-  rolV(): boolean {
-    try{
-      if (this.dataT.tipo == null || this.dataT.tipo == 0) {
-        return false;
-      } else {
-        return true;
-      }
-    }catch(Exception){
+  rolV(s): boolean {
+    
+    if(!s){
       return false;
     }
+      try{
+        if (this.dataT.tipo == null || this.dataT.tipo == 0) {
+          return false;
+        } else {
+          return true;
+        }
+      }catch(Exception){
+        return false;
+      }
+   
+    
 
   }
 }

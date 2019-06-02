@@ -11,12 +11,12 @@ export class AuthorizationAdminService {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
     
-      return this.Token.rolV();
+      return this.Token.rolV(true);
     
   }
   constructor(private Token: TokenService) {
     setTimeout(() => {
-      this.Token.rolV();
+      this.Token.rolV(true);
     },12000);
   }
   
