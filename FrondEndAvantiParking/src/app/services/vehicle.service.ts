@@ -15,8 +15,8 @@ export class VehicleService {
   saveV(data) {
     return this.http.post(`${this.baseUrl}/savev`, data);
   }
-  getV(){
-    return this.http.get<Vehicle[]>(`${this.baseUrl}/getv`);
+  getV(data){
+    return this.http.post(`${this.baseUrl}/getv`, data);
   }
   updateV(data) {
     return this.http.post(`${this.baseUrl}/updatev`, data);

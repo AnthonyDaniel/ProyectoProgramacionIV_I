@@ -33,12 +33,18 @@ class VehicleController extends Controller
         }
        
     }
-    public function getVehicle(){
+    public function getVehicle(RegisterVehicleRequest $request){
 
-        return Vehicle::all();
+        try { 
+            DB::select('SELECT * FROM vehiculo WHERE users= ?', [ $request->users]);
+            
+            return  response()->json(['data' => 'Updated successfully'], 200);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return  response()->json(['error' => 'Error! not updated '], 406);
+        }
 
     }
-    public function updateVehicle(Request $request){
+    public function updateVehicle(RegisterVehicleRequest $request){
 
         //pruebas
         try { // La placa no se modifica aja solo estoy indicando donde modificar, pero digamos, aqui yo deberia especificar no a uno
