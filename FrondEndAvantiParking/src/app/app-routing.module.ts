@@ -16,10 +16,10 @@ import { AdminComponent } from './components/admin/admin.component';
 const routes: Routes = [
   //All router here 
   { path: '' , component:HomeComponent },
-  { path: 'reserve' , component: ReserveComponent, canActivate: [AfterLoginService] },
-  { path: 'user/register' , component: RegisterComponent, canActivate: [BeforeLoginService]},
-  { path: 'user/login' , component: LoginComponent, canActivate: [BeforeLoginService] },
-  { path: 'user/profile' , component: ProfileComponent,canActivate: [AfterLoginService] },
+  { path: 'reserve' , component: ReserveComponent, canActivate: [AfterLoginService]},
+  { path: 'user/register' , component: RegisterComponent},
+  { path: 'user/login' , component: LoginComponent},
+  { path: 'user/profile' , component: ProfileComponent},
   { path: 'vehicle' , component: VehicleComponent, canActivate: [AfterLoginService] },
   { path: 'request-password-reset', component: RequestResetComponent},
   { path: 'response-password-reset', component: ResponseResetComponent},

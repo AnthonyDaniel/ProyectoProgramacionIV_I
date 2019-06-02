@@ -9,6 +9,8 @@ import * as $ from 'jquery';
 })
 export class AdminComponent implements OnInit {
 
+  constructor(private admin: AdminService) { }
+
   public registerUser = {
     email: null,
     nombre: null,
@@ -20,13 +22,10 @@ export class AdminComponent implements OnInit {
   public error = [];
   public users;
 
-  constructor(private admin: AdminService) { }
-
   ngOnInit() {
     this.admin.getUser().subscribe(
       data => {
         this.users = data;
-        console.log(data);
       },
       error => console.log(error)
     );
@@ -37,6 +36,12 @@ export class AdminComponent implements OnInit {
       data => {
         this.clean();
         $('#closeModalRegister').click();
+        this.admin.getUser().subscribe(
+          data => {
+            this.users = data;
+          },
+          error => console.log(error)
+        );
       },
       error => this.handleError(error)
     );
@@ -55,4 +60,35 @@ export class AdminComponent implements OnInit {
     this.error = error.error.errors;
   }
 
+  deleteUsers(user) {
+    this.admin.deleteUser(user).subscribe(
+      data => {
+        this.ngOnInit();
+      },
+      error => console.log(error)
+    );
+  }
+  adminUsers(user) {
+    if (user.tipo == 1) {
+      user.tipo = 0;
+      this.admin.adminUser(user).subscribe(
+        data => {
+          this.ngOnInit();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }else {
+      user.tipo = 1;
+      this.admin.adminUser(user).subscribe(
+        data => {
+          this.ngOnInit();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+  }
 }

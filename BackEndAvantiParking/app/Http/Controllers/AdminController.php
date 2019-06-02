@@ -30,9 +30,27 @@ class AdminController extends Controller
         }
     }
 
-    public function getUsers(){
-        
+    public function getUsers()
+    {
         return Admin::all();
+    }
 
+    public function deleteUsers(Request $request)
+    {
+        try {
+            DB::insert('DELETE FROM users where email= ?', [ $request->email]);
+            return  response()->json(['data' => 'Removed'], 200);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return  response()->json(['error' => 'No removed'], 409);
+        }
+    }
+
+    public function adminUsers(Request $request){
+        try {
+            DB::update('UPDATE users set tipo = ? where email= ?', [$request->tipo, $request->email]);
+            return  response()->json(['data' => 'Updated'], 200);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return  response()->json(['error' => 'Type no updated '], 406);
+        }
     }
 }

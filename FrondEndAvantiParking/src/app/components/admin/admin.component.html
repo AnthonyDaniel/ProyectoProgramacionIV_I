@@ -1,4 +1,5 @@
 <div class="container">
+  <!--ADMIN USERES !!!!-->
   <div class="adminUser">
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
@@ -39,7 +40,7 @@
                 <label class="text"><strong>EMAIL</strong></label>
                 <input type="email" class="form-control" name="email" [(ngModel)]="registerUser.email" required>
                 <div class="alert alert-danger" [hidden]="!error.email">
-                  {{error.emai}}
+                  {{error.email}}
                 </div>
               </div>
               <div class="row">
@@ -103,9 +104,14 @@
           <td><input type="text" class="form-control" disabled [(ngModel)]="user.id"></td>
           <td><input type="text" class="form-control" disabled [(ngModel)]="user.email"></td>
           <td><input type="text" class="form-control" disabled [(ngModel)]="user.nombre"></td>
-          <td><button (click)="delete()" class="btn btn-danger">DELETE</button></td>
+          <td>
+            <button (click)="adminUsers(user)" class="btn btn-success" *ngIf="user.tipo != 1">ADMIN</button>
+            <button (click)="adminUsers(user)" class="btn btn-danger" *ngIf="user.tipo == 1">REGULAR</button>
+          </td>
+          <td><button (click)="deleteUsers(user)" class="btn btn-danger">DELETE</button></td>
         </tr>
       </tbody>
     </table>
   </div>
+  <!--FIN ADMIN USERES !!!!-->
 </div>

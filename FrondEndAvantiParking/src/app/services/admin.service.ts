@@ -18,5 +18,11 @@ export class AdminService {
   getUser() {
     return this.http.get(`${this.baseUrl}/getusers`)
   }
+  deleteUser(data){
+    return this.http.post(`${this.baseUrl}/deleteu`, data)
+  }
+  adminUser(data){
+    return this.http.post(`${this.baseUrl}/adminu`, data)
+  }
 
 }

@@ -74,7 +74,8 @@
   </div>
   <div class="row justify-content-center">
     <div class="mx-auto">
-      <p class="text-center decore btn " data-toggle="modal" data-target="#ChangePassword"  routerLink="/request-password-reset">Do you want to change your
+      <p class="text-center decore btn " data-toggle="modal" data-target="#ChangePassword"
+        routerLink="/request-password-reset">Do you want to change your
         password?</p>
     </div>
   </div>
@@ -109,10 +110,8 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-       
         <div class="modal-body">
           <div class="mb-3">
-              <input type="file" accept=".png, .jpg" [(ngModel)]="img.file"  (change)="onUpload($event)">
             <label for="Password">To upload the image, enter your password</label>
             <input type="password" class="form-control" id="password" placeholder="****">
           </div>
@@ -198,7 +197,8 @@
             <div class="col-12">
               <form #ConfirmForm3=ngForm (ngSubmit)="modifyId()">
                 <label for="Nombre">Enter your new ID</label>
-                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyID.id" maxlength="9" required pattern="[0-9]+">
+                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyID.id" maxlength="9" required
+                  pattern="[0-9]+">
                 <label for="Password">Enter your current password</label>
                 <input type="password" class="form-control" name="password" [(ngModel)]="modifyID.password" required>
                 <br>

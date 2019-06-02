@@ -29,5 +29,6 @@ Route::group([
     //ADMIN
     Route::post('registeru', 'AdminController@register');
     Route::get('getusers', 'AdminController@getUsers');
-
+    Route::post('deleteu', 'AdminController@deleteUsers');
+    Route::post('adminu', 'AdminController@adminUsers');
 });
