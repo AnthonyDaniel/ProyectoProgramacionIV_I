@@ -22,7 +22,7 @@ Route::group([
 
     //VEHICLE
     Route::post('savev', 'VehicleController@saveVehicle');
-    Route::get('getv', 'VehicleController@getVehicle');
+    Route::post('getv', 'VehicleController@getVehicle');
     Route::post('updatev','VehicleController@updateVehicle');
     Route::post('deletev','VehicleController@deleteVehicle');
 

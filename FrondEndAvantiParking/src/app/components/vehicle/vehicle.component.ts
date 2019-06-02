@@ -24,6 +24,7 @@ export class VehicleComponent implements OnInit {
   
   vehicles: Vehicle[];
   vehicl:Vehicle=new Vehicle();
+  vehic:Vehicle;
   
   public editVehicle={
     placa: null,
@@ -53,10 +54,9 @@ export class VehicleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.vehicle.getV().subscribe(data => { this.vehicles = data; })
     this.Jarwis.me(this.token.get()).subscribe(
       data => this.data(data),
-      error => this.responseError(error)
+   
     );
 
   }
@@ -71,6 +71,7 @@ export class VehicleComponent implements OnInit {
       error => this.responseError(error),
      
     );
+    
   }
 
   delete(vehi: Vehicle) {
@@ -78,14 +79,26 @@ export class VehicleComponent implements OnInit {
     this.vehicle.deleteV(vehi).subscribe(
       data => {
         this.vehicles = this.vehicles.filter(h => h !== vehi);
-       this.responseSuccess(data),
+        this.responseSuccess(data),
         error => this.responseError(error)
       },
       
     );
 
   }
+  get(vehic: Vehicle) {
+    vehic.users = this.form.users;
+    this.vehicle.getV(vehic).subscribe(
+      data => {
+        this.vehicles = this.vehicles.filter(h => h !== vehic);
+        console.log(data);
+        this.responseSuccess(data),
+        error => this.responseError(error)
+      },
+      
+    );
 
+  }
   edit(vehic: Vehicle) {
   this.vehicle.updateV(vehic).subscribe(data=>{
     this.responseSuccess(data),
