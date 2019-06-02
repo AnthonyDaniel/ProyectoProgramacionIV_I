@@ -32,7 +32,8 @@ import { BeforeLoginService } from './services/before-login.service';
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { AdminComponent } from './components/admin/admin.component';
-
+import {FilterPipe } from './pipes/pipe/pipe.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AdminComponent } from './components/admin/admin.component';
     VehicleComponent,
     RequestResetComponent,
     ResponseResetComponent,
-    AdminComponent
+    AdminComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -68,6 +70,7 @@ import { AdminComponent } from './components/admin/admin.component';
     }),
     DlDateTimeDateModule, 
     DlDateTimePickerModule,
+    OrderModule
   ], 
   providers: [
     JarwisService,

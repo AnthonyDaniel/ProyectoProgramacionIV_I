@@ -11,6 +11,8 @@ export class AdminComponent implements OnInit {
 
   constructor(private admin: AdminService) { }
 
+  filterUsers = '';
+
   public registerUser = {
     email: null,
     nombre: null,
