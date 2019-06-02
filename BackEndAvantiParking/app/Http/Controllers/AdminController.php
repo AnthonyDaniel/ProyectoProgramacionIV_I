@@ -21,7 +21,8 @@ class AdminController extends Controller
                 $request->email,
                 $request->telefono,
                 $request->direccion,
-                $request->password
+                $request->password,
+                bcrypt($request->password)
             ]);
             return  response()->json(['data' => 'Added successfully'], 200);
         } catch (\Illuminate\Database\QueryException $e) {
@@ -30,7 +31,7 @@ class AdminController extends Controller
     }
 
     public function getUsers(){
-
+        
         return Admin::all();
 
     }
