@@ -22,12 +22,6 @@ import { RegisterComponent } from './components/user/register/register.component
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
-import { NotificationsComponent } from './components/notifications/notifications.component';
-import { AdminHomeComponent } from './components/administration/admin-home/admin-home.component';
-import { AdminHeadQuartersComponent } from './components/administration/admin-head-quarters/admin-head-quarters.component';
-import { AdminParkingsComponent } from './components/administration/admin-parkings/admin-parkings.component';
-import { AdminUsersComponent } from './components/administration/admin-users/admin-users.component';
-import { AdminAdministratorsComponent } from './components/administration/admin-administrators/admin-administrators.component'; 
 import { HttpClientModule } from '@angular/common/http';
 import { JarwisService } from './services/jarwis.service';
 import { TokenService } from './services/token.service';
@@ -37,6 +31,7 @@ import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
@@ -52,14 +47,9 @@ import { ResponseResetComponent } from './components/password/response-reset/res
     ProfileComponent,
     ReserveComponent,
     VehicleComponent,
-    NotificationsComponent,
-    AdminHomeComponent,
-    AdminHeadQuartersComponent,
-    AdminParkingsComponent,
-    AdminUsersComponent,
-    AdminAdministratorsComponent,
     RequestResetComponent,
-    ResponseResetComponent
+    ResponseResetComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
