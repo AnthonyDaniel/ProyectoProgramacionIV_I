@@ -22,15 +22,10 @@
           <i class="material-icons">drive_eta</i>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/notifications" data-toggle="tooltip" data-placement="left" title="Check all your notifications" *ngIf="loggedIn" (click) = "toggleNavbar()">
-          <i class="material-icons"> notifications</i>
-        </a>
-      </li>
     </ul>
     <ul class="navbar-nav ml-auto mt-2 mt-lg-o">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/administration/admin-home" data-toggle="tooltip" data-placement="left" title="Manage AvantiParking" *ngIf="admin" (click) = "toggleNavbar()" >
+        <a class="nav-link" routerLink="/admin" data-toggle="tooltip" data-placement="left" title="Manage AvantiParking"  (click) = "toggleNavbar()" >
           <p>Administration</p>
         </a>
       </li>

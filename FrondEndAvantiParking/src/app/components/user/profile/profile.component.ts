@@ -4,7 +4,6 @@ import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import * as $ from 'jquery';
-import { AuthorizationAdminService } from 'src/app/services/authorization-admin.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +11,6 @@ import { AuthorizationAdminService } from 'src/app/services/authorization-admin.
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
 
   public cerrar = "";
 
@@ -65,7 +63,6 @@ export class ProfileComponent implements OnInit {
     private token: TokenService,
     private router: Router,
     private auth: AuthService,
-    private admin: AuthorizationAdminService,
   ) {
   }
 
@@ -194,26 +191,4 @@ export class ProfileComponent implements OnInit {
     $('#alertSuccess').attr("data-dismiss", "alert");
   }
 
-  img:any = {
-    file:null
-  }
-  onUpload(ev) {
-    const id = Math.random().toString(36).substring(2);
-    const file = ev.target.files[0];
-
-    //this.Jarwis.uploadImg(ev).subscribe();
-
-    let form = new FormData();
-    form.append('file', file);
-    this.Jarwis.uploadImg(form).subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-
-
-  }
 }

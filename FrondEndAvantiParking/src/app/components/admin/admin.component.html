@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="adminUser">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="text-center">USER ADMINISTRATION</h1>
+      </div>
+    </div>
+    <!--MODAL PARA AGREGAR USUARIOS-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">ADD USERS</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form #RegisterUser=ngForm (ngSubmit)="registerUsers()">
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="text"><strong>FULL NAME</strong></label>
+                  <input type="text" class="form-control" name="name" [(ngModel)]="registerUser.nombre" required>
+                  <div class="alert alert-danger" [hidden]="!error.nombre">
+                    {{error.nombre}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="text" for="id"><strong>ID</strong></label>
+                  <input type="text" class="form-control" name="id" [(ngModel)]="registerUser.id" maxlength="9" required
+                    pattern="[0-9]+">
+                  <div class="alert alert-danger" [hidden]="!error.id">
+                    {{error.id}}
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="text"><strong>EMAIL</strong></label>
+                <input type="email" class="form-control" name="email" [(ngModel)]="registerUser.email" required>
+                <div class="alert alert-danger" [hidden]="!error.email">
+                  {{error.emai}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="text" for="Phone"><strong>ADDRESS</strong></label>
+                  <input type="text" class="form-control" [(ngModel)]="registerUser.direccion" name="address">
+                  <div class="alert alert-danger" [hidden]="!error.direccion">
+                    {{error.direccion}}
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label class="text" for="Phone"><strong>PHONE</strong></label>
+                  <input type="phone" class="form-control" name="phone" [(ngModel)]="registerUser.telefono"
+                    pattern="[0-9]+" maxlength="9">
+                  <div class="alert alert-danger" [hidden]="!error.telefono">
+                    {{error.telefono}}
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label class="text" for="Password"><strong>PASSWORD</strong></label>
+                  <input type="password" class="form-control" name="password" [(ngModel)]="registerUser.password"
+                    required>
+                </div>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-outline-primary btn-block" data-toggle="tooltip"
+                data-placement="left" [disabled]="!RegisterUser.valid"
+                title="Register to enjoy AvantiParking"><strong>ADD USER</strong></button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="closeModalRegister" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--FIN DE MODAL PARA AGREGAR USUARIOS-->
+    <br>
+    <div class="row">
+      <div class="col-md-10">
+        <h3 class="">USERS</h3>
+      </div>
+      <div class="col-md-2 text-right">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          ADD USERS
+        </button>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">EMAIL</th>
+          <th scope="col">NAME</th>
+          <th scope="col">ADMIN</th>
+          <th scope="col">DELETE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td><input type="text" class="form-control" disabled [(ngModel)]="user.id"></td>
+          <td><input type="text" class="form-control" disabled [(ngModel)]="user.email"></td>
+          <td><input type="text" class="form-control" disabled [(ngModel)]="user.nombre"></td>
+          <td><button (click)="delete()" class="btn btn-danger">DELETE</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

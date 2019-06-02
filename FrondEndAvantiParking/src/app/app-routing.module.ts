@@ -12,7 +12,7 @@ import { BeforeLoginService } from './services/before-login.service';
 import { AfterLoginService } from './services/after-login.service';
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
-import { AuthorizationAdminService } from './services/authorization-admin.service';
+import { AdminComponent } from './components/admin/admin.component';
 const routes: Routes = [
   //All router here 
   { path: '' , component:HomeComponent },
@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'vehicle' , component: VehicleComponent, canActivate: [AfterLoginService] },
   { path: 'request-password-reset', component: RequestResetComponent},
   { path: 'response-password-reset', component: ResponseResetComponent},
+  { path: 'admin',component: AdminComponent},
   { path: '**' , component: Errorpage404Component }
 ];
 

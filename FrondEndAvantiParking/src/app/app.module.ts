@@ -68,7 +68,7 @@ import { AdminComponent } from './components/admin/admin.component';
     }),
     DlDateTimeDateModule, 
     DlDateTimePickerModule,
-  ],
+  ], 
   providers: [
     JarwisService,
     TokenService,

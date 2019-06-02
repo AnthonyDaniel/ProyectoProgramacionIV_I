@@ -18,24 +18,18 @@ export class NavbarComponent implements OnInit {
   }
 
   public loggedIn : boolean;
-  public admin: boolean;
   constructor(private auth: AuthService,
   private router: Router,
   private Token: TokenService) { }
 
   ngOnInit() {
-    this.auth.authStatus.subscribe(value=> this.loggedIn = value);
-    setTimeout(() => {
-      this.admin = this.Token.rolV(true);
-    },12000);
+
   }
 
   logout(event: MouseEvent) {
     event.preventDefault();
     this.Token.remove();
     this.auth.changeAuthStatus(false);
-    this.admin = false;
-    this.Token.rolV(false);
     this.router.navigateByUrl('');
   }
 }

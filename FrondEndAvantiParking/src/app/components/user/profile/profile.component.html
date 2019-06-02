@@ -198,7 +198,7 @@
             <div class="col-12">
               <form #ConfirmForm3=ngForm (ngSubmit)="modifyId()">
                 <label for="Nombre">Enter your new ID</label>
-                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyID.id" required pattern="[0-9]+">
+                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyID.id" maxlength="9" required pattern="[0-9]+">
                 <label for="Password">Enter your current password</label>
                 <input type="password" class="form-control" name="password" [(ngModel)]="modifyID.password" required>
                 <br>
@@ -250,7 +250,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Modify your phone</h5>
-          <button type="button" id="closeModalP" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" id="closeModalP" class="close" data-dismiss="modal" maxlength="9" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
