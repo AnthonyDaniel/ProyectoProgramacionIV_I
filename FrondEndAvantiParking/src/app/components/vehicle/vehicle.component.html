@@ -24,12 +24,29 @@
         <label class="text" for="lastName"><strong>MODEL</strong></label>
         <input type="text" class="form-control" name="model" [(ngModel)]="form.modelo" required>
       </div>
-    </div>
-    <button type="submit" class="btn btn-outline-primary" [disabled]="!registerVehicleForm.valid"><strong>ADD VEHICLE</strong></button>
+    </div><br>
+    <div class="text-center">
+      <button type="submit" class="btn btn-outline-primary " [disabled]="!registerVehicleForm.valid"><strong>ADD VEHICLE</strong></button>
+    </div >
+   
+
   </form>
-  <br>
+  
   <br>
   <hr><br>
+
+  <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="status=='error'">
+    {{error}}
+    <button type="button" class="close" aria-label="Close" id="alertError" (click)="dismissError()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="status=='success'">
+    {{success}}
+    <button type="button" class="close" aria-label="Close" id="alertSuccess" (click)="dismissSuccess()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 
   <div>
     <h4 class="text" class="text text-center"><strong>VEHICLES</strong></h4>
@@ -50,11 +67,11 @@
           <tr *ngFor="let vehicle of vehicles">
             <td></td>
             <td><button class="btn btn-outline-secondary material-icons mr-auto text-center" data-toggle="modal"data-target="#UpImg">photo_camera</button></td>
-            <td><input type="text" class="form-control" [(ngModel)]="vehicle.placa"></td>
+            <td><input type="text" class="form-control" disabled [(ngModel)]="vehicle.placa"></td>
             <td><input type="text" class="form-control" [(ngModel)]="vehicle.marca"></td>
             <td><input type="text" class="form-control" [(ngModel)]="vehicle.modelo"></td>
-            <td><button (click)="edit(vehicle)" class="btn btn-success" data-toggle="modal" data-target="#deleteReserve">MODIFY</button></td>
-            <td><button (click)="delete(vehicle)" class="btn btn-danger"  data-toggle="modal" data-target="#delete">DELETE</button></td>
+            <td><button (click)="edit(vehicle)" class="btn btn-success">MODIFY</button></td>
+            <td><button (click)="delete(vehicle)" class="btn btn-danger">DELETE</button></td>
             
           </tr>
         </tbody>
@@ -76,67 +93,6 @@
       </div>
     </div>
   </div>
-  <div class="modal fade bd-example-modal-xl" id="UpImg" tabindex="-1" role="dialog" aria-labelledby="UpImg"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Select the photo of the vehicle</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="customFile" name="filename">
-            <label class="custom-file-label" for="customFile">Choose file</label>
-            <label for="Password">To upload the image, enter your password</label>
-            <input type="password" class="form-control" id="password" placeholder="****">
-            <div class="invalid-feedback">
-              Please enter a valid password.
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Delete Headquarter</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p class="lead">If you delete this headquarter, you will not be able to recover it.</p>
-          <div class="row">
-            <div class="col-md-6">
-              <label for="Password">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="****">
-              <div class="invalid-feedback">
-                Please enter a valid password.
-              </div>
-            </div>
-            <div class="col-md-6">
-              <label for="Password">Confirm Password</label>
-              <input type="password" class="form-control" id="password2" placeholder="****">
-              <div class="invalid-feedback">
-                Please enter a valid password.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger">Confirm</button>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
+  
 </div><br>

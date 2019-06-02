@@ -27,9 +27,9 @@ class VehicleController extends Controller
                 $request->modelo,
                 $request->users,
             ]); 
-            return  response()->json(['data' => 'Inserted'], 200);
+            return  response()->json(['data' => 'Added successfully'], 200);
         } catch (\Illuminate\Database\QueryException $e) {
-            return  response()->json(['error' => 'Not added'], 409);
+            return  response()->json(['error' => 'Incorrect data'], 409);
         }
        
     }
@@ -39,6 +39,15 @@ class VehicleController extends Controller
 
     }
     public function updateVehicle(Request $request){
+
+        //pruebas
+        try { // La placa no se modifica aja solo estoy indicando donde modificar, pero digamos, aqui yo deberia especificar no a uno
+            DB::update('UPDATE vehiculo set marca = ?, modelo = ? where placa= ?', [ $request->marca, $request->modelo ,$request->placa]);
+            //$user->update(['nombre'=>$request->nombre]);
+            return  response()->json(['data' => 'Updated successfully'], 200);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return  response()->json(['error' => 'Error! not updated '], 406);
+        }
         //vehicle = Vehicle::where('placa',$lPlate)->update($request->all());
 
         //return response()->json(['data' => 'Update vehicle success'], 200);
@@ -46,16 +55,21 @@ class VehicleController extends Controller
        
     }
      public function deleteVehicle(RegisterVehicleRequest $request){
-var_dump('sdsd');
+
+    try {
+        DB::delete('DELETE FROM vehiculo WHERE placa= ?', [$request->placa]);
+        //$user->update(['telefono'=>$request->telefono]);
+        return  response()->json(['data' => 'Vehicle deleted successfully'], 200);
+    } catch (\Illuminate\Database\QueryException $e) {
+        return  response()->json(['error' => 'Vehicle not removed'], 406);
+    }
 
         //return $request;
         
         //$vehicle = Vehicle::where('placa',$lPlate)->delete($request->all());
 
         //return response()->json(['data' => 'Delete vehicle success'], 200);
-      
-        DB::table('vehiculo')->where('placa', '=', 'saa')->delete();
-        return $request;
+     
     }
      
 }

@@ -17,8 +17,8 @@ Route::group([
     Route::post('updaten', 'AuthController@updated');
     Route::post('savev', 'VehicleController@saveVehicle');
     Route::get('getv', 'VehicleController@getVehicle');
-    Route::put('updatev','VehicleController@updateVehicle');
-    Route::delete('deletev','VehicleController@deleteVehicle');
+    Route::post('updatev','VehicleController@updateVehicle');
+    Route::post('deletev','VehicleController@deleteVehicle');
     Route::post('upload', 'AuthController@upload');
 
 });

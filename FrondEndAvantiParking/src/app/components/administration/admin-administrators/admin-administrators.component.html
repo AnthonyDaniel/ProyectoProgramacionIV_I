@@ -6,87 +6,24 @@
             <table class="table table-bordered table-hover">
                 <thead class="thead">
                     <tr>
-                        <th>
-                            PHOTO
-                        </th>
-                        <th>
-                            NAME
-                        </th>
-                        <th>
-                            LAST NAME
-                        </th>
-                        <th>
-                            EMAIL
-                        </th>
-                        <th>
-                            ADMINISTRATORS
-                        </th>
+                        <th>PHOTO</th>
+                        <th>NAME</th>
+                        <th>LAST NAME</th>
+                        <th>EMAIL</th>
+                        <th>ADMINISTRATORS</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-success">
-                        <td class="text-center align-middle">
-                            <img src="/assets/user.jpg" class="border rounded mx-auto d-block rounded-circle"
-                                data-toggle="modal" data-target="#FullImage" height="60px">
-                        </td>
-                        <td class="text-center align-middle">
-                            <label class="form-control">Kelin</label>
-                        </td>
-                        <td class="text-center align-middle">
-                            <label class="form-control">Silva</label>
-                        </td>
-                        <td class="text-center align-middle">
-                            <label class="form-control">Silva@gmail.com</label>
-                        </td>
-                        <td class="text-center align-middle">
-                            <div class="form-group form-check">
-                                <button class="btn btn-danger"  data-toggle="modal" data-target="#Privileges" >
-                                    REMOVE ADMINISTRATOR PRIVILEGES
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="">
-                        <td class="text-center align-middle">
-                            <img src="/assets/user.jpg" class="border rounded mx-auto d-block rounded-circle"
-                                data-toggle="modal" data-target="#FullImage" height="60px">
-                        </td>
-                        <td class="text-center align-middle">
-                            <label class="form-control">Anthony</label>
-                        </td>
-                        <td class="text-center align-middle">
-                            <label class="form-control">Marin
-                            </label>
-                        </td>
-                        <td class="text-center align-middle">
-                            <label class="form-control">Anthony@gmail.com</label>
-                        </td>
-                        <td class="text-center align-middle">
-                            <button class="btn btn-outline-success" data-toggle="modal" data-target="#Privileges">
-                                MAKE ADMIN
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center align-middle">
-                            <img src="/assets/user.jpg" class="border rounded mx-auto d-block rounded-circle"
-                                data-toggle="modal" data-target="#FullImage" height="60px">
-                        </td>
-                        <td class="text-center align-middle">
-                            <label class="form-control">Daniela</label>
-                        </td>
-                        <td class="text-center align-middle">
-                            <label class="form-control">Silva</label>
-                        </td>
-                        <td class="text-center align-middle">
-                            <label class="form-control">Daniela@gmail.com</label>
-                        </td>
-                        <td class="text-center align-middle">
-                            <button class="btn btn-outline-success" data-toggle="modal" data-target="#Privileges">
-                                MAKE ADMIN
-                            </button>
-                        </td>
-                    </tr>
+                    <tr >
+                        <td></td>
+                        <td><button class="btn btn-outline-secondary material-icons mr-auto text-center" data-toggle="modal"data-target="#UpImg">photo_camera</button></td>
+                        <td><input type="text" class="form-control" ></td>
+                        <td><input type="text" class="form-control"></td>
+                        <td><input type="text" class="form-control" ></td>
+                        <td><button (click)="edit()" class="btn btn-success" data-toggle="modal" data-target="#deleteReserve">MODIFY</button></td>
+                        <td><button (click)="delete()" class="btn btn-danger"  data-toggle="modal" data-target="#delete">DELETE</button></td>
+                        
+                      </tr>
                 </tbody>
             </table>
         </div>
