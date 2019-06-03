@@ -27,8 +27,14 @@ Route::group([
     Route::post('deletev','VehicleController@deleteVehicle');
 
     //ADMIN
+    //----------------------Users
     Route::post('registeru', 'AdminController@register');
     Route::get('getusers', 'AdminController@getUsers');
     Route::post('deleteu', 'AdminController@deleteUsers');
     Route::post('adminu', 'AdminController@adminUsers');
+    //------------------------Sede------------------------
+    Route::post('registers', 'AdminController@registerSede');
+    Route::get('getsedes', 'AdminController@getSedes');
+    Route::post('modifys', 'AdminController@modifySede');
+    Route::post('deletes', 'AdminController@deleteSede');
 });

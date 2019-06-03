@@ -33,7 +33,7 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { AdminComponent } from './components/admin/admin.component';
 import {FilterPipe } from './pipes/pipe/pipe.component';
-
+import {FilterPipeS } from './pipes/pipe-sede/pipe-sede.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +50,8 @@ import {FilterPipe } from './pipes/pipe/pipe.component';
     RequestResetComponent,
     ResponseResetComponent,
     AdminComponent,
-    FilterPipe
+    FilterPipe,
+    FilterPipeS
   ],
   imports: [
     BrowserModule,

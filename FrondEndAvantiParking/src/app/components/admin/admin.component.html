@@ -91,12 +91,12 @@
     </div>
     <br>
     <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <input type="text" class="form-control" name="filterUsers" placeholder="Search..." [(ngModel)]="filterUsers">
-          </div>
+      <div class="col">
+        <div class="form-group">
+          <input type="text" class="form-control" name="filterUsers" placeholder="Search..." [(ngModel)]="filterUsers">
         </div>
       </div>
+    </div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -122,4 +122,149 @@
     </table>
   </div>
   <!--FIN ADMIN USERES !!!!-->
+  <hr>
+  <!--ADMIN HEADQUARTERS !!!!-->
+  <div class="adminHeadquarters">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="text-center">HEADQUARTERS</h1>
+      </div>
+    </div>
+    <!--MODAL PARA AGREGAR SEDE-->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">ADD HEADQUARTERS</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form #RegisterSede=ngForm (ngSubmit)="registerH()">
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="text"><strong>NAME</strong></label>
+                  <input type="text" class="form-control" name="name" [(ngModel)]="registerSede.nombre" required>
+                  <div class="alert alert-danger" [hidden]="!error.nombre">
+                    {{error.nombre}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="text" for="id"><strong>ID</strong></label>
+                  <input type="text" class="form-control" name="id" [(ngModel)]="registerSede.idSede" maxlength="9"
+                    required pattern="[0-9]+">
+                  <div class="alert alert-danger" [hidden]="!error.idSede" pattern="[0-9]+" maxlength="9">
+                    {{error.idSede}}
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="text"><strong>PROVINCE</strong></label>
+                <input type="email" class="form-control" name="email" [(ngModel)]="registerSede.provincia" required>
+                <div class="alert alert-danger" [hidden]="!error.provincia">
+                  {{error.provincia}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="text" for="Phone"><strong>City</strong></label>
+                  <input type="phone" class="form-control" name="phone" [(ngModel)]="registerSede.canton">
+                  <div class="alert alert-danger" [hidden]="!error.canton">
+                    {{error.canton}}
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <label class="text" for="Phone"><strong>ADDRESS</strong></label>
+                  <input type="text" class="form-control" [(ngModel)]="registerSede.direccion" name="address">
+                  <div class="alert alert-danger" [hidden]="!error.direccion">
+                    {{error.direccion}}
+                  </div>
+                </div>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-outline-primary btn-block" data-toggle="tooltip"
+                data-placement="left" [disabled]="!RegisterSede.valid"><strong>ADD HEADQUARTERS</strong></button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button id="closeModalRegisterH" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--FIN DE MODAL PARA AGREGAR SEDE-->
+    <br>
+    <div class="row">
+      <div class="col-md-10">
+        <h3 class="">HEADQUARTERS</h3>
+      </div>
+      <div class="col-md-2 text-right">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+          ADD HEADQUARTERS
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="status=='error'">
+      {{errorr}}
+      <button type="button" class="close" aria-label="Close" id="alertError" (click)="dismissError()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="status=='success'">
+      {{success}}
+      <button type="button" class="close" aria-label="Close" id="alertSuccess" (click)="dismissSuccess()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <input type="text" class="form-control" name="filterSedes" placeholder="Search..." [(ngModel)]="filterSedes">
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">IDSEDE</th>
+          <th scope="col">NAME</th>
+          <th scope="col">PROVINCE</th>
+          <th scope="col">CITY</th>
+          <th scope="col">ADDRESS</th>
+          <th scope="col">MODIFY</th>
+          <th scope="col">DELETE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sede of sedes | filterS:filterSedes ">
+          <td>
+            <input type="text" class="form-control" disabled [(ngModel)]="sede.idSede">
+          </td>
+          <td>
+            <input type="text" class="form-control" [(ngModel)]="sede.nombre">
+          </td>
+          <td>
+            <input type="text" class="form-control" [(ngModel)]="sede.provincia">
+          </td>
+          <td>
+            <input type="text" class="form-control" [(ngModel)]="sede.canton">
+          </td>
+          <td>
+            <input type="text" class="form-control" [(ngModel)]="sede.direccion">
+          </td>
+          <td>
+            <button (click)="modifySede(sede)" class="btn btn-success">MODIFY</button>
+          </td>
+          <td>
+            <button (click)="deleteSede(sede)" class="btn btn-danger">DELETE</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!--FIN ADMIN HEADQUARTERS !!!!-->
 </div>
+<br><br><br>

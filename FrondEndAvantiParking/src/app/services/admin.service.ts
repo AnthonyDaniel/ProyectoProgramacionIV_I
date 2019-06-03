@@ -24,5 +24,16 @@ export class AdminService {
   adminUser(data){
     return this.http.post(`${this.baseUrl}/adminu`, data)
   }
-
+  registerSede(data){
+    return this.http.post(`${this.baseUrl}/registers`, data)
+  }
+  getSede(){
+    return this.http.get(`${this.baseUrl}/getsedes`)
+  }
+  modifySede(data){
+    return this.http.post(`${this.baseUrl}/modifys`, data)
+  }
+  deleteSede(data){
+    return this.http.post(`${this.baseUrl}/deletes`, data)
+  }
 }
