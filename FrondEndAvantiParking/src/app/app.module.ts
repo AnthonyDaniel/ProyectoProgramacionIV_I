@@ -33,7 +33,6 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { AdminComponent } from './components/admin/admin.component';
 import {FilterPipe } from './pipes/pipe/pipe.component';
-import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
@@ -70,7 +69,6 @@ import { OrderModule } from 'ngx-order-pipe';
     }),
     DlDateTimeDateModule, 
     DlDateTimePickerModule,
-    OrderModule
   ], 
   providers: [
     JarwisService,
