@@ -37,4 +37,9 @@ Route::group([
     Route::get('getsedes', 'AdminController@getSedes');
     Route::post('modifys', 'AdminController@modifySede');
     Route::post('deletes', 'AdminController@deleteSede');
+    //-----------------------Parqueo-----------------------
+    Route::post('registerp', 'AdminController@addParking');
+    Route::get('getparqueo', 'AdminController@getParkingForSede');
+    Route::post('deletep', 'AdminController@deleteParking'); 
+    Route::post('modifyp', 'AdminController@modifyPark');
 });

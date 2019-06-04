@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   private Token: TokenService) { }
 
   ngOnInit() {
-
+    this.auth.authStatus.subscribe(value=> this.loggedIn = value);
   }
 
   logout(event: MouseEvent) {

@@ -68,9 +68,11 @@ class AuthController extends Controller
     public function updated(Request $request)
     {
         //$token=$request->header('Authorization',null);
-
+      
+        //$user = auth()->setRequest($request)->user();
+         //return response()->json(['error' => $token], 404);
         //$user = User::whereEmail($request->email)->first();
-        $user = DB::select('SELECT * FROM users WHERE email=?', [$request->email]);
+       $user = DB::select('SELECT * FROM users WHERE email=?', [$request->email]);
 
         if (is_null($user)) {
             return response()->json(['error' => 'Not found'], 404);

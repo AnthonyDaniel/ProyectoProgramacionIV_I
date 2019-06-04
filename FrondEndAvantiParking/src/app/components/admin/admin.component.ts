@@ -13,6 +13,7 @@ export class AdminComponent implements OnInit {
 
   filterUsers = '';
   filterSedes = '';
+  filterParking = '';
 
   public registerUser = {
     email: null,
@@ -31,13 +32,23 @@ export class AdminComponent implements OnInit {
     provincia: null
   }
 
+  public registerParking = {
+    nombre:null,
+    idParqueo:null,
+    zona:null,
+    sede:null,
+    cantidad:null
+  }
+  public sede;
   public error = [];
   public users;
   public sedes;
+  public parking;
   public errorr: String;
   public success: String;
   public status: String;
-
+  public statusP:String;
+  public errorP: String;
   ngOnInit() {
     this.admin.getUser().subscribe(
       data => {
@@ -48,6 +59,12 @@ export class AdminComponent implements OnInit {
     this.admin.getSede().subscribe(
       data => {
         this.sedes = data;
+      },
+      error => console.log(error)
+    );
+    this.admin.getParqueo().subscribe(
+      data => {
+        this.parking = data;
       },
       error => console.log(error)
     );
@@ -77,10 +94,15 @@ export class AdminComponent implements OnInit {
     this.registerUser.telefono = null;
     this.registerUser.password = null;
     this.registerSede.nombre = null,
-      this.registerSede.idSede = null;
+    this.registerSede.idSede = null;
     this.registerSede.direccion = null;
     this.registerSede.canton = null;
     this.registerSede.provincia = null;
+    this.registerParking.idParqueo = null;
+    this.registerParking.nombre = null;
+    this.registerParking.cantidad = null;
+    this.registerParking.sede = null;
+    this.registerParking.zona = null;
   }
 
   handleError(error) {
@@ -173,5 +195,62 @@ export class AdminComponent implements OnInit {
   dismissSuccess() {
     this.status = "";
     $('#alertSuccess').attr("data-dismiss", "alert");
+  }
+
+  //Parking lot
+  registerP(){
+    this.admin.registerParking(this.registerParking).subscribe(
+      data => {
+        $('#closeModalRegisterP').click();
+        this.clean();
+        this.responseSuccessParqueo(data);
+        this.ngOnInit();
+      },
+      error => {
+        this.handleError(error); 
+      }
+    );
+  }
+  responseSuccessParqueo(data) {
+    this.success = data.data;
+    this.statusP = "success";
+  }
+  responseErrorParqueo(error) {
+    console.log(error);
+    if(error.error.errors || error.error.error){
+      this.errorP = "Do not leave blank spaces or check numerical values";
+    }
+    this.statusP = "error";
+  }
+  dismissErrorP() {
+    this.statusP = "";
+    $('#alertErrorP').attr("data-dismiss", "alert");
+  }
+  dismissSuccessP() {
+    this.statusP = "";
+    $('#alertSuccessP').attr("data-dismiss", "alert");
+  }
+  modifyP(park){
+    this.admin.modifyParking(park).subscribe(
+      data => {
+        this.responseSuccessParqueo(data);
+        this.ngOnInit();
+      },
+      error => {
+        this.responseErrorParqueo(error);
+      }
+    );
+  }
+  deleteP(park){
+    this.admin.deleteParking(park).subscribe(
+      data => {
+        this.ngOnInit();
+        this.responseSuccessParqueo(data);
+      },
+      error => {
+        console.log(error);
+        this.responseErrorParqueo(error);
+      }
+    );
   }
 }

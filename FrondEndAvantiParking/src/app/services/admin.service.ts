@@ -36,4 +36,16 @@ export class AdminService {
   deleteSede(data){
     return this.http.post(`${this.baseUrl}/deletes`, data)
   }
+  registerParking(data){
+    return this.http.post(`${this.baseUrl}/registerp`, data)
+  }
+  getParqueo(){
+    return this.http.get(`${this.baseUrl}/getparqueo`)
+  }
+  deleteParking(data){
+    return this.http.post(`${this.baseUrl}/deletep`, data)
+  }
+  modifyParking(data){
+    return this.http.post(`${this.baseUrl}/modifyp`, data)
+  }
 }
