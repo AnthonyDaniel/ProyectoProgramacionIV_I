@@ -1,0 +1,278 @@
+<div class="container">
+  <div class="jumbotron border">
+    <h2 class="text title text-center"><strong>PROFILE</strong></h2>
+    <img src="/assets/user.jpg" class="border rounded mx-auto d-block rounded-circle" data-toggle="modal"
+      data-target="#FullImage" width="200px" height="200px">
+    <div class="row">
+      <div class="col-3 ml-auto">
+        <button class="btn btn-outline-secondary material-icons mr-auto" data-toggle="modal"
+          data-target="#UpImg">photo_camera</button>
+      </div>
+    </div>
+  </div>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="status=='error'">
+    {{error}}
+    <button type="button" class="close" aria-label="Close" id="alertError" (click)="dismissError()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="status=='success'">
+    {{success}}
+    <button type="button" class="close" aria-label="Close" id="alertSuccess" (click)="dismissSuccess()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="text" for="firstName"><strong>FULL NAME</strong></label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" name="name" [(ngModel)]="dataUser.nombre" placeholder="" readonly>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary material-icons" type="button" data-toggle="modal"
+            data-target="#ModifyName">create</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label class="text" for="lastName"><strong>ID</strong></label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" name="id" [(ngModel)]="dataUser.id" readonly>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary material-icons" type="button" data-toggle="modal"
+            data-target="#ModifyID">create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="text" for="email"><strong>EMAIL</strong></label>
+    <div class="input-group mb-3">
+      <input type="email" class="form-control" name="email" [(ngModel)]="dataUser.email" readonly>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <label class="text" for="country"><strong>ADDRESS</strong></label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" name="direccion" [(ngModel)]="dataUser.direccion" readonly>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary material-icons" type="button" data-toggle="modal"
+            data-target="#ModifyAddress">create</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label class="text" for="Phone"><strong>PHONE</strong></label>
+      <div class="input-group mb-3">
+        <input type="phone" class="form-control" id="phone" name="phone" [(ngModel)]="dataUser.telefono" readonly>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary material-icons" type="button" data-toggle="modal"
+            data-target="#ModifyPhone">create</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="mx-auto">
+      <p class="text-center decore btn " data-toggle="modal" data-target="#ChangePassword"
+        routerLink="/request-password-reset">Do you want to change your
+        password?</p>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="mx-auto">
+      <p class="text-center decore btn text-color" data-toggle="modal" data-target="#DeleteAccount">Delete your account?
+      </p>
+    </div>
+  </div>
+  <div class="modal fade bd-example-modal-xl" id="FullImage" tabindex="-1" role="dialog" aria-labelledby="FullImage"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="rounded mx-auto d-block">
+            <img src="/assets/user.jpg" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade bd-example-modal-xl" id="UpImg" tabindex="-1" role="dialog" aria-labelledby="UpImg"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Select the photo of your profile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="Password">To upload the image, enter your password</label>
+            <input type="password" class="form-control" id="password" placeholder="****">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade bd-example-modal-xl" id="DeleteAccount" tabindex="-1" role="dialog"
+    aria-labelledby="DeleteAccount" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete your account</h5>
+          <button type="button" id="closeModal" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <form #ConfirmForm1=ngForm (ngSubmit)="deleteAccount()">
+                <label for="Password">Enter your current password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required>
+                <br>
+                <hr>
+                <br>
+                <button type="submit" class="btn btn-danger btn-block" name="submit"
+                  [disabled]="!ConfirmForm1.valid">Delete account</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade bd-example-modal-xl" id="ModifyName" tabindex="-1" role="dialog" aria-labelledby="ModifyName"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modify your full name</h5>
+          <button type="button" id="closeModalN" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <form #ConfirmForm2=ngForm (ngSubmit)="modifyName()">
+                <label for="Nombre">Enter your new name</label>
+                <input type="text" class="form-control" name="nombre" [(ngModel)]="modifyNombre.nombre" required>
+                <label for="Password">Enter your current password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="modifyNombre.password"
+                  required>
+                <br>
+                <hr>
+                <br>
+                <button type="submit" class="btn btn-danger btn-block" name="submit"
+                  [disabled]="!ConfirmForm2.valid">Confirm</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade bd-example-modal-xl" id="ModifyID" tabindex="-1" role="dialog" aria-labelledby="ModifyName"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modify your ID</h5>
+          <button type="button" id="closeModalI" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <form #ConfirmForm3=ngForm (ngSubmit)="modifyId()">
+                <label for="Nombre">Enter your new ID</label>
+                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyID.id" maxlength="9" required
+                  pattern="[0-9]+">
+                <label for="Password">Enter your current password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="modifyID.password" required>
+                <br>
+                <hr>
+                <br>
+                <button type="submit" class="btn btn-danger btn-block" name="submit"
+                  [disabled]="!ConfirmForm3.valid">Confirm</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade bd-example-modal-xl" id="ModifyAddress" tabindex="-1" role="dialog"
+    aria-labelledby="ModifyName" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modify your address</h5>
+          <button type="button" id="closeModalA" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <form #ConfirmForm4=ngForm (ngSubmit)="modifyADDRESS()">
+                <label for="Nombre">Enter your new address</label>
+                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyAddress.direccion" required>
+                <label for="Password">Enter your current password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="modifyAddress.password"
+                  required>
+                <br>
+                <hr>
+                <br>
+                <button type="submit" class="btn btn-danger btn-block" name="submit"
+                  [disabled]="!ConfirmForm4.valid">Confirm</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade bd-example-modal-xl" id="ModifyPhone" tabindex="-1" role="dialog" aria-labelledby="ModifyName"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modify your phone</h5>
+          <button type="button" id="closeModalP" class="close" data-dismiss="modal" maxlength="9" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <form #ConfirmForm5=ngForm (ngSubmit)="modifyPHONE()">
+                <label for="Nombre">Enter your new phone</label>
+                <input type="text" class="form-control" name="ID" [(ngModel)]="modifyPhone.telefono" required
+                  pattern="[0-9]+">
+                <label for="Password">Enter your current password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="modifyPhone.password" required>
+                <br>
+                <hr>
+                <br>
+                <button type="submit" class="btn btn-danger btn-block" name="submit"
+                  [disabled]="!ConfirmForm5.valid">Confirm</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
