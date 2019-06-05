@@ -20,15 +20,6 @@ class AdminController extends Controller
 
     public function register(AdminRequest $request)
     {
-         // $user = User::whereEmail($request->users)->first();
-    
-        //if (is_null($user)) {
-        //    return response()->json(['error' => 'Not found'], 401);
-        //}else{
-          //  User::create($request->all());
-            //return response()->json(['data' => 'Create user success'], 200);
-        //}
-
         try {
             DB::insert('INSERT INTO users(nombre, id, email,telefono,direccion,password) VALUES(?,?,?,?,?,?)', [
                 $request->nombre,
@@ -51,11 +42,6 @@ class AdminController extends Controller
 
     public function deleteUsers(Request $request)
     {
-          //return $request;
-        
-        //$user = User::where('email',$email)->delete($request->all());
-
-        //return response()->json(['data' => 'Delete user success'], 200);
         try {
             DB::insert('DELETE FROM users where email= ?', [$request->email]);
             return  response()->json(['data' => 'Removed'], 200);
@@ -66,11 +52,6 @@ class AdminController extends Controller
 
     public function adminUsers(Request $request)
     {
-         //return $request;
-        
-        //$user = User::where('tipo',$tipo)->update($request->all());
-
-        //return response()->json(['data' => 'Actualization success'], 200);
         try {
             DB::update('UPDATE users set tipo = ? where email= ?', [$request->tipo, $request->email]);
             return  response()->json(['data' => 'Updated'], 200);
@@ -80,10 +61,6 @@ class AdminController extends Controller
     }
     public function registerSede(RegisterSede $request)
     {
-          
-          //  Sede::create($request->all());
-            //return response()->json(['data' => 'Create user success'], 200);
-        
         try {
             DB::insert('INSERT INTO sede(idSede, nombre, provincia,canton,direccion) VALUES(?,?,?,?,?)', [
                 $request->idSede,
@@ -103,11 +80,6 @@ class AdminController extends Controller
     }
     public function modifySede(modifySede $request)
     {
-        //return $request;
-        
-        //$sede = Sede::where('idSede',$id)->update($request->all());
-
-        //return response()->json(['data' => 'Actualization success'], 200);
         try {
             DB::update('UPDATE sede set nombre = ?,direccion = ?, canton = ?, provincia = ? where idSede= ?', [$request->nombre,$request->direccion,$request->canton,$request->provincia, $request->idSede]);
             return  response()->json(['data' => 'Updated'], 200);
@@ -117,11 +89,6 @@ class AdminController extends Controller
      }
     public function deleteSede(Request $request)
     {
-        //return $request;
-        
-        //$sede = Sede::where('idSede',$email)->delete($request->all());
-
-        //return response()->json(['data' => 'Delete user success'], 200);
         try {
             DB::insert('DELETE FROM sede where idSede= ?', [$request->idSede]);
             return  response()->json(['data' => 'Removed'], 200);

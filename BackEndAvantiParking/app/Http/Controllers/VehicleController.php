@@ -34,8 +34,7 @@ class VehicleController extends Controller
        
     }
     public function getVehicle(RegisterVehicleRequest $request){
-        //return vehicle=Vehicle::where('placa',$lPlate)->all();
-         //return response()->json(['data' => 'success'], 200);
+
         try { 
             DB::select('SELECT * FROM vehiculo WHERE users= ?', [ $request->users]);
             return  response()->json(['data' => 'Updated successfully'], 200);
