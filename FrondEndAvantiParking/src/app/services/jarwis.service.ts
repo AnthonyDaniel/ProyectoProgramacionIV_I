@@ -7,10 +7,8 @@ import { Observable } from 'rxjs';
 export class JarwisService {
   private baseUrl = 'http://localhost:8000/api';
 
-  httpHeaders = new HttpHeaders ({
-    'Content-Type': 'application/json',
-    "Authorization":localStorage.getItem("token")
-  });
+  httpHeaders=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded').set('token',localStorage.getItem("token"));
+
 
   constructor(private http: HttpClient) {
   }

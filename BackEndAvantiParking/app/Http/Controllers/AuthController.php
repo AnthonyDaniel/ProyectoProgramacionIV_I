@@ -24,7 +24,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'signup', 'checkPassword', 'updated','upload']]);
+        //$this->middleware('auth:api', ['except' => ['login', 'signup', 'checkPassword','upload']]);
     } //chequear contraseña, se le manda email y password, por lo tanto, no necesita el middleware
 
     /**
@@ -38,7 +38,6 @@ class AuthController extends Controller
         if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Email or passsword incorrect'], 401);
         }
-
         return $this->respondWithToken($token);
     }
 
@@ -67,10 +66,19 @@ class AuthController extends Controller
 
     public function updated(Request $request)
     {
-        //$token=$request->header('Authorization',null);
-      
+       // $token=$request->header('Authorization',null);
+
+
+       // $var = json_decode($token);
+        //return $var;
+
+        //$user = auth()->setToken()->user();
+
+       // return $token;
+       // return $this->respondWithToken($token);
+        //return response()->json(['data' => $token], 200);
         //$user = auth()->setRequest($request)->user();
-         //return response()->json(['error' => $token], 404);
+        //return response()->json(['error' => $token], 404);
         //$user = User::whereEmail($request->email)->first();
        $user = DB::select('SELECT * FROM users WHERE email=?', [$request->email]);
 

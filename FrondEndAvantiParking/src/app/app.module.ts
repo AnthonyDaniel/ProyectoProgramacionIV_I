@@ -34,6 +34,7 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { AdminComponent } from './components/admin/admin.component';
 import {FilterPipe } from './pipes/pipe/pipe.component';
 import {FilterPipeS } from './pipes/pipe-sede/pipe-sede.component';
+
 @NgModule({
   declarations: [
     AppComponent,
