@@ -1,11 +1,5 @@
 <?php
 
-//namespace App\Http\Controllers;
-
-//use Illuminate\Support\Facades\Auth;
-//use App\Http\Controllers\Controller;
-//use Illuminate\Http\Request;
-//use App\Http\Requests\SignUpRequest;
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
@@ -44,18 +38,9 @@ class AuthController extends Controller
 
     public function signup(SignUpRequest $request)
     {
-
-        DB::insert('INSERT INTO users (email,id,nombre,direccion,telefono,password) VALUES (?,?,?,?,?,?)', [
-            $request->email,
-            $request->id,
-            $request->nombre,
-            $request->direccion,
-            $request->telefono,
-            bcrypt($request->password)
-        ]);
-        //User::create($request->all());
+        User::create($request->all());
         //return $request->email;
-        return $this->login($request); //Te logueas despues de registrarte, automaticamente mm ya veo
+        return $this->login($request); 
     }
     /**
      * @return \Illuminate\Http\JsonResponse
@@ -71,16 +56,15 @@ class AuthController extends Controller
       
         //$user = auth()->setRequest($request)->user();
          //return response()->json(['error' => $token], 404);
-        //$user = User::whereEmail($request->email)->first();
-       $user = DB::select('SELECT * FROM users WHERE email=?', [$request->email]);
+        $user = User::whereEmail($request->email)->first();
+       
 
         if (is_null($user)) {
             return response()->json(['error' => 'Not found'], 404);
         } else {
             if ($request->nombre) {
                 try {
-                    DB::update('UPDATE users set nombre = ? where email= ?', [$request->nombre, $request->email]);
-                    //$user->update(['nombre'=>$request->nombre]);
+                    $user->update(['nombre'=>$request->nombre]);
                     return  response()->json(['data' => 'Updated'], 200);
                 } catch (\Illuminate\Database\QueryException $e) {
                     return  response()->json(['error' => 'Name no updated '], 406);
@@ -88,8 +72,7 @@ class AuthController extends Controller
             }
             if ($request->id) {
                 try {
-                    DB::update('UPDATE users set id = ? where email= ?', [$request->id, $request->email]);
-                    //$user->update(['id'=>$request->id]);
+                    $user->update(['id'=>$request->id]);
                     return  response()->json(['data' => 'Updated'], 200);
                 } catch (\Illuminate\Database\QueryException $e) {
                     return  response()->json(['error' => 'ID no updated '], 406);
@@ -97,8 +80,7 @@ class AuthController extends Controller
             }
             if ($request->direccion) {
                 try {
-                    DB::update('UPDATE users set direccion = ? where email= ?', [$request->direccion, $request->email]);
-                    //$user->update(['direccion'=>$request->direccion]);
+                    $user->update(['direccion'=>$request->direccion]);
                     return  response()->json(['data' => 'Updated'], 200);
                 } catch (\Illuminate\Database\QueryException $e) {
                     return  response()->json(['error' => 'Address no updated '], 406);
@@ -106,8 +88,7 @@ class AuthController extends Controller
             }
             if ($request->telefono) {
                 try {
-                    DB::update('UPDATE users set telefono = ? where email= ?', [$request->telefono, $request->email]);
-                    //$user->update(['telefono'=>$request->telefono]);
+                    $user->update(['telefono'=>$request->telefono]);
                     return  response()->json(['data' => 'Updated'], 200);
                 } catch (\Illuminate\Database\QueryException $e) {
                     return  response()->json(['error' => 'Phone no updated '], 406);
@@ -168,21 +149,14 @@ class AuthController extends Controller
 
     public function delete()
     {
-        //$user = User::where('email', $dato)->get(); // Prueb
-        //$user = User::find($dato); // Prueba
         $dato = auth()->user()->email;
-        $user = DB::select('SELECT * FROM users WHERE email=?', [$dato]);
+        $user = User::where('email', $dato)->get(); 
         
         if (is_null($user)) {
             return response()->json(['error' => 'Not found'], 404);
         } else {
-            //$user->delete();
-            try {
-                DB::delete('DELETE FROM users where email= ?', [$dato]); 
-                return  response()->json(['data' => 'Removed'], 200);
-            } catch (\Illuminate\Database\QueryException $e) {
-                return  response()->json(['error' => 'No removed'], 409);
-            }
+            $user->delete();
+           
         }
     }
     /**

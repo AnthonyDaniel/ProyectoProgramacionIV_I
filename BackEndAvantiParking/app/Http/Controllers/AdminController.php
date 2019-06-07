@@ -89,15 +89,9 @@ class AdminController extends Controller
     public function addParking(RParkingLot $request)
     {
         try {
-            DB::insert('INSERT INTO parqueo(idParqueo, nombre, zona,cantidad,sede) VALUES(?,?,?,?,?)', [
-                $request->idParqueo,
-                $request->nombre,
-                $request->zona,
-                $request->cantidad,
-                $request->sede,
-            ]);
-
+            ParkingLot::create($request->all());
             for ($i = 0; $i < $request->cantidad; $i++) {
+                
                 DB::insert('INSERT INTO espacio(idEspacio,parqueo) VALUES(?,?)', [
                     $request->zona. ":".($i + 1),
                     $request->idParqueo
@@ -133,8 +127,11 @@ class AdminController extends Controller
     public function getSpaces(Request $request)
     {
         try {
-            $resut = DB::select("SELECT * FROM espacio WHERE parqueo=? ORDER BY idEspacio", [$request->idParqueo]);
-            return  response()->json($resut, 200);
+           
+         $data=Space::where('parqueo',$request->idParqueo)->get();
+           return response()->json($data,200);
+           // $resut = DB::select("SELECT * FROM espacio WHERE parqueo=?", [$request->idParqueo]);
+            //return  response()->json($resut, 200);
         } catch (\Illuminate\Database\QueryException $e) {
             return  response()->json(['error' => $e], 409);
         }
@@ -150,7 +147,8 @@ class AdminController extends Controller
     public function deleteSpace(Request $request)
     {
         try {
-            DB::insert('DELETE FROM espacio where idEspacio= ?', [$request->idEspacio]);
+            Space::where('idEspacio',$request->idEspacio)->delete($request->all());
+            //DB::insert('DELETE FROM espacio where idEspacio= ?', [$request->idEspacio]);
             $e = DB::select('SELECT count(idEspacio) as t FROM espacio Where parqueo=?', [$request->parqueo]);
             foreach($e as $t){
              $cantidad = $t->t;

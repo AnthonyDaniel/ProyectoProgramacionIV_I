@@ -13,30 +13,25 @@ class ReserveController extends Controller
     { }
 
     public function addR(ReservarRequest $r){
+
         try {
-            DB::insert('INSERT INTO reserva(fechaReserva,horaInicio,horaFinal,espacio,users,vehiculo) VALUES(?,?,?,?,?,?)', [
-                $r->fechaReserva,
-                $r->horaInicio,
-                $r->horaFinal,
-                $r->espacio,
-                $r->users,
-                $r->vehiculo
-            ]);
+            Reserve::create($r->all());
             return  response()->json(['data' => 'Added successfully'], 200);
         } catch (\Illuminate\Database\QueryException $e) {
             return  response()->json(['error' => $e], 409);
         }
     }
     public function list(Request $r){
-        return DB::select('SELECT * FROM reserva WHERE users=?',[$r->users]);
+        $data= Reserve::where('users',$r->users)->get();
+        return response()->json($data,200);
     }
     public function delete(Request $r)
     {
-        try {
-            DB::insert('DELETE FROM reserva where id= ?', [$r->id]);
-            return  response()->json(['data' => 'Removed'], 200);
-        } catch (\Illuminate\Database\QueryException $e) {
-            return  response()->json(['error' => 'No removed'], 409);
-        }   
+        $deleted = Reserve::where('id',$request->id)->delete($request->all());
+        if($deleted){
+            return  response()->json(['data' => 'User deleted successfully'], 200);
+        }else{
+            return  response()->json(['error' => 'User not removed'], 406);
+        }
     }
 }

@@ -17,7 +17,7 @@ class ChangePasswordController extends Controller
 
     private function getPasswordResetTableRow($request)
     {
-        return User::table('password_resets')->where(['email' => $request->email,'token' =>$request->resetToken]);
+        return User::table('password_resets')->where(['email'=> $request->email,'token'=>$request->resetToken]);
     }
 
     private function tokenNotFoundResponse()
@@ -28,7 +28,7 @@ class ChangePasswordController extends Controller
     private function changePassword($request)
     {
         $user = User::whereEmail($request->email)->first();
-        $user->update(['password'=>$request->password]);
+        $user->update('password',$request->password);
         $this->getPasswordResetTableRow($request  )->delete();
         return response()->json(['data'=>'Password Successfully Changed'],Response::HTTP_CREATED);
     }

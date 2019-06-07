@@ -26,7 +26,7 @@ class VehicleController extends Controller
     public function getVehicle(Request $request)
     {
         $data=Vehicle::where('users',$request->users)->get();
-        return response()->json([$data],200);
+        return response()->json($data,200);
     }
     public function updateVehicle(RegisterVehicleRequest $request)
     {
