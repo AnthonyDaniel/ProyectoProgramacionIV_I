@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark colornavbar">
+  <a class="navbar-brand" routerLink="/"><img
+      src="https://www.avantica.net/hubfs/Redesign-2018-assets/avantica-copy@3x.png" id="logo"></a>
+  <button class="navbar-toggler" id="togglee" type="button" (click) = "toggleNavbar()">
+    
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02" [ngClass] = "{'show': navbarOpen}">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/reserve" data-toggle="tooltip" data-placement="left" title="Make parking reservations" *ngIf="loggedIn" (click) = "toggleNavbar()">
+          Reserve
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/user/profile" data-toggle="tooltip" data-placement="left" title="See profile, change all aspects." *ngIf="loggedIn" (click) = "toggleNavbar()">
+          <i class="material-icons"> account_circle</i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/vehicle"  data-toggle="tooltip" data-placement="left" title="Manage all your vehicles" *ngIf="loggedIn" (click) = "toggleNavbar()">
+          <i class="material-icons">drive_eta</i>
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-o">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin" data-toggle="tooltip" data-placement="left" title="Manage AvantiParking" *ngIf="loggedIn"  (click) = "toggleNavbar()" >
+          <p>Administration</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/user/register" data-toggle="tooltip" data-placement="left" title="Register and enjoy AvantiParking" *ngIf="!loggedIn" (click) = "toggleNavbar()">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/user/login"  data-toggle="tooltip" data-placement="left" title="Log in to enjoy AvantiParling to the fullest" *ngIf="!loggedIn" (click) = "toggleNavbar()">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  data-toggle="tooltip" data-placement="left" title="Sign off" href="#" (click)="logout($event)" *ngIf="loggedIn" >Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="margin"></div>

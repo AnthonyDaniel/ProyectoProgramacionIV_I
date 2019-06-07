@@ -1,0 +1,12 @@
+
+.details{
+    color: white;
+    text-decoration: black;
+}
+
+.cover{
+    height: 380px;
+    background-size: cover;
+    background-color: white;
+
+}

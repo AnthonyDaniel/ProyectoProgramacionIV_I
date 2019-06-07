@@ -1,0 +1,12 @@
+table{
+    table-layout: fixed !important;
+}
+
+th, td {
+    width: 115px;
+    word-wrap: break-word;
+}
+tbody {
+    overflow:scroll !important;
+    height:190px !important;
+}

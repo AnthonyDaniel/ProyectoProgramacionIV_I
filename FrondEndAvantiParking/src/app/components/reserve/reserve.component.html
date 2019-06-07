@@ -1,0 +1,157 @@
+<br>
+<div class="container">
+  <h1 class="title text text-center"><strong>RESERVE</strong></h1>
+  <form #Confirm=ngForm (ngSubmit)="reserve()">
+    <div class="row">
+      <div class="col-md-6">
+        <label class="text" for="e"><strong>PARKING</strong></label>
+        <select name="park" [(ngModel)]="confirm.park" class="custom-select my-1 mr-sm-2" required>
+          <option></option>
+          <option value="{{p.idParqueo}}" *ngFor="let p of parking">{{p.idParqueo}} {{p.nombre}}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="text" for="id"><strong>VEHICLE</strong></label>
+        <select name="vehicle" [(ngModel)]="confirm.vehicle" class="custom-select my-1 mr-sm-2" required>
+          <option></option>
+          <option value="{{v.placa}}" *ngFor="let v of vehicles">{{v.placa}} {{v.marca}}</option>
+        </select>
+      </div>
+    </div>
+  </form>
+  <div *ngIf="Confirm.valid">
+    <br><br>
+    <form #FormReserve=ngForm (ngSubmit)="confirmR()">
+      <div class="row">
+        <div class="col-6">
+          <label class="text" for="e"><strong>RESERVATION DAY</strong></label>
+          <div class="form-group">
+            <div class="input-group my-xl-4 my-sm-1">
+              <input class="form-control" name="dp" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="reserves.fechaReserva"
+                required>
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                  <i class="material-icons">date_range</i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="mr-auto">
+            <div class=row>
+              <div class="col-6 ml-auto">
+                <label class="text">STARTS AT</label>
+                <ngb-timepicker name="start" [(ngModel)]="reserves.horaInicio" required></ngb-timepicker>
+              </div>
+              <div class="col-6 mr-auto">
+                <label class="text">ENDS AT</label>
+                <ngb-timepicker name="end" [(ngModel)]="reserves.horaFinal" required></ngb-timepicker>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" id="OpenModal" *ngIf="reserves.fechaReserva!=null" class="btn btn-outline-primary"
+          data-toggle="modal" data-target=".bd-example-modal-xl2"><strong>SELECT SPACE</strong></button>
+      </div>
+    </form>
+    <br><br>
+    <div *ngIf="statusSpace">
+      <div class="modal fade bd-example-modal-xl2" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">SPACES</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeM">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body table-responsive">
+                <div class="table-responsive">
+                  <table class="table table-borderless table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col">IDSPACE</th>
+                        <th scope="col">TYPE</th>
+                        <th scope="col">SELECT</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let s of spaces">
+                        <td>
+                          <input type="text" class="form-control" disabled [(ngModel)]="s.idEspacio">
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" disabled [(ngModel)]="s.tipoEspacio">
+                        </td>
+                        <td>
+                          <button type="button" class="btn btn-outline-primary"
+                            (click)="selectSpace(s)"><strong>SELECT</strong></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <label>Space: {{space.idEspacio}}</label>
+    </div>
+  </div>
+  <br><br>
+  <div class="text-center">
+    <button type="submit" [disabled]="space.idEspacio==null" (click)="reservar()"
+      class="btn btn-outline-primary btn-block"><strong>ADD
+        RESERVE</strong></button>
+  </div>
+  <br><br>
+  <h3 class="text-center">RESERVATIONS</h3>
+  <div class="table-responsive">
+    <table class="table table-borderless table-sm">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">RESERVE DAY</th>
+          <th scope="col">TIME START</th>
+          <th scope="col">TIME END</th>
+          <th scope="col">SPACE</th>
+          <th scope="col">VEHICLE</th>
+          <th scope="col">DELETE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of res">
+          <td>
+            <input type="text" class="form-control" disabled [(ngModel)]="s.id">
+          </td>
+          <td>
+            <input type="text" class="form-control" disabled [(ngModel)]="s.fechaReserva">
+          </td>
+          <td>
+            <input type="text" class="form-control" disabled [(ngModel)]="s.horaInicio">
+          </td>
+          <td>
+            <input type="text" class="form-control" disabled [(ngModel)]="s.horaFinal">
+          </td>
+          <td>
+            <input type="text" class="form-control" disabled [(ngModel)]="s.espacio">
+          </td>
+          <td>
+            <input type="text" class="form-control" disabled [(ngModel)]="s.vehiculo">
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-primary"
+              (click)="deleteReserve(s)"><strong>DELETE</strong></button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+</div>
