@@ -89,9 +89,8 @@ class AdminController extends Controller
     public function addParking(RParkingLot $request)
     {
         try {
-            ParkingLot::create($request->all());
+                ParkingLot::create($request->all());
             for ($i = 0; $i < $request->cantidad; $i++) {
-                
                 DB::insert('INSERT INTO espacio(idEspacio,parqueo) VALUES(?,?)', [
                     $request->zona. ":".($i + 1),
                     $request->idParqueo
@@ -127,33 +126,41 @@ class AdminController extends Controller
     public function getSpaces(Request $request)
     {
         try {
-           
-         $data=Space::where('parqueo',$request->idParqueo)->get();
-           return response()->json($data,200);
-           // $resut = DB::select("SELECT * FROM espacio WHERE parqueo=?", [$request->idParqueo]);
-            //return  response()->json($resut, 200);
+            $resut = DB::select("SELECT * FROM espacio WHERE parqueo=? ORDER BY idEspacio", [$request->idParqueo]);
+            //$resut = Space::where('parqueo',$request->idParqueo)->get();
+            return  response()->json($resut, 200);
         } catch (\Illuminate\Database\QueryException $e) {
             return  response()->json(['error' => $e], 409);
         }
     }
     public function modifySpace(ModifySpace $request){
-        $updated= Space::where('idEspacio',$request->idEspacio)->update($request->all());                  
+       /* $updated= Space::where('idEspacio',$request->idEspacio)->update($request->all());                  
         if($updated>0){
             return  response()->json(['data' => 'Updated successfully'], 200);
         }else{
             return  response()->json(['error' => 'Error! not updated '], 406);
+        }*/
+        try {
+            DB::update(
+                'UPDATE espacio set tipoEspacio=?,users=? where idEspacio= ?',
+                [$request->tipoEspacio,$request->users,$request->idEspacio]
+            );
+            return  response()->json(['data' => 'Updated'], 200);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return  response()->json(['error' => $e], 406);
         }
     }
     public function deleteSpace(Request $request)
     {
         try {
-            Space::where('idEspacio',$request->idEspacio)->delete($request->all());
-       
+            DB::insert('DELETE FROM espacio where idEspacio= ?', [$request->idEspacio]);
+           // Space::where('idEspacio',$request->Espacio)->delete($request->all());
             $e = DB::select('SELECT count(idEspacio) as t FROM espacio Where parqueo=?', [$request->parqueo]);
             foreach($e as $t){
              $cantidad = $t->t;
             } 
-            Space::where('idParqueo',$request->idParqueo)->update($request->all());    
+            DB::update('UPDATE parqueo set cantidad=? where idParqueo=?',[$cantidad, $request->parqueo]);
+           // Space::where('idParqueo',$request->parqueo)->update($request->all());
             return  response()->json(['data' => 'Removed'], 200);
         } catch (\Illuminate\Database\QueryException $e) {
             return  response()->json(['error' => $e], 409);

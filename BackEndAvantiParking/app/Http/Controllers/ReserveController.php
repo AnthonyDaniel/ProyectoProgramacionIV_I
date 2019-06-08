@@ -13,13 +13,27 @@ class ReserveController extends Controller
     { }
 
     public function addR(ReservarRequest $r){
+        $space= Reserve::whereEspacio($r->espacio)->first();
 
-        try {
-            Reserve::create($r->all());
-            return  response()->json(['data' => 'Added successfully'], 200);
-        } catch (\Illuminate\Database\QueryException $e) {
-            return  response()->json(['error' => $e], 409);
+        if(is_null($space)){
+            try {
+                DB::insert('INSERT INTO reserva(fechaReserva,horaInicio,horaFinal,espacio,users,vehiculo) VALUES(?,?,?,?,?,?)', [
+                    $r->fechaReserva,
+                    $r->horaInicio,
+                    $r->horaFinal,
+                    $r->espacio,
+                    $r->users,
+                    $r->vehiculo
+                ]);
+               // Reserve::create($r->all());
+                return  response()->json(['data' => 'Added successfully'], 200);
+            } catch (\Illuminate\Database\QueryException $e) {
+                return  response()->json(['error' => $e], 409);
+            }
+        }else{
+            return  response()->json(['error' => 'Exists'], 406);
         }
+        
     }
     public function list(Request $r){
         $data= Reserve::where('users',$r->users)->get();

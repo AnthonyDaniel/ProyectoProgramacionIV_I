@@ -52,16 +52,9 @@ class VehicleController extends Controller
     public function upload(Request $request){
         $image=$request->file('file0');
         $validate=\Validator::make($request->all(),[
-            'file0'=>'required|image|mimes:jpg,png'
+            'file0'=>'required|image'
         ]);
-        if(!$image || $validate->fails()){
-            $response=array(
-                'status'    =>'error',
-                'code'      =>406,
-                'message'   =>'Error al subir la imagen'                
-            );
-        }
-        else{
+        try {
             $image_name=time().$image->getClientOriginalName();
             \Storage::disk('vehicle')->put($image_name,\File::get($image));
             $response=array(
@@ -70,8 +63,12 @@ class VehicleController extends Controller
                 'image' =>$image_name,
                 'message'   =>'Imagen cargada satisfactoriamente'                
             );
+            return response()->json($response,$response['code']);
+        } catch (\Illuminate\Database\QueryException $e) {
+            return  response()->json(['error' => $e], 409);
         }
-        return response()->json($response,$response['code']);
+      
+   
     }   
     public function avatar($filename){
         $exist=\Storage::disk('vehicle')->exists($filename);
