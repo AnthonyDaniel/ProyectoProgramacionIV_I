@@ -25,6 +25,8 @@ Route::group([
     Route::post('getv', 'VehicleController@getVehicle');
     Route::post('updatev','VehicleController@updateVehicle');
     Route::post('deletev','VehicleController@deleteVehicle');
+    Route::post('upload','VehicleController@upload');
+    Route::get('avatar/{filename}','VehicleController@avatar');
 
     //ADMIN
     //----------------------Users

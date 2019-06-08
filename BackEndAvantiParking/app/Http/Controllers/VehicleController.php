@@ -49,4 +49,42 @@ class VehicleController extends Controller
         }
        
     }
+    public function upload(Request $request){
+        $image=$request->file('file0');
+        $validate=\Validator::make($request->all(),[
+            'file0'=>'required|image|mimes:jpg,png'
+        ]);
+        if(!$image || $validate->fails()){
+            $response=array(
+                'status'    =>'error',
+                'code'      =>406,
+                'message'   =>'Error al subir la imagen'                
+            );
+        }
+        else{
+            $image_name=time().$image->getClientOriginalName();
+            \Storage::disk('vehicle')->put($image_name,\File::get($image));
+            $response=array(
+                'status'    =>'success',
+                'code'      =>200,
+                'image' =>$image_name,
+                'message'   =>'Imagen cargada satisfactoriamente'                
+            );
+        }
+        return response()->json($response,$response['code']);
+    }   
+    public function avatar($filename){
+        $exist=\Storage::disk('vehicle')->exists($filename);
+        if($exist){
+            $file = \Storage::disk('vehicle')->get($filename);
+            return new Response($file,200);
+        }else{
+            $response=array(
+                'status'    =>'error',
+                'code'      =>404,
+                'message'   =>'Imagen no exite'                
+            );
+            return response()->json($response,$response['code']);
+        }
+    }
 }

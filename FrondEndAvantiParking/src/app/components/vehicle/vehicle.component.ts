@@ -20,15 +20,18 @@ export class VehicleComponent implements OnInit {
     modelo: null,
     marca: null,
     users: null,
+    image:null,
   };
   
   public vehicles;
+  public urlImg;
   
   public editVehicle={
     placa: null,
     modelo: null,
     marca: null,
     users: null,
+  
   }
   public error: String;
   public success: String;
@@ -40,8 +43,35 @@ export class VehicleComponent implements OnInit {
     private router: Router,
     private Jarwis: JarwisService,
     private token: TokenService,
-  ) { }
+    
+    
+  ) {  this.urlImg='http://localhost:8000/avatar/';}
 
+  afuConfig = {
+    multiple: false,
+    formatsAllowed: ".jpg,.png",
+    maxSize: "5",
+    uploadAPI:  {
+      url:'http://localhost:8000/upload',
+      headers: {
+        "token" :localStorage.getItem('token')
+      }
+    },
+    theme: "attachPin",
+    hideProgressBar: false,
+    hideResetBtn: true,
+    hideSelectBtn: false,
+    attachPinText:'photo',    
+    replaceTexts: {
+      selectFileBtn: 'Select Files',
+      resetBtn: 'Reset',
+      uploadBtn: 'Upload',
+      dragNDropBox: 'Drag N Drop',
+      attachPinBtn: 'Attach Files...',
+      afterUploadMsg_success: 'Successfully Uploaded !',
+      afterUploadMsg_error: 'Upload Failed !'
+    }
+};
   handleResponse(data) {
     this.auth.changeAuthStatus(true);
     this.router.navigateByUrl('/vehicle');

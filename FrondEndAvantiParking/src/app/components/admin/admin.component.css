@@ -1,0 +1,19 @@
+.jumbotron{
+    background: #170B3B;
+}
+.text-center{
+    color:white;
+}
+.thead{
+    background:#302D54;
+    color: #fff;
+}
+.btn1{
+    background:#fff;
+    color:  #302D54;
+    border-color: #302D54;
+}
+.btn1:hover{
+    background: #302D54;
+    color: #fff ;
+}

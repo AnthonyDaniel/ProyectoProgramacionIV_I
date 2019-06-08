@@ -34,6 +34,7 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { AdminComponent } from './components/admin/admin.component';
 import {FilterPipe } from './pipes/pipe/pipe.component';
 import {FilterPipeS } from './pipes/pipe-sede/pipe-sede.component';
+import { AngularFileUploaderModule } from "angular-file-uploader";
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +71,7 @@ import {FilterPipeS } from './pipes/pipe-sede/pipe-sede.component';
     }),
     DlDateTimeDateModule, 
     DlDateTimePickerModule,
+    AngularFileUploaderModule,
   ], 
   providers: [
     JarwisService,

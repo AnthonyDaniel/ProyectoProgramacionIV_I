@@ -148,13 +148,12 @@ class AdminController extends Controller
     {
         try {
             Space::where('idEspacio',$request->idEspacio)->delete($request->all());
-            //DB::insert('DELETE FROM espacio where idEspacio= ?', [$request->idEspacio]);
+       
             $e = DB::select('SELECT count(idEspacio) as t FROM espacio Where parqueo=?', [$request->parqueo]);
             foreach($e as $t){
              $cantidad = $t->t;
             } 
-            DB::update('UPDATE parqueo set cantidad=? where idParqueo=?',[$cantidad, $request->parqueo]);
-        
+            Space::where('idParqueo',$request->idParqueo)->update($request->all());    
             return  response()->json(['data' => 'Removed'], 200);
         } catch (\Illuminate\Database\QueryException $e) {
             return  response()->json(['error' => $e], 409);

@@ -2,7 +2,7 @@
 .form-container{
     position: relative;
     top: 7vh;
-    background: #fff;
+    background: rgba(0,0,0,.8);
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px #000;
@@ -15,7 +15,7 @@
     border-color:#302D54;
     color: #302D54;
   }
-  .btn1 button:hover{
+  ._btn:hover{
   background:#302D54;
   color: #fff;
   }
@@ -42,7 +42,7 @@
   right: 0; 
   top: 0;
   z-index: -100;
-  opacity: 0.75;
+  
 }
 
 .grid-block::before{

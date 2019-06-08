@@ -1,14 +1,15 @@
 <div class="container">
   <div class="jumbotron border">
     <h1 class="text title text-center"><strong>VEHICLE</strong></h1>
-    <img src="/assets/vehicle.jpg" class="border rounded mx-auto d-block rounded-circle" data-toggle="modal"
-      data-target="#FullImage" width="200px" height="200px">
-    <div class="row">
-      <div class="col-3 ml-auto">
-        <button class="btn btn-outline-secondary material-icons mr-auto" data-toggle="modal"
-          data-target="#UpImg">photo_camera</button>
-      </div>
-    </div>
+    <div *ngIf="form && form.image" class="mb-4" >
+      <img src={{urlImg+form.image}} width=100px> 
+   </div>
+
+    <angular-file-uploader
+      [config]="afuConfig"
+      [resetUpload]=resetVar
+      (ApiResponse)="avatarUpload($event)">
+    </angular-file-uploader>
   </div>
   <form #registerVehicleForm=ngForm (ngSubmit)="onSubmit()">
     <div class="row">
@@ -64,9 +65,14 @@
         </thead>
         <tbody>
           <tr *ngFor="let vehicle of vehicles">
-            <td></td>
-            <td><button class="btn btn-outline-secondary material-icons mr-auto text-center" data-toggle="modal"
-                data-target="#UpImg">photo_camera</button></td>
+            <td><div *ngIf="form && form.image" class="mb-4" >
+              <img src={{urlImg+form.image}} width=100px> </div>
+            </td>
+            <td><angular-file-uploader
+              [config]="afuConfig"
+              [resetUpload]=resetVar
+              (ApiResponse)="avatarUpload($event)">
+            </angular-file-uploader></td>
             <td><input type="text" class="form-control" disabled [(ngModel)]="vehicle.placa"></td>
             <td><input type="text" class="form-control" [(ngModel)]="vehicle.marca"></td>
             <td><input type="text" class="form-control" [(ngModel)]="vehicle.modelo"></td>
@@ -78,21 +84,5 @@
       </table>
     </div>
   </div>
-  <div class="modal fade bd-example-modal-xl" id="FullImage" tabindex="-1" role="dialog" aria-labelledby="FullImage"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="rounded mx-auto d-block">
-            <img src="/assets/vehicle.jpg" class="img-fluid">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+ 
 </div><br>
