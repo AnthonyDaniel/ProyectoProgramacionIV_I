@@ -7,8 +7,8 @@ import { JarwisService } from './jarwis.service';
 })
 export class TokenService {
   private iss = {
-    login: 'https://avantiparkingbackend.000webhostapp.com/api/login',
-    signup: 'https://avantiparkingbackend.000webhostapp.com/api/signup'
+    login: 'http://localhost:8000/api/login',
+    signup: 'http://localhost:8000/api/signup'
   };
 
   public dataT = null;

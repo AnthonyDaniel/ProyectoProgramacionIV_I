@@ -6,7 +6,7 @@ import { Vehicle } from '../Models/vehicle';
   providedIn: 'root'
 })
 export class VehicleService {
-  private baseUrl = 'https://avantiparkingbackend.000webhostapp.com/api';
+  private baseUrl = 'http://localhost:8000/api';
 
   constructor(private http: HttpClient) { 
 

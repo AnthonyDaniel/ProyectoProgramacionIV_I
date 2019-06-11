@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class JarwisService {
-  private baseUrl = 'https://avantiparkingbackend.000webhostapp.com/api/';
+  private baseUrl = 'http://localhost:8000/api/';
 
   httpHeaders = new HttpHeaders ({
     'Content-Type': 'application/json',
@@ -16,13 +16,12 @@ export class JarwisService {
   }
 
   signup(data) {
-    
-    return this.http.post(`${this.baseUrl}signup?`+data,"")
+    return this.http.post(`${this.baseUrl}signup`,data)
   }
 
   login(data) {
     console.log(JSON.stringify(data));
-    return this.http.post(`${this.baseUrl}login`,JSON.stringify(data)) 
+    return this.http.post(`${this.baseUrl}login`,data) 
   }
 
   me(data) {
@@ -34,7 +33,7 @@ export class JarwisService {
   }
 
   updated(data){
-    return this.http.post(`${this.baseUrl}updaten`, data, {headers: this.httpHeaders});
+    return this.http.post(`${this.baseUrl}updaten`, data);
   }
 
   deleteUser(data) {

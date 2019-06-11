@@ -4,7 +4,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { JarwisService } from 'src/app/services/jarwis.service';
 import { TokenService } from 'src/app/services/token.service';
-
 import { $ } from 'jquery'
 import { Vehicle } from 'src/app/Models/vehicle';
 import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
@@ -46,7 +45,7 @@ export class VehicleComponent implements OnInit {
 
 
   ) { 
-    this.urlImg = 'https://avantiparkingbackend.000webhostapp.com/api/avatarvehicle/'; 
+    this.urlImg = 'http://localhost:8000/api/avatarvehicle/';  
   }
 
   afuConfig = {
@@ -54,7 +53,7 @@ export class VehicleComponent implements OnInit {
     formatsAllowed: ".jpg,.png,.jpeg,.jfif",
     maxSize: "5",
     uploadAPI: {
-      url: 'https://avantiparkingbackend.000webhostapp.com/api/uploadvehicle',
+      url: 'http://localhost:8000/api/uploadvehicle', 
     },
     theme: "attachPin",
     hideProgressBar: false,

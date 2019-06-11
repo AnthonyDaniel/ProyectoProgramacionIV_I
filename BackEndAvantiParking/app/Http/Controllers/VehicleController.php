@@ -16,16 +16,11 @@ class VehicleController extends Controller
     public function saveVehicle(RegisterVehicleRequest $request)
     {
         try {
-            $user = User::whereEmail($request->users)->first();
-     
-            if (is_null($user)) {
-                return response()->json(['error' => 'Not found'], 401);
-            }else{
-                Vehicle::create($request->all());
-                return response()->json(['data' => 'Create vehicle success'], 200);
-            }
+            Vehicle::create($request->all());
+            return response()->json(['data' => 'Create vehicle success'], 200);
+            
         } catch (\Throwable $th) {
-            return  response()->json(['error' => 'Data error, dublique'], 406);
+            return  response()->json(['error' => 'Data error'], 406);
         }
         
     
@@ -37,10 +32,10 @@ class VehicleController extends Controller
     }
     public function updateVehicle(RegisterVehicleRequest $request)
     {
-        $updated= Vehicle::where('placa',$request->placa)->update($request->all());                  
-        if($updated>0){
+        try {
+            Vehicle::where('placa',$request->placa)->update($request->all());                  
             return  response()->json(['data' => 'Updated successfully'], 200);
-        }else{
+        } catch (\Throwable $th) {
             return  response()->json(['error' => 'Error! not updated '], 406);
         }
     }

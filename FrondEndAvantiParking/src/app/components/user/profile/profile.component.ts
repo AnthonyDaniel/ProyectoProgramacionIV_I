@@ -12,7 +12,7 @@ import * as $ from 'jquery';
 })
 export class ProfileComponent implements OnInit {
 
-  public urlImg='https://avantiparkingbackend.000webhostapp.com/api/avatar/';
+  public urlImg='http://localhost:8000/api/avatar/';
 
   public cerrar = "";
 
@@ -210,7 +210,7 @@ export class ProfileComponent implements OnInit {
     formatsAllowed: ".jpg,.png,.jpeg,.jfif",
     maxSize: "5",
     uploadAPI: {
-      url: 'https://avantiparkingbackend.000webhostapp.com/api/upload',
+      url: 'http://localhost:8000/api/upload',
     },
     theme: "attachPin",
     hideProgressBar: false,
