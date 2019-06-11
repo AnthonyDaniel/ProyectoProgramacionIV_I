@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AdminService {
 
-  private baseUrl = 'http://localhost:8000/api';
+  private baseUrl = 'https://avantiparkingbackend.000webhostapp.com/api';
 
   constructor(private http: HttpClient) {
 
@@ -67,4 +67,5 @@ export class AdminService {
   deleteReserve(data){
     return this.http.post(`${this.baseUrl}/deleterr`, data)
   }
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JarwisService } from '../../../services/jarwis.service';
 import { SnotifyService } from 'ng-snotify';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-request-reset',
@@ -16,7 +17,8 @@ export class RequestResetComponent implements OnInit {
   constructor(
     private Jarvis: JarwisService,
     private notify: SnotifyService,
-    private Notfiy:SnotifyService
+    private Notfiy:SnotifyService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -34,6 +36,7 @@ export class RequestResetComponent implements OnInit {
   handleResponse(res) {
     this.Notfiy.success(res.data,{timeout:0});
     this.form.email = null;
+    this.router.navigateByUrl('/');
   }
 
 }

@@ -7,8 +7,8 @@ import { JarwisService } from './jarwis.service';
 })
 export class TokenService {
   private iss = {
-    login: 'http://localhost:8000/api/login',
-    signup: 'http://localhost:8000/api/signup'
+    login: 'https://avantiparkingbackend.000webhostapp.com/api/login',
+    signup: 'https://avantiparkingbackend.000webhostapp.com/api/signup'
   };
 
   public dataT = null;
@@ -37,6 +37,7 @@ export class TokenService {
     const token = this.get();
     if (token) {
       const payload = this.payload(token);
+      console.log(payload);
       if (payload) {
         return Object.values(this.iss).indexOf(payload.iss) >= -1 ? true : false;
       }
@@ -54,26 +55,30 @@ export class TokenService {
   }
 
   loggedIn() {
+    
     return this.isValid();
   }
-
-
-  rolV(s): boolean {
-    
-    if(!s){
+  admin(){
+    const token = this.get();
+    if (token) {
+      const payload = this.payload(token);
+      console.log(payload);
+      if (payload) {
+        return Object.values(this.iss).indexOf(payload.iss) >= -1 ? true : false;
+      }
+    }
+    return false;
+  }
+  rolV(): boolean {
+    try{
+      if (this.dataT.tipo == null || this.dataT.tipo == 0) {
+        return false;
+      } else {
+        return true;
+      }
+    }catch(Exception){
       return false;
     }
-      try{
-        if (this.dataT.tipo == null || this.dataT.tipo == 0) {
-          return false;
-        } else {
-          return true;
-        }
-      }catch(Exception){
-        return false;
-      }
-   
-    
 
   }
 }

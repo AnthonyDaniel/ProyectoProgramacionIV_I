@@ -1,7 +1,7 @@
 <div class="container">
   <div class="jumbotron border">
     <h2 class="text title text-center"><strong>PROFILE</strong></h2>
-    <img src="/assets/user.jpg" class="border rounded mx-auto d-block rounded-circle" data-toggle="modal"
+    <img src="{{urlImg+dataUser.image}}" *ngIf="dataUser.image != null" class="border rounded mx-auto d-block rounded-circle" data-toggle="modal"
       data-target="#FullImage" width="200px" height="200px">
     <div class="row">
       <div class="col-3 ml-auto">
@@ -94,7 +94,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
           <div class="rounded mx-auto d-block">
-            <img src="/assets/user.jpg" class="img-fluid">
+            <img src="{{urlImg+dataUser.image}}" *ngIf="dataUser.image != null" class="img-fluid">
           </div>
         </div>
       </div>
@@ -111,14 +111,21 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="mb-3">
-            <label for="Password">To upload the image, enter your password</label>
-            <input type="password" class="form-control" id="password" placeholder="****">
-          </div>
+          <form class="col-md-8 mr-auto ml-auto" #userEditForm="ngForm" (ngSubmit)="uploadImage(userEditForm)">
+            <div class="form-group">
+              <label>Avatar</label>
+              <angular-file-uploader [config]="afuConfig" [resetUpload]=resetVar (ApiResponse)="avatarUpload($event)">
+              </angular-file-uploader>
+            </div>
+            <div class="mb-3">
+              <label for="Password">To upload the image, enter your password</label>
+              <input type="password" class="form-control" name="pass" [(ngModel)]="modifyImage.password">
+            </div>
+            <input type="submit" value="Guardar" class="btn btn-success" [disabled]="userEditForm.invalid">
+          </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary btn-block" id="imgUpt" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

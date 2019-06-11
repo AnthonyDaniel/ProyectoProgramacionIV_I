@@ -76,7 +76,7 @@ class ReserveController extends Controller
     }
     public function delete(Request $r)
     {
-        $deleted = Reserve::where('id',$request->id)->delete($request->all());
+        $deleted = Reserve::where('id',$r->id)->delete($r->all());
         if($deleted){
             return  response()->json(['data' => 'User deleted successfully'], 200);
         }else{

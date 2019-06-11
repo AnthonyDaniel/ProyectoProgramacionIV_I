@@ -12,7 +12,11 @@ import * as $ from 'jquery';
 })
 export class ProfileComponent implements OnInit {
 
+  public urlImg='https://avantiparkingbackend.000webhostapp.com/api/avatar/';
+
   public cerrar = "";
+
+  public image;
 
   public form = {
     email: null,
@@ -28,12 +32,19 @@ export class ProfileComponent implements OnInit {
   public modifyID = {
     email: null,
     id: null,
+    tipo: null,
     password: null,
   };
 
   public modifyAddress = {
     email: null,
     direccion: null,
+    password: null,
+  }
+
+  public modifyImage = {
+    email: null,
+    image: null,
     password: null,
   }
 
@@ -51,7 +62,8 @@ export class ProfileComponent implements OnInit {
     imagen: null,
     direccion: null,
     telefono: null,
-    tipo: null
+    tipo: null,
+    image:null
   };
 
   public error: String;
@@ -81,6 +93,7 @@ export class ProfileComponent implements OnInit {
     this.dataUser.direccion = data.direccion;
     this.dataUser.telefono = data.telefono;
     this.dataUser.tipo = data.tipo;
+    this.dataUser.image = data.image;
   }
 
 
@@ -104,6 +117,7 @@ export class ProfileComponent implements OnInit {
   modifyId() {
     $('#closeModalI').click();
     this.modifyID.email = this.dataUser.email;
+    this.modifyID.tipo = this.dataUser.tipo;
     this.Jarwis.checkPassword(this.modifyID).subscribe(
       data => {
         this.Jarwis.updated(this.modifyID).subscribe(
@@ -191,4 +205,52 @@ export class ProfileComponent implements OnInit {
     $('#alertSuccess').attr("data-dismiss", "alert");
   }
 
+  afuConfig = {
+    multiple: false,
+    formatsAllowed: ".jpg,.png,.jpeg,.jfif",
+    maxSize: "5",
+    uploadAPI: {
+      url: 'https://avantiparkingbackend.000webhostapp.com/api/upload',
+    },
+    theme: "attachPin",
+    hideProgressBar: false,
+    hideResetBtn: true,
+    hideSelectBtn: false,
+    attachPinText: 'Sube el avatar de usuario',
+    replaceTexts: {
+      selectFileBtn: 'Select Files',
+      resetBtn: 'Reset',
+      uploadBtn: 'Upload',
+      dragNDropBox: 'Drag N Drop',
+      attachPinBtn: 'Attach Files...',
+      afterUploadMsg_success: 'Successfully Uploaded !',
+      afterUploadMsg_error: 'Upload Failed !'
+    }
+  };
+  avatarUpload(datos) {
+    let data = JSON.parse(datos.response);
+    this.image = data.image;
+    this.ngOnInit();
+  }
+
+  uploadImage(user){
+    $('#imgUpt').click();
+    this.modifyImage.email = this.dataUser.email;
+    this.modifyImage.image = this.image;
+    console.log(this.modifyImage);
+    this.Jarwis.checkPassword(this.modifyImage).subscribe(
+      data => {
+        this.Jarwis.updated(this.modifyImage).subscribe(
+          data => {
+            $('#imgUpt').click();
+            //this.dataUser.nombre = this.modifyImage.nombre;
+            this.ngOnInit();
+            this.responseSuccess(data);
+          },
+          error => this.responseError(error)
+        )
+      },
+      error => this.responseError(error)
+    );
+  }
 }

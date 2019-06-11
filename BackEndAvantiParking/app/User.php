@@ -19,9 +19,8 @@ class User extends Authenticatable implements JWTSubject //Se implementa esto de
     //protected $table = 'usuario';
 
     protected $fillable = [
-        'nombre','id','telefono','direccion','tipo', 'email', 'password',
+        'nombre','id','telefono','direccion','tipo', 'email', 'password','image',
     ];
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -30,7 +29,6 @@ class User extends Authenticatable implements JWTSubject //Se implementa esto de
     protected $hidden = [
         'password', 'remember_token',
     ];
-
     /**
      * The attributes that should be cast to native types.
      *
@@ -39,7 +37,6 @@ class User extends Authenticatable implements JWTSubject //Se implementa esto de
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
     
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
@@ -50,7 +47,6 @@ class User extends Authenticatable implements JWTSubject //Se implementa esto de
     {
         return $this->getKey();
     }
-
     /**
      * Return a key value array, containing any custom claims to be added to the JWT.
      *
@@ -60,7 +56,6 @@ class User extends Authenticatable implements JWTSubject //Se implementa esto de
     {
         return [];
     }
-
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);

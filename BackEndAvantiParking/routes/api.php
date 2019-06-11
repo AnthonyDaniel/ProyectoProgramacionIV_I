@@ -15,18 +15,19 @@ Route::group([
     Route::post('checkpassword', 'AuthController@checkPassword');
     Route::post('updaten', 'AuthController@updated');
     Route::post('upload', 'AuthController@upload');
+    Route::get('avatar/{filename}','AuthController@avatar');
 
     //PASSWORD
-    Route::post('sendPasswordResetLink', 'ResetPasswordController@sendEmail');
+    Route::post('sendPasswordResetLink','ResetPasswordController@sendEmail');
     Route::post('resetPassword', 'ChangePasswordController@process');
-
+ 
     //VEHICLE
     Route::post('savev', 'VehicleController@saveVehicle');
     Route::post('getv', 'VehicleController@getVehicle');
     Route::post('updatev','VehicleController@updateVehicle');
     Route::post('deletev','VehicleController@deleteVehicle');
-    Route::post('upload','VehicleController@upload');
-    Route::get('avatar/{filename}','VehicleController@avatar');
+    Route::post('uploadvehicle','VehicleController@upload');
+    Route::get('avatarvehicle/{filename}','VehicleController@avatar');
 
     //ADMIN
     //----------------------Users

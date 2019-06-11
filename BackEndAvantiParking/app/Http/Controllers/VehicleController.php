@@ -7,20 +7,27 @@ use App\Vehicle;
 use App\User;
 use App\Http\Requests\RegisterVehicleRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Response;
+use PhpParser\Node\Stmt\TryCatch;
 
 class VehicleController extends Controller
 {
 
     public function saveVehicle(RegisterVehicleRequest $request)
     {
-        $user = User::whereEmail($request->users)->first();
+        try {
+            $user = User::whereEmail($request->users)->first();
      
-         if (is_null($user)) {
-             return response()->json(['error' => 'Not found'], 401);
-         }else{
-             Vehicle::create($request->all());
-             return response()->json(['data' => 'Create vehicle success'], 200);
-         }
+            if (is_null($user)) {
+                return response()->json(['error' => 'Not found'], 401);
+            }else{
+                Vehicle::create($request->all());
+                return response()->json(['data' => 'Create vehicle success'], 200);
+            }
+        } catch (\Throwable $th) {
+            return  response()->json(['error' => 'Data error, dublique'], 406);
+        }
+        
     
     }
     public function getVehicle(Request $request)
@@ -30,18 +37,17 @@ class VehicleController extends Controller
     }
     public function updateVehicle(RegisterVehicleRequest $request)
     {
-        $updated= Vehicle::where('telefono',$request->placa)->update($request->all());                  
+        $updated= Vehicle::where('placa',$request->placa)->update($request->all());                  
         if($updated>0){
             return  response()->json(['data' => 'Updated successfully'], 200);
         }else{
             return  response()->json(['error' => 'Error! not updated '], 406);
         }
-    
     }
     public function deleteVehicle(RegisterVehicleRequest $request)
     {
 
-        $deleted = Vehicle::where('placa',$request->Plate)->delete($request->all());
+        $deleted = Vehicle::where('placa',$request->placa)->delete($request->all());
         if($deleted){
             return  response()->json(['data' => 'Vehicle deleted successfully'], 200);
         }else{
@@ -49,39 +55,40 @@ class VehicleController extends Controller
         }
        
     }
-    public function upload(Request $request){
-        $image=$request->file('file0');
-        $validate=\Validator::make($request->all(),[
-            'file0'=>'required|image'
-        ]);
+    public function upload(Request $request)
+    {
+        $image = $request->file('file0');
+
         try {
-            $image_name=time().$image->getClientOriginalName();
-            \Storage::disk('vehicle')->put($image_name,\File::get($image));
-            $response=array(
-                'status'    =>'success',
-                'code'      =>200,
+            $image_name = time() . $image->getClientOriginalName();
+            \Storage::disk('vehicle')->put($image_name, \File::get($image));
+            $response = array(
+                'status'    => 'success',
+                'code'      => 200,
                 'image' =>$image_name,
-                'message'   =>'Imagen cargada satisfactoriamente'                
+                'message'   => 'Imagen cargada satisfactoriamente'
             );
-            return response()->json($response,$response['code']);
-        } catch (\Illuminate\Database\QueryException $e) {
-            return  response()->json(['error' => $e], 409);
-        }
-      
-   
-    }   
-    public function avatar($filename){
-        $exist=\Storage::disk('vehicle')->exists($filename);
-        if($exist){
-            $file = \Storage::disk('vehicle')->get($filename);
-            return new Response($file,200);
-        }else{
-            $response=array(
-                'status'    =>'error',
-                'code'      =>404,
-                'message'   =>'Imagen no exite'                
-            );
-            return response()->json($response,$response['code']);
+
+            return response()->json($response, $response['code']);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => 'Not upload'], 406);
         }
     }
+    public function avatar($filename)
+    {
+        $exist = \Storage::disk('vehicle')->exists($filename);
+        if ($exist) {
+            $file = \Storage::disk('vehicle')->get($filename);
+            return new Response($file, 200);
+        } else {
+            $response = array(
+                'status'    => 'error',
+                'code'      => 404,
+                'message'   => 'Imagen no exite'
+            );
+            return response()->json($response, $response['code']);
+        }
+    }
+
+   
 }

@@ -20,18 +20,18 @@ export class VehicleComponent implements OnInit {
     modelo: null,
     marca: null,
     users: null,
-    image:null,
+    image: null,
   };
-  
+
   public vehicles;
   public urlImg;
-  
-  public editVehicle={
+
+  public editVehicle = {
     placa: null,
     modelo: null,
     marca: null,
     users: null,
-  
+
   }
   public error: String;
   public success: String;
@@ -43,25 +43,24 @@ export class VehicleComponent implements OnInit {
     private router: Router,
     private Jarwis: JarwisService,
     private token: TokenService,
-    
-    
-  ) {  this.urlImg='http://localhost:8000/avatar/';}
+
+
+  ) { 
+    this.urlImg = 'https://avantiparkingbackend.000webhostapp.com/api/avatarvehicle/'; 
+  }
 
   afuConfig = {
     multiple: false,
-    formatsAllowed: ".jpg,.png",
+    formatsAllowed: ".jpg,.png,.jpeg,.jfif",
     maxSize: "5",
-    uploadAPI:  {
-      url:'http://localhost:8000/upload',
-      headers: {
-        "token" :localStorage.getItem('token')
-      }
+    uploadAPI: {
+      url: 'https://avantiparkingbackend.000webhostapp.com/api/uploadvehicle',
     },
     theme: "attachPin",
     hideProgressBar: false,
     hideResetBtn: true,
     hideSelectBtn: false,
-    attachPinText:'photo',    
+    attachPinText: 'photo',
     replaceTexts: {
       selectFileBtn: 'Select Files',
       resetBtn: 'Reset',
@@ -71,7 +70,7 @@ export class VehicleComponent implements OnInit {
       afterUploadMsg_success: 'Successfully Uploaded !',
       afterUploadMsg_error: 'Upload Failed !'
     }
-};
+  };
   handleResponse(data) {
     this.auth.changeAuthStatus(true);
     this.router.navigateByUrl('/vehicle');
@@ -97,7 +96,7 @@ export class VehicleComponent implements OnInit {
 
   onSubmit() {
     this.vehicle.saveV(this.form).subscribe(
-      data =>  {
+      data => {
         this.responseSuccess(data);
         this.get();
         this.form.marca = null;
@@ -106,7 +105,7 @@ export class VehicleComponent implements OnInit {
       },
       error => this.responseError(error),
     );
-    
+
   }
 
   delete(vehi: Vehicle) {
@@ -115,7 +114,7 @@ export class VehicleComponent implements OnInit {
       data => {
         this.vehicles = this.vehicles.filter(h => h !== vehi);
         this.responseSuccess(data),
-        error => this.responseError(error)
+          error => this.responseError(error)
       },
     );
   }
@@ -128,12 +127,12 @@ export class VehicleComponent implements OnInit {
     );
   }
   edit(vehic: Vehicle) {
-  this.vehicle.updateV(vehic).subscribe(data=>{
-    this.responseSuccess(data),
-    error => this.responseError(error)
-  });
+    this.vehicle.updateV(vehic).subscribe(data => {
+      this.responseSuccess(data),
+        error => this.responseError(error)
+    });
   }
-  
+
   responseSuccess(data) {
     this.success = data.data;
     this.status = "success";
@@ -149,5 +148,9 @@ export class VehicleComponent implements OnInit {
   dismissSuccess() {
     this.status = "";
     $('#alertSuccess').attr("data-dismiss", "alert");
+  }
+  avatarUpload(datos) {
+    let data = JSON.parse(datos.response);
+    this.form.image = data.image;
   }
 }

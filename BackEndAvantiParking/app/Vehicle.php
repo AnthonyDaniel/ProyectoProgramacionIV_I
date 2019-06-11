@@ -9,6 +9,6 @@ class Vehicle extends Model
      protected $table = 'vehiculo';
 
      protected $fillable = [
-        'placa','marca','modelo','imagenes','users',
+        'placa','marca','modelo','image','users',
     ];
 }
